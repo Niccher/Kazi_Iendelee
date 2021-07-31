@@ -38,41 +38,30 @@
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('admin/home'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('reseller/home'); ?>" class="side-nav-link">
                             <i class="uil-home-alt"></i>
                             <span> Home </span>
                         </a>
                     </li>
 
                     <?php 
-                        if ($pag =='orders') {echo '<li class="side-nav-item menuitem-active">';} 
+                        if ($pag =='questions') {echo '<li class="side-nav-item menuitem-active">';} 
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('admin/orders'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('reseller/orders'); ?>" class="side-nav-link">
                             <i class="dripicons-folder-open"></i>
                             <span> Orders </span>
                         </a>
                     </li>
 
                     <?php 
-                        if ($pag =='users') {echo '<li class="side-nav-item menuitem-active">';} 
+                        if ($pag =='analytics') {echo '<li class="side-nav-item menuitem-active">';} 
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('admin/users'); ?>" class="side-nav-link">
-                            <i class="dripicons-user-group"></i>
-                            <span> Users </span>
-                        </a>
-                    </li>
-
-                    <?php 
-                        if ($pag =='sales') {echo '<li class="side-nav-item menuitem-active">';} 
-                        else {echo '<li class="side-nav-item">';} 
-
-                    ?>
-                        <a href="<?php echo base_url('admin/sales'); ?>" class="side-nav-link">
-                            <i class="uil-home-alt"></i>
+                        <a href="<?php echo base_url('reseller/sales'); ?>" class="side-nav-link">
+                            <i class="mdi mdi-google-analytics"></i>
                             <span> Sales </span>
                         </a>
                     </li>
@@ -82,8 +71,8 @@
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('admin/invoices'); ?>" class="side-nav-link">
-                            <i class="uil-home-alt"></i>
+                        <a href="<?php echo base_url('reseller/invoices'); ?>" class="side-nav-link">
+                            <i class="mdi mdi-credit-card-clock"></i>
                             <span> Invoices </span>
                         </a>
                     </li>
@@ -93,7 +82,7 @@
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('admin/mails'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('reseller/mails'); ?>" class="side-nav-link">
                             <i class="uil-envelope"></i>
                             <span> Mails </span>
                         </a>

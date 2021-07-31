@@ -26,6 +26,22 @@ $route['auth/activate'] = 'auth/activate';
 $route['auth/locked'] = 'auth/locked';
 $route['auth/home'] = 'auth/home';
 
+
+
+$route['reseller'] = 'reseller';
+$route['reseller/home'] = 'reseller';
+$route['reseller/dashboard'] = 'reseller';
+
+$route['reseller/orders'] = 'reseller/orders';
+$route['reseller/orders/pending'] = 'reseller/orders_pending';
+$route['reseller/orders/completed'] = 'reseller/orders_completed';
+$route['reseller/orders/view'] = 'reseller/orders_view';
+
+$route['reseller/invoices'] = 'reseller/invoices';
+$route['reseller/sales'] = 'reseller/sales';
+$route['reseller/mail'] = 'reseller/mails';
+$route['reseller/mail/read'] = 'reseller/mails_read';
+
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
