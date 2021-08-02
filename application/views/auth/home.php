@@ -66,13 +66,11 @@
                                 <ul class="card-pricing-features">
                                     <li>Bid Orders</li>
                                     <li>Submit work</li>
-                                    <li>10 Domain</li>
                                     <li>Profile</li>
                                     <li>Sales dashboard</li>
                                     <li>Invoices dashboard</li>
-                                    <li>24x7 Support</li>
                                 </ul>
-                                <a href="<?php echo base_url('admin/home')?>">
+                                <a href="<?php echo base_url('reseller')?>">
                                     <button class="btn btn-primary mt-4 mb-2 btn-rounded">View Interface</button>
                                 </a>
                             </div>

@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$route['home'] = 'pages';
+
 $route['admin'] = 'admin';
 $route['admin/home'] = 'admin';
 
@@ -42,6 +44,6 @@ $route['reseller/sales'] = 'reseller/sales';
 $route['reseller/mail'] = 'reseller/mails';
 $route['reseller/mail/read'] = 'reseller/mails_read';
 
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'pages';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

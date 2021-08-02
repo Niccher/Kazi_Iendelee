@@ -78,6 +78,17 @@
                     </li>
 
                     <?php 
+                        if ($pag =='profile') {echo '<li class="side-nav-item menuitem-active">';} 
+                        else {echo '<li class="side-nav-item">';} 
+
+                    ?>
+                        <a href="<?php echo base_url('reseller/profile'); ?>" class="side-nav-link">
+                            <i class="uil-user-circle"></i>
+                            <span> Profile </span>
+                        </a>
+                    </li>
+
+                    <?php 
                         if ($pag =='mails') {echo '<li class="side-nav-item menuitem-active">';} 
                         else {echo '<li class="side-nav-item">';} 
 

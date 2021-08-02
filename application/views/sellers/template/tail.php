@@ -58,6 +58,7 @@
     <script src="<?php echo base_url('assets/js/pages/demo.inbox.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/pages/demo.dashboard.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/pages/demo.tasks.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/pages/demo.profile.js'); ?>"></script>
     
     <script src="<?php //echo base_url('assets/js/pages/demo.apex-line.js'); ?>"></script>
     <script src="<?php //echo base_url('assets/js/pages/demo.customers.js'); ?>"></script>

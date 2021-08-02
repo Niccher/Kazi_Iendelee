@@ -20,7 +20,7 @@
                                     <p class="text-muted mb-4">Enter your email address and password to access the services.</p>
                                 </div>
 
-                                <form action="<?php echo base_url('auth/login'); ?>">
+                                <form action="<?php echo base_url('auth/home'); ?>">
 
                                     <div class="mb-3">
                                         <label for="emailaddress" class="form-label">Email address</label>

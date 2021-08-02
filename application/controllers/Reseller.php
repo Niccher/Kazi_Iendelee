@@ -73,6 +73,18 @@ class Reseller extends CI_Controller {
 		$this->load->view('sellers/template/tail');
 	}
 
+
+	public function profile($page = 'profile') {
+		
+		$titl['pag'] = 'profile';
+
+		$this->load->view('sellers/template/header');
+		$this->load->view('sellers/template/sidebar', $titl);
+		$this->load->view('sellers/'.$page);
+		$this->load->view('sellers/template/tail');
+	}
+
+
 	public function mails($page = 'mailbox') {
 		
 		$titl['pag'] = 'mails';
