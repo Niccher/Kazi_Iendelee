@@ -26,7 +26,7 @@
                                     <li>Send Mails</li>
                                     <li>Email Support</li>
                                 </ul>
-                                <a href="<?php echo base_url('admin/home')?>">
+                                <a href="<?php echo base_url('client/home')?>">
                                     <button class="btn btn-primary mt-4 mb-2 btn-rounded">View Interface</button>
                                 </a>
                             </div>

@@ -44,6 +44,21 @@ $route['reseller/sales'] = 'reseller/sales';
 $route['reseller/mail'] = 'reseller/mails';
 $route['reseller/mail/read'] = 'reseller/mails_read';
 
+$route['client'] = 'client';
+$route['client/home'] = 'client';
+$route['client/dashboard'] = 'client';
+
+$route['client/orders'] = 'client/orders';
+$route['client/orders/pending'] = 'client/orders_pending';
+$route['client/orders/completed'] = 'client/orders_completed';
+$route['client/orders/view'] = 'client/orders_view';
+$route['client/orders/add'] = 'client/orders_create';
+
+$route['client/invoices'] = 'client/invoices';
+$route['client/sales'] = 'client/sales';
+$route['client/mail'] = 'client/mails';
+$route['client/mail/read'] = 'client/mails_read';
+
 $route['default_controller'] = 'pages';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
