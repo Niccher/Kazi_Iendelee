@@ -20,18 +20,20 @@
                                     <p class="text-muted mb-4">Enter your email address and password to access the services.</p>
                                 </div>
 
-                                <form action="<?php echo base_url('auth/home'); ?>">
+                                <?php 
+                                echo validation_errors(); 
+                                echo form_open('auth/login'); ?>
 
                                     <div class="mb-3">
                                         <label for="emailaddress" class="form-label">Email address</label>
-                                        <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">
+                                        <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email" name="lg_as_eml">
                                     </div>
 
                                     <div class="mb-3">
                                         <a href="pages-recoverpw.html" class="text-muted float-end"><small>Forgot your password?</small></a>
                                         <label for="password" class="form-label">Password</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                                            <input type="password" id="password" class="form-control" placeholder="Enter your password" name="lg_as_pwd">
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>

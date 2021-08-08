@@ -30,34 +30,39 @@ $route['auth/home'] = 'auth/home';
 
 
 
-$route['reseller'] = 'reseller';
-$route['reseller/home'] = 'reseller';
-$route['reseller/dashboard'] = 'reseller';
+$route['seller'] = 'reseller';
+$route['seller/(:any)'] = 'reseller';
+$route['seller/(:any)/home'] = 'reseller';
+$route['seller/(:any)/dashboard'] = 'reseller';
 
-$route['reseller/orders'] = 'reseller/orders';
-$route['reseller/orders/pending'] = 'reseller/orders_pending';
-$route['reseller/orders/completed'] = 'reseller/orders_completed';
-$route['reseller/orders/view'] = 'reseller/orders_view';
+$route['seller/(:any)/orders'] = 'reseller/orders';
+$route['seller/(:any)/orders/pending'] = 'reseller/orders_pending';
+$route['seller/(:any)/orders/completed'] = 'reseller/orders_completed';
+$route['seller/(:any)/orders/view'] = 'reseller/orders_view';
 
-$route['reseller/invoices'] = 'reseller/invoices';
-$route['reseller/sales'] = 'reseller/sales';
-$route['reseller/mail'] = 'reseller/mails';
-$route['reseller/mail/read'] = 'reseller/mails_read';
+$route['seller/(:any)/invoices'] = 'reseller/invoices';
+$route['seller/(:any)/profile'] = 'reseller/profile';
+$route['seller/(:any)/sales'] = 'reseller/sales';
+$route['seller/(:any)/mails'] = 'reseller/mails';
+$route['seller/(:any)/mail/read'] = 'reseller/mails_read';
 
-$route['client'] = 'client';
-$route['client/home'] = 'client';
-$route['client/dashboard'] = 'client';
+$route['buyer/'] = 'client';
+$route['buyer/(:any)'] = 'client';
+$route['buyer/(:any)/home'] = 'client';
+$route['buyer/(:any)/dashboard'] = 'client';
 
-$route['client/orders'] = 'client/orders';
-$route['client/orders/pending'] = 'client/orders_pending';
-$route['client/orders/completed'] = 'client/orders_completed';
-$route['client/orders/view'] = 'client/orders_view';
-$route['client/orders/add'] = 'client/orders_create';
+$route['buyer/(:any)/orders'] = 'client/orders';
+$route['buyer/(:any)/orders/pending'] = 'client/orders_pending';
+$route['buyer/(:any)/orders/completed'] = 'client/orders_completed';
+$route['buyer/(:any)/orders/view'] = 'client/orders_view';
+$route['buyer/(:any)/orders/add'] = 'client/orders_create';
 
-$route['client/invoices'] = 'client/invoices';
-$route['client/sales'] = 'client/sales';
-$route['client/mail'] = 'client/mails';
-$route['client/mail/read'] = 'client/mails_read';
+$route['buyer/(:any)/invoices'] = 'client/invoices';
+$route['buyer/(:any)/profile'] = 'client/profile';
+$route['buyer/(:any)/sales'] = 'client/sales';
+$route['buyer/(:any)/mail'] = 'client/mails';
+$route['buyer/(:any)/mails'] = 'client/mails';
+$route['buyer/(:any)/mail/read'] = 'client/mails_read';
 
 $route['default_controller'] = 'pages';
 $route['404_override'] = '';

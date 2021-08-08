@@ -34,7 +34,7 @@
                                                     </div>
                                                     <div class="col">
                                                         <div>
-                                                            <h4 class="mt-1 mb-1 text-white">User here Name</h4>
+                                                            <h4 class="mt-1 mb-1 text-white"><?php echo $this->mod_crypt->Dec_String($user_info->Name);?></h4>
                                                             <p class="font-13 text-white-50"> Authorised Seller</p>
     
                                                             <ul class="mb-0 list-inline text-light">
@@ -86,11 +86,11 @@
                                         <hr/>
 
                                         <div class="text-start">
-                                            <p class="text-muted"><strong>Full Name :</strong> <span class="ms-2">Full Name</span></p>
+                                            <p class="text-muted"><strong>Full Name :</strong> <span class="ms-2"><?php echo $this->mod_crypt->Dec_String($user_info->Name);?></span></p>
 
-                                            <p class="text-muted"><strong>Mobile :</strong><span class="ms-2"> +254 5555 5555</span></p>
+                                            <p class="text-muted"><strong>Mobile :</strong><span class="ms-2"> <?php echo $this->mod_crypt->Dec_String($user_info->Phone);?></span></p>
 
-                                            <p class="text-muted"><strong>Email :</strong> <span class="ms-2">user1@gmail.com</span></p>
+                                            <p class="text-muted"><strong>Email :</strong> <span class="ms-2"><?php echo $this->mod_crypt->Dec_String($user_info->Email);?></span></p>
 
                                             <p class="text-muted"><strong>Location :</strong> <span class="ms-2">Kenya</span></p>
 

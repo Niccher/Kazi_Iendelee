@@ -5,7 +5,10 @@ class Reseller extends CI_Controller {
 
 	public function index($page = 'home') {
 
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
 		$titl['pag'] = 'home';
+		$titl['urls'] = $data['user_info']->Name;
 		
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);
@@ -15,7 +18,10 @@ class Reseller extends CI_Controller {
 
 	public function orders($page = 'orders') {
 		
-		$titl['pag'] = 'questions';
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
+		$titl['pag'] = 'orders';
+		$titl['urls'] = $data['user_info']->Name;
 
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);
@@ -25,7 +31,10 @@ class Reseller extends CI_Controller {
 
 	public function orders_pending($page = 'pending') {
 		
-		$titl['pag'] = 'questions';
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
+		$titl['pag'] = 'orders';
+		$titl['urls'] = $data['user_info']->Name;
 
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);
@@ -35,7 +44,10 @@ class Reseller extends CI_Controller {
 
 	public function orders_completed($page = 'completed') {
 		
-		$titl['pag'] = 'questions';
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
+		$titl['pag'] = 'orders';
+		$titl['urls'] = $data['user_info']->Name;
 
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);
@@ -45,7 +57,10 @@ class Reseller extends CI_Controller {
 
 	public function orders_view($page = 'view') {
 		
-		$titl['pag'] = 'questions';
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
+		$titl['pag'] = 'orders';
+		$titl['urls'] = $data['user_info']->Name;
 
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);
@@ -55,7 +70,10 @@ class Reseller extends CI_Controller {
 
 	public function sales($page = 'sales') {
 		
-		$titl['pag'] = 'analytics';
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
+		$titl['pag'] = 'sales';
+		$titl['urls'] = $data['user_info']->Name;
 
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);
@@ -65,7 +83,10 @@ class Reseller extends CI_Controller {
 
 	public function invoices($page = 'invoices') {
 		
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
 		$titl['pag'] = 'invoices';
+		$titl['urls'] = $data['user_info']->Name;
 
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);
@@ -75,19 +96,26 @@ class Reseller extends CI_Controller {
 
 
 	public function profile($page = 'profile') {
+
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		
 		$titl['pag'] = 'profile';
+		$titl['urls'] = $data['user_info']->Name;
+
 
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);
-		$this->load->view('sellers/'.$page);
+		$this->load->view('sellers/'.$page, $data);
 		$this->load->view('sellers/template/tail');
 	}
 
 
 	public function mails($page = 'mailbox') {
 		
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
 		$titl['pag'] = 'mails';
+		$titl['urls'] = $data['user_info']->Name;
 
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);
@@ -97,7 +125,10 @@ class Reseller extends CI_Controller {
 
 	public function mails_read($page = 'read') {
 		
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
 		$titl['pag'] = 'mails';
+		$titl['urls'] = $data['user_info']->Name;
 
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);

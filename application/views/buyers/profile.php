@@ -75,17 +75,17 @@
                                     <div class="card-body">
                                         <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
                                             <li class="nav-item">
-                                                <a href="pages-profile-2.html#aboutme" data-bs-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
+                                                <a href="#aboutme" data-bs-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
                                                     About
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="pages-profile-2.html#timeline" data-bs-toggle="tab" aria-expanded="true" class="nav-link rounded-0 active">
+                                                <a href="#timeline" data-bs-toggle="tab" aria-expanded="true" class="nav-link rounded-0 active">
                                                     Timeline
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="pages-profile-2.html#settings" data-bs-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
+                                                <a href="#settings" data-bs-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
                                                     Settings
                                                 </a>
                                             </li>
@@ -126,14 +126,14 @@
     
                                                 <!-- comment box -->
                                                 <div class="border rounded mt-2 mb-3">
-                                                    <form action="pages-profile-2.html#" class="comment-area-box">
+                                                    <form action="#" class="comment-area-box">
                                                         <textarea rows="3" class="form-control border-0 resize-none" placeholder="Write something...."></textarea>
                                                         <div class="p-2 bg-light d-flex justify-content-between align-items-center">
                                                             <div>
-                                                                <a href="pages-profile-2.html#" class="btn btn-sm px-2 font-16 btn-light"><i class="mdi mdi-account-circle"></i></a>
-                                                                <a href="pages-profile-2.html#" class="btn btn-sm px-2 font-16 btn-light"><i class="mdi mdi-map-marker"></i></a>
-                                                                <a href="pages-profile-2.html#" class="btn btn-sm px-2 font-16 btn-light"><i class="mdi mdi-camera"></i></a>
-                                                                <a href="pages-profile-2.html#" class="btn btn-sm px-2 font-16 btn-light"><i class="mdi mdi-emoticon-outline"></i></a>
+                                                                <a href="#" class="btn btn-sm px-2 font-16 btn-light"><i class="mdi mdi-account-circle"></i></a>
+                                                                <a href="#" class="btn btn-sm px-2 font-16 btn-light"><i class="mdi mdi-map-marker"></i></a>
+                                                                <a href="#" class="btn btn-sm px-2 font-16 btn-light"><i class="mdi mdi-camera"></i></a>
+                                                                <a href="#" class="btn btn-sm px-2 font-16 btn-light"><i class="mdi mdi-emoticon-outline"></i></a>
                                                             </div>
                                                             <button type="submit" class="btn btn-sm btn-dark waves-effect">Post</button>
                                                         </div>
@@ -173,13 +173,13 @@
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="firstname" class="form-label">First Name</label>
-                                                                <input type="text" class="form-control" id="firstname" placeholder="Enter first name">
+                                                                <input type="text" class="form-control" name="ed_name_first" placeholder="Enter first name">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="lastname" class="form-label">Last Name</label>
-                                                                <input type="text" class="form-control" id="lastname" placeholder="Enter last name">
+                                                                <input type="text" class="form-control" name="ed_name_first" placeholder="Enter last name">
                                                             </div>
                                                         </div> <!-- end col -->
                                                     </div> <!-- end row -->
@@ -188,7 +188,7 @@
                                                         <div class="col-12">
                                                             <div class="mb-3">
                                                                 <label for="userbio" class="form-label">Bio</label>
-                                                                <textarea class="form-control" id="userbio" rows="4" placeholder="Write something..."></textarea>
+                                                                <textarea class="form-control" name="ed_desc_bio" rows="4" placeholder="Write something..."></textarea>
                                                             </div>
                                                         </div> <!-- end col -->
                                                     </div> <!-- end row -->
@@ -196,19 +196,39 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
-                                                                <label for="useremail" class="form-label">Email Address</label>
-                                                                <input type="email" class="form-control" id="useremail" placeholder="Enter email">
-                                                                <span class="form-text text-muted"><small>If you want to change email please <a href="javascript: void(0);">click</a> here.</small></span>
+                                                                <label class="form-label">Current Email Address</label>
+                                                                <input type="email" class="form-control" name="ed_eml_old" placeholder="The Current Email Address">
+                                                                <span class="form-text text-muted">
+                                                                    <small>this has to match with your current email <a href="javascript: void(0);">click</a> here.</small>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
-                                                                <label for="userpassword" class="form-label">Password</label>
-                                                                <input type="password" class="form-control" id="userpassword" placeholder="Enter password">
-                                                                <span class="form-text text-muted"><small>If you want to change password please <a href="javascript: void(0);">click</a> here.</small></span>
+                                                                <label class="form-label">New Email Address</label>
+                                                                <input type="email" class="form-control" name="ed_eml_new" placeholder="Enter New Email Address">
                                                             </div>
                                                         </div> <!-- end col -->
                                                     </div> <!-- end row -->
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="useremail" class="form-label">Current Password</label>
+                                                                <input type="email" class="form-control" name="ed_pwd_old" placeholder="Enter current password">
+                                                                <span class="form-text text-muted">
+                                                                    <small>this has to match with your current email</small>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="userpassword" class="form-label">New Password</label>
+                                                                <input type="text" class="form-control" name="ed_pwd_new" placeholder="Enter new password">
+                                                            </div>
+                                                        </div> <!-- end col -->
+                                                    </div> <!-- end row -->
+    
     
                                                     <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-earth me-1"></i> Social</h5>
                                                     <div class="row">
@@ -217,7 +237,7 @@
                                                                 <label for="social-fb" class="form-label">Facebook</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-text"><i class="mdi mdi-facebook"></i></span>
-                                                                    <input type="text" class="form-control" id="social-fb" placeholder="Url">
+                                                                    <input type="text" class="form-control" name="ed_social_fb" placeholder="Facebook Profile">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -226,7 +246,7 @@
                                                                 <label for="social-tw" class="form-label">Twitter</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-text"><i class="mdi mdi-twitter"></i></span>
-                                                                    <input type="text" class="form-control" id="social-tw" placeholder="Username">
+                                                                    <input type="text" class="form-control" name="ed_social_tw" placeholder="Twitter Profile ">
                                                                 </div>
                                                             </div>
                                                         </div> <!-- end col -->
@@ -238,19 +258,10 @@
                                                                 <label for="social-insta" class="form-label">Instagram</label>
                                                                 <div class="input-group">
                                                                     <span class="input-group-text"><i class="mdi mdi-instagram"></i></span>
-                                                                    <input type="text" class="form-control" id="social-insta" placeholder="Url">
+                                                                    <input type="text" class="form-control" name="ed_social_ig" placeholder="Instagram Profile">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <div class="mb-3">
-                                                                <label for="social-lin" class="form-label">Linkedin</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-text"><i class="mdi mdi-linkedin"></i></span>
-                                                                    <input type="text" class="form-control" id="social-lin" placeholder="Url">
-                                                                </div>
-                                                            </div>
-                                                        </div> <!-- end col -->
                                                     </div> <!-- end row -->
                                                     
                                                     <div class="text-end">

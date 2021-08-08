@@ -1,64 +1,13 @@
 
-
                     <!-- Start Content-->
                     <div class="container-fluid">
 
                         <div class="row">
-                            <div class="col-xxl-8">
-                                <!-- start page title -->
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <div class="app-search">
-                                            <form>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="Search..." />
-                                                    <span class="mdi mdi-magnify search-icon"></span>
-                                                    <button class="input-group-text btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        <i class='uil uil-sort-amount-down'></i>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="apps-tasks.html#">Due Date</a>
-                                                        <a class="dropdown-item" href="apps-tasks.html#">Added Date</a>
-                                                        <a class="dropdown-item" href="apps-tasks.html#">Assignee</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <h4 class="page-title">Order # </h4>
-                                </div>
-                                <!-- end page title -->
-                            </div> <!-- end col -->
 
                             <!-- task details -->
-                            <div class="col-xxl-4">
+                            <div class="col-xxl-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="dropdown card-widgets">
-                                            <a href="apps-tasks.html#" class="dropdown-toggle arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class='uil uil-ellipsis-h'></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <i class='uil uil-file-upload me-1'></i>Attachment
-                                                </a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <i class='uil uil-edit me-1'></i>Edit
-                                                </a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <i class='uil uil-file-copy-alt me-1'></i>Mark as Duplicate
-                                                </a>
-                                                <div class="dropdown-divider"></div>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item text-danger">
-                                                    <i class='uil uil-trash-alt me-1'></i>Delete
-                                                </a>
-                                            </div> <!-- end dropdown menu-->
-                                        </div> <!-- end dropdown-->
                                         
                                         <div class="form-check float-start">
                                             <input type="checkbox" class="form-check-input" id="completedCheck">
@@ -173,10 +122,6 @@
                                                                     class="btn btn-link text-muted btn-lg p-0">
                                                                     <i class='uil uil-cloud-download'></i>
                                                                 </a>
-                                                                <a href="javascript:void(0);" data-bs-container="#tooltip-container9" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"
-                                                                    class="btn btn-link text-danger btn-lg p-0">
-                                                                    <i class='uil uil-multiply'></i>
-                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -197,10 +142,6 @@
                                                                 <a href="javascript:void(0);" data-bs-container="#tooltip-container10" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Download"
                                                                     class="btn btn-link text-muted btn-lg p-0">
                                                                     <i class='uil uil-cloud-download'></i>
-                                                                </a>
-                                                                <a href="javascript:void(0);" data-bs-container="#tooltip-container10" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"
-                                                                    class="btn btn-link text-danger btn-lg p-0">
-                                                                    <i class='uil uil-multiply'></i>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -251,7 +192,7 @@
                                                 <div class="row mt-2">
                                                     <div class="col">
                                                         <div class="border rounded">
-                                                            <form action="apps-tasks.html#" class="comment-area-box">
+                                                            <form action="#" class="comment-area-box">
                                                                 <textarea rows="3" class="form-control border-0 resize-none"
                                                                 placeholder="Your comment..."></textarea>
                                                                 <div class="p-2 bg-light">
@@ -259,8 +200,8 @@
                                                                         <button type="submit" class="btn btn-sm btn-success"><i class='uil uil-message me-1'></i>Submit</button>
                                                                     </div>
                                                                     <div>
-                                                                        <a href="apps-tasks.html#" class="btn btn-sm px-1 btn-light"><i class='uil uil-cloud-upload'></i></a>
-                                                                        <a href="apps-tasks.html#" class="btn btn-sm px-1 btn-light"><i class='uil uil-at'></i></a>
+                                                                        <a href="#" class="btn btn-sm px-1 btn-light"><i class='uil uil-cloud-upload'></i></a>
+                                                                        <a href="#" class="btn btn-sm px-1 btn-light"><i class='uil uil-at'></i></a>
                                                                     </div>
                                                                 </div>
                                                             </form>

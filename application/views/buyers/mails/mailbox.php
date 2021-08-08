@@ -1,371 +1,344 @@
 
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-                        
-                        <!-- start page email-title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                                            <li class="breadcrumb-item active">Inbox</li>
-                                        </ol>
+        <!-- Start Content-->
+        <div class="container-fluid">
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                                <li class="breadcrumb-item active">Chat</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">Chat</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+            <div class="row">
+                <!-- start chat users-->
+                <div class="col-xxl-3 col-xl-6 order-xl-1">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <ul class="nav nav-tabs nav-bordered">
+                                <li class="nav-item">
+                                    <a href="#" data-bs-toggle="tab" aria-expanded="false" class="nav-link active py-2">
+                                    All
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- end nav-->
+                            <div class="tab-content">
+                                <div class="tab-pane show active p-3" id="newpost">
+                                    <!-- users -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <div data-simplebar style="max-height: 550px">
+                                                <a href="javascript:void(0);" class="text-body">
+                                                    <div class="d-flex align-items-start mt-1 p-2">
+                                                        <img src="<?php echo base_url('assets/images/users/avatar-2.jpg'); ?>" class="me-2 rounded-circle" height="48" alt="User M" />
+                                                        <div class="w-100 overflow-hidden">
+                                                            <h5 class="mt-0 mb-0 font-14">
+                                                                <span class="float-end text-muted font-12">4:30am</span>
+                                                                User M
+                                                            </h5>
+                                                            <p class="mt-1 mb-0 text-muted font-14">
+                                                                <span class="w-25 float-end text-end"><span class="badge badge-danger-lighten">3</span></span>
+                                                                <span class="w-75">How are you today?</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a href="javascript:void(0);" class="text-body">
+                                                    <div class="d-flex align-items-start bg-light p-2">
+                                                        <img src="<?php echo base_url('assets/images/users/avatar-5.jpg'); ?>" class="me-2 rounded-circle" height="48" alt="User N" />
+                                                        <div class="w-100 overflow-hidden">
+                                                            <h5 class="mt-0 mb-0 font-14">
+                                                                <span class="float-end text-muted font-12">5:30am</span>
+                                                                User N
+                                                            </h5>
+                                                            <p class="mt-1 mb-0 text-muted font-14">
+                                                                <span class="w-75">Hey! a reminder for tomorrow's meeting...</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a href="javascript:void(0);" class="text-body">
+                                                    <div class="d-flex align-items-start mt-1 p-2">
+                                                        <img src="<?php echo base_url('assets/images/users/avatar-7.jpg'); ?>" class="me-2 rounded-circle" height="48" alt="User O" />
+                                                        <div class="w-100 overflow-hidden">
+                                                            <h5 class="mt-0 mb-0 font-14">
+                                                                <span class="float-end text-muted font-12">Thu</span>
+                                                                User O
+                                                            </h5>
+                                                            <p class="mt-1 mb-0 text-muted font-14">
+                                                                <span class="w-25 float-end text-end">
+                                                                    <span class="badge badge-danger-lighten">2</span>
+                                                                </span>
+                                                                <span class="w-75">Are we going to have this week's planning meeting today?</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!-- end slimscroll-->
+                                        </div>
+                                        <!-- End col -->
                                     </div>
-                                    <h4 class="page-title">Inbox</h4>
+                                    <!-- end users -->
                                 </div>
+                                <!-- end Tab Pane-->
                             </div>
-                        </div>     
-                        <!-- end page email-title --> 
-
-                        <div class="row">
-
-                            <!-- Right Sidebar -->
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <!-- Left sidebar -->
-                                        <div class="page-aside-left">
-                                            <div class="d-grid">
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#compose-modal">Compose</button>
-                                            </div>
-
-                                            <div class="email-menu-list mt-3">
-                                                <a href="javascript: void(0);" class="text-danger fw-bold"><i class="dripicons-inbox me-2"></i>Inbox<span class="badge badge-danger-lighten float-end ms-2">7</span></a>
-                                             	<a href="javascript: void(0);"><i class="dripicons-document me-2"></i>Draft<span class="badge badge-info-lighten float-end ms-2">32</span></a>
-                                                <a href="javascript: void(0);"><i class="dripicons-exit me-2"></i>Sent Mail</a>
-                                                <a href="javascript: void(0);"><i class="dripicons-trash me-2"></i>Trash</a>
-                                            </div>
-
-                                        </div>
-                                        <!-- End Left sidebar -->
-
-                                        <div class="page-aside-right">
-
-                                            <div class="mt-3">
-                                                <ul class="email-list">
-                                                    <li class="unread">
-                                                        <div class="email-sender-info">
-                                                            <div class="checkbox-wrapper-mail">
-                                                                <div class="form-check">
-                                                                    <input type="checkbox" class="form-check-input" id="mail1">
-                                                                    <label class="form-check-label" for="mail1"></label>
-                                                                </div>
-                                                            </div>
-                                                            <span class="star-toggle mdi mdi-star-outline text-warning"></span>
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-title">Lucas Kriebel (via Twitter)</a>
-                                                        </div>
-                                                        <div class="email-content">
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-subject">Lucas Kriebel (@LucasKriebel) has sent
-                                                                you a direct message on Twitter! &nbsp;&ndash;&nbsp;
-                                                                <span>@LucasKriebel - Very cool :) Nicklas, You have a new direct message.</span>
-                                                            </a>
-                                                            <div class="email-date">11:49 am</div>
-                                                        </div>
-                                                        <div class="email-action-icons">
-                                                            <ul class="list-inline">
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-archive email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-delete email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-email-open email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-clock email-action-icons-item"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="email-sender-info">
-                                                            <div class="checkbox-wrapper-mail">
-                                                                <div class="form-check">
-                                                                    <input type="checkbox" class="form-check-input" id="mail2">
-                                                                    <label class="form-check-label" for="mail2"></label>
-                                                                </div>
-                                                            </div>
-                                                            <span class="star-toggle mdi mdi-star-outline"></span>
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-title">Randy, me (5)</a>
-                                                        </div>
-                                                        <div class="email-content">
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-subject">Last pic over my village &nbsp;&ndash;&nbsp;
-                                                                <span>Yeah i'd like that! Do you remember the video you showed me of your train ride between Colombo and Kandy? The one with the mountain view? I would love to see that one again!</span>
-                                                            </a>
-                                                            <div class="email-date">5:01 am</div>
-                                                        </div>
-                                                        <div class="email-action-icons">
-                                                            <ul class="list-inline">
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-archive email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-delete email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-email-mark-as-unread email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-clock email-action-icons-item"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="email-sender-info">
-                                                            <div class="checkbox-wrapper-mail">
-                                                                <div class="form-check">
-                                                                    <input type="checkbox" class="form-check-input" id="mail3">
-                                                                    <label class="form-check-label" for="mail3"></label>
-                                                                </div>
-                                                            </div>
-                                                            <span class="star-toggle mdi mdi-star-outline text-warning"></span>
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-title">Andrew Zimmer</a>
-                                                        </div>
-                                                        <div class="email-content">
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-subject">Mochila Beta: Subscription Confirmed
-                                                                &nbsp;&ndash;&nbsp; <span>You've been confirmed! Welcome to the ruling class of the inbox. For your records, here is a copy of the information you submitted to us...</span>
-                                                            </a>
-                                                            <div class="email-date">Mar 8</div>
-                                                        </div>
-                                                        <div class="email-action-icons">
-                                                            <ul class="list-inline">
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-archive email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-delete email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-email-mark-as-unread email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-clock email-action-icons-item"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li class="unread">
-                                                        <div class="email-sender-info">
-                                                            <div class="checkbox-wrapper-mail">
-                                                                <div class="form-check">
-                                                                    <input type="checkbox" class="form-check-input" id="mail4">
-                                                                    <label class="form-check-label" for="mail4"></label>
-                                                                </div>
-                                                            </div>
-                                                            <span class="star-toggle mdi mdi-star-outline"></span>
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-title">Infinity HR</a>
-                                                        </div>
-                                                        <div class="email-content">
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-subject">Sveriges Hetaste sommarjobb &nbsp;&ndash;&nbsp;
-                                                                <span>Hej Nicklas Sandell! Vi vill bjuda in dig till "First tour 2014", ett rekryteringsevent som erbjuder jobb på 16 semesterorter iSverige.</span>
-                                                            </a>
-                                                            <div class="email-date">Mar 8</div>
-                                                        </div>
-                                                        <div class="email-action-icons">
-                                                            <ul class="list-inline">
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-archive email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-delete email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-email-open email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-clock email-action-icons-item"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="email-sender-info">
-                                                            <div class="checkbox-wrapper-mail">
-                                                                <div class="form-check">
-                                                                    <input type="checkbox" class="form-check-input" id="mail13">
-                                                                    <label class="form-check-label" for="mail13"></label>
-                                                                </div>
-                                                            </div>
-                                                            <span class="star-toggle mdi mdi-star-outline text-warning"></span>
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-title">Charukaw, me (7)</a>
-                                                        </div>
-                                                        <div class="email-content">
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-subject">Hey man &nbsp;&ndash;&nbsp; <span
-                                                                   >Nah man sorry i don't. Should i get it?</span>
-                                                            </a>
-                                                            <div class="email-date">Feb 23</div>
-                                                        </div>
-                                                        <div class="email-action-icons">
-                                                            <ul class="list-inline">
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-archive email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-delete email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-email-mark-as-unread email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-clock email-action-icons-item"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li class="unread">
-                                                        <div class="email-sender-info">
-                                                            <div class="checkbox-wrapper-mail">
-                                                                <div class="form-check">
-                                                                    <input type="checkbox" class="form-check-input" id="mail14">
-                                                                    <label class="form-check-label" for="mail14"></label>
-                                                                </div>
-                                                            </div>
-                                                            <span class="star-toggle mdi mdi-star-outline text-warning"></span>
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-title">me, Peter (5)</a>
-                                                        </div>
-                                                        <div class="email-content">
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-subject">Home again! &nbsp;&ndash;&nbsp; <span
-                                                                   >That's just perfect! See you tomorrow.</span>
-                                                            </a>
-                                                            <div class="email-date">Feb 21</div>
-                                                        </div>
-                                                        <div class="email-action-icons">
-                                                            <ul class="list-inline">
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-archive email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-delete email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-email-open email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-clock email-action-icons-item"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="email-sender-info">
-                                                            <div class="checkbox-wrapper-mail">
-                                                                <div class="form-check">
-                                                                    <input type="checkbox" class="form-check-input" id="mail15">
-                                                                    <label class="form-check-label" for="mail15"></label>
-                                                                </div>
-                                                            </div>
-                                                            <span class="star-toggle mdi mdi-star-outline"></span>
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-title">Stack Exchange</a>
-                                                        </div>
-                                                        <div class="email-content">
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-subject">1 new items in your Stackexchange inbox
-                                                                &nbsp;&ndash;&nbsp; <span>The following items were added to your Stack Exchange global inbox since you last checked it.</span>
-                                                            </a>
-                                                            <div class="email-date">Feb 21</div>
-                                                        </div>
-                                                        <div class="email-action-icons">
-                                                            <ul class="list-inline">
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-archive email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-delete email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-email-mark-as-unread email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-clock email-action-icons-item"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="email-sender-info">
-                                                            <div class="checkbox-wrapper-mail">
-                                                                <div class="form-check">
-                                                                    <input type="checkbox" class="form-check-input" id="mail16">
-                                                                    <label class="form-check-label" for="mail16"></label>
-                                                                </div>
-                                                            </div>
-                                                            <span class="star-toggle mdi mdi-star-outline text-warning"></span>
-                                                            <a href="<?php echo base_url('client/mails/read')?>;" class="email-title">Google Drive Team</a>
-                                                        </div>
-                                                        <div class="email-content">
-                                                            <a href="<?php echo base_url('client/mails/read');?>" class="email-subject">You can now use your storage in Google
-                                                                Drive &nbsp;&ndash;&nbsp; <span>Hey Nicklas Sandell! Thank you for purchasing extra storage space in Google Drive.</span>
-                                                            </a>
-                                                            <div class="email-date">Feb 20</div>
-                                                        </div>
-                                                        <div class="email-action-icons">
-                                                            <ul class="list-inline">
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-archive email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-delete email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-email-mark-as-unread email-action-icons-item"></i></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="javascript: void(0);"><i class="mdi mdi-clock email-action-icons-item"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-
-                                                </ul>
-                                            </div>
-                                            <!-- end .mt-4 -->
-                                        </div> 
-                                        <!-- end inbox-rightbar-->
+                            <!-- end tab content-->
+                        </div>
+                        <!-- end card-body-->
+                    </div>
+                    <!-- end card-->
+                </div>
+                <!-- end chat users-->
+                <!-- chat area -->
+                <div class="col-xxl-6 col-xl-12 order-xl-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="conversation-list" data-simplebar style="max-height: 537px">
+                                <li class="clearfix">
+                                    <div class="chat-avatar">
+                                        <img src="<?php echo base_url('assets/images/users/avatar-5.jpg'); ?>" class="rounded" alt="User N" />
+                                        <i>10:00</i>
                                     </div>
-                                    <!-- end card-body -->
-                                    <div class="clearfix"></div>
-                                </div> <!-- end card-box -->
-
-                            </div> <!-- end Col -->
-                        </div><!-- End row -->
-                        
-                    </div> <!-- container -->
-
-                </div> <!-- content -->
-
-
-                <!-- Compose Modal -->
-                <div id="compose-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="compose-header-modalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header modal-colored-header bg-primary">
-                                <h4 class="modal-title" id="compose-header-modalLabel">New Message</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="p-1">
-                                <div class="modal-body px-3 pt-3 pb-0">
-                                    <form>
-                                        <div class="mb-2">
-                                            <label for="msgto" class="form-label">To</label>
-                                            <input type="text" id="msgto" class="form-control" placeholder="Example@email.com">
+                                    <div class="conversation-text">
+                                        <div class="ctext-wrap">
+                                            <i>User N</i>
+                                            <p>
+                                                Hello!
+                                            </p>
                                         </div>
-                                        <div class="mb-2">
-                                            <label for="mailsubject" class="form-label">Subject</label>
-                                            <input type="text" id="mailsubject" class="form-control" placeholder="Your subject">
+                                    </div>
+                                </li>
+                                <li class="clearfix odd">
+                                    <div class="chat-avatar">
+                                        <img src="<?php echo base_url('assets/images/users/avatar-1.jpg'); ?>" class="rounded" alt="Me:" />
+                                        <i>10:01</i>
+                                    </div>
+                                    <div class="conversation-text">
+                                        <div class="ctext-wrap">
+                                            <i>Me:</i>
+                                            <p>
+                                                Hi, How are you? What about our next meeting?
+                                            </p>
                                         </div>
-                                        <div class="write-mdg-box mb-3">
-                                            <label class="form-label">Message</label>
-                                            <textarea id="simplemde1"></textarea>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="chat-avatar">
+                                        <img src="<?php echo base_url('assets/images/users/avatar-5.jpg'); ?>" class="rounded" alt="User N" />
+                                        <i>10:01</i>
+                                    </div>
+                                    <div class="conversation-text">
+                                        <div class="ctext-wrap">
+                                            <i>User N</i>
+                                            <p>
+                                                Yeah everything is fine
+                                            </p>
                                         </div>
-                                    </form>
+                                    </div>
+                                </li>
+                                <li class="clearfix odd">
+                                    <div class="chat-avatar">
+                                        <img src="<?php echo base_url('assets/images/users/avatar-1.jpg'); ?>" class="rounded" alt="Me:" />
+                                        <i>10:02</i>
+                                    </div>
+                                    <div class="conversation-text">
+                                        <div class="ctext-wrap">
+                                            <i>Me:</i>
+                                            <p>
+                                                Wow that's great
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="chat-avatar">
+                                        <img src="<?php echo base_url('assets/images/users/avatar-5.jpg'); ?>" alt="User N" class="rounded" />
+                                        <i>10:02</i>
+                                    </div>
+                                    <div class="conversation-text">
+                                        <div class="ctext-wrap">
+                                            <i>User N</i>
+                                            <p>
+                                                Let's have it today if you are free
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="clearfix odd">
+                                    <div class="chat-avatar">
+                                        <img src="<?php echo base_url('assets/images/users/avatar-1.jpg'); ?>" alt="Me:" class="rounded" />
+                                        <i>10:03</i>
+                                    </div>
+                                    <div class="conversation-text">
+                                        <div class="ctext-wrap">
+                                            <i>Me:</i>
+                                            <p>
+                                                Sure thing! let me know if 2pm works for you
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="chat-avatar">
+                                        <img src="<?php echo base_url('assets/images/users/avatar-5.jpg'); ?>" alt="User N" class="rounded" />
+                                        <i>10:04</i>
+                                    </div>
+                                    <div class="conversation-text">
+                                        <div class="ctext-wrap">
+                                            <i>User N</i>
+                                            <p>
+                                                Sorry, I have another meeting scheduled at 2pm. Can we have it
+                                                at 3pm instead?
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="chat-avatar">
+                                        <img src="<?php echo base_url('assets/images/users/avatar-5.jpg'); ?>" alt="User N" class="rounded" />
+                                        <i>10:04</i>
+                                    </div>
+                                    <div class="conversation-text">
+                                        <div class="ctext-wrap">
+                                            <i>User N</i>
+                                            <p>
+                                                We can also discuss about the presentation talk format if you have some extra mins
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="clearfix odd">
+                                    <div class="chat-avatar">
+                                        <img src="<?php echo base_url('assets/images/users/avatar-1.jpg'); ?>" alt="Me:" class="rounded" />
+                                        <i>10:05</i>
+                                    </div>
+                                    <div class="conversation-text">
+                                        <div class="ctext-wrap">
+                                            <i>Me:</i>
+                                            <p>
+                                                3pm it is. Sure, let's discuss about presentation format, it would be great to finalize today. 
+                                                I am attaching the last year format and assets here...
+                                            </p>
+                                        </div>
+                                        <div class="card mt-2 mb-1 shadow-none border text-start">
+                                            <div class="p-2">
+                                                <div class="row align-items-center">
+                                                    <div class="col-auto">
+                                                        <div class="avatar-sm">
+                                                            <span class="avatar-title rounded">
+                                                            .ZIP
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col ps-0">
+                                                        <a href="javascript:void(0);"
+                                                            class="text-muted fw-bold">Hyper-admin-design.zip</a>
+                                                        <p class="mb-0">2.3 MB</p>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <!-- Button -->
+                                                        <a href="javascript:void(0);"
+                                                            class="btn btn-link btn-lg text-muted">
+                                                        <i class="dripicons-download"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mt-2 bg-light p-3 rounded">
+                                        <form class="needs-validation" novalidate="" name="chat-form"
+                                            id="chat-form">
+                                            <div class="row">
+                                                <div class="col mb-2 mb-sm-0">
+                                                    <input type="text" class="form-control border-0" placeholder="Enter your text" required="">
+                                                    <div class="invalid-feedback">
+                                                        Please enter your messsage
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-auto">
+                                                    <div class="btn-group">
+                                                        <a href="apps-chat.html#" class="btn btn-light">
+                                                            <i class="uil uil-paperclip"></i>
+                                                        </a>
+                                                        <a href="apps-chat.html#" class="btn btn-light"> 
+                                                            <i class='uil uil-smile'></i> 
+                                                        </a>
+                                                        <div class="d-grid">
+                                                            <button type="submit" class="btn btn-success chat-send">
+                                                                <i class='uil uil-message'></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                            </div>
+                                            <!-- end row-->
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="px-3 pb-3">
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="mdi mdi-send me-1"></i> Send Message</button>
-                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                                </div>
+                                <!-- end col-->
                             </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
+                            <!-- end row -->
+                        </div>
+                        <!-- end card-body -->
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end chat area-->
+                <!-- start user detail -->
+                <div class="col-xxl-3 col-xl-6 order-xl-1 order-xxl-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mt-3 text-center">
+                                <img src="<?php echo base_url('assets/images/users/avatar-5.jpg'); ?>" alt="shreyu"
+                                    class="img-thumbnail avatar-lg rounded-circle" />
+                                <h4>User N</h4>
+                                <button class="btn btn-primary btn-sm mt-1">
+                                    <i class='uil uil-envelope-add me-1'></i>Send Email
+                                </button>
+                                <p class="text-muted mt-2 font-14">Last Interacted: <strong>Few hours back</strong></p>
+                            </div>
+                            <div class="mt-3">
+                                <hr class="" />
+                                <p class="mt-4 mb-1">
+                                    <strong><i class='uil uil-at'></i> Email:</strong>
+                                </p>
+                                <p>usern@mail.com</p>
+                                <p class="mt-3 mb-1">
+                                    <strong><i class='uil uil-phone'></i> Phone Number:</strong>
+                                </p>
+                                <p>546546546565</p>
+                                <p class="mt-3 mb-1"><strong>
+                                    <i class='uil uil-location'></i> Location:</strong>
+                                </p>
+                                <p>California, USA</p>
+                                <p class="mt-3 mb-1">
+                                    <strong><i class='uil uil-globe'></i> Languages:</strong>
+                                </p>
+                                <p>English, German, Spanish</p>
+                            </div>
+                        </div>
+                        <!-- end card-body -->
+                    </div>
+                    <!-- end card-->
+                </div>
+                <!-- end col -->
+                <!-- end user detail -->
+            </div>
+            <!-- end row-->
+        </div>
+        <!-- container -->
+  

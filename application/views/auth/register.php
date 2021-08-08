@@ -20,24 +20,41 @@
                                     <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a minute </p>
                                 </div>
 
-                                <form action="<?php echo base_url('auth/register'); ?>">
+                                <?php 
+                                echo validation_errors(); 
+                                echo form_open('auth/register'); ?>
 
                                     <div class="mb-3">
                                         <label for="fullname" class="form-label">Full Name</label>
-                                        <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required>
+                                        <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required name="rg_as_fn">
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="emailaddress" class="form-label">Email address</label>
-                                        <input class="form-control" type="email" id="emailaddress" required placeholder="Enter your email">
+                                        <input class="form-control" type="email" id="emailaddress" required placeholder="Enter your email" name="rg_as_eml">
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                                            <input type="password" id="password" class="form-control" placeholder="Enter your password" name="rg_as_pwd">
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Proceed as</label>
+                                        <div class="row"></div>
+                                        <div class="input-group input-group-merge">
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="cat_usertype" value="cat_Reseller">
+                                                <label class="form-check-label">Reseller.</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="cat_usertype" value="cat_Buyer">
+                                                <label class="form-check-label">Buyer.</label>
                                             </div>
                                         </div>
                                     </div>

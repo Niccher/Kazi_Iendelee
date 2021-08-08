@@ -33,12 +33,14 @@
 
                     <li class="side-nav-title side-nav-item">Kazi Iendelee</li>
 
+                    <?php $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($urls))); ?>
+
                     <?php 
                         if ($pag =='home') {echo '<li class="side-nav-item menuitem-active">';} 
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('reseller/home'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('seller/'.$user_url.'/home'); ?>" class="side-nav-link">
                             <i class="uil-home-alt"></i>
                             <span> Home </span>
                         </a>
@@ -49,7 +51,7 @@
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('reseller/orders'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('seller/'.$user_url.'/orders'); ?>" class="side-nav-link">
                             <i class="dripicons-folder-open"></i>
                             <span> Orders </span>
                         </a>
@@ -60,7 +62,7 @@
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('reseller/sales'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('seller/'.$user_url.'/sales'); ?>" class="side-nav-link">
                             <i class="mdi mdi-google-analytics"></i>
                             <span> Sales </span>
                         </a>
@@ -71,7 +73,7 @@
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('reseller/invoices'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('seller/'.$user_url.'/invoices'); ?>" class="side-nav-link">
                             <i class="mdi mdi-credit-card-clock"></i>
                             <span> Invoices </span>
                         </a>
@@ -82,7 +84,7 @@
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('reseller/profile'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('seller/'.$user_url.'/profile'); ?>" class="side-nav-link">
                             <i class="uil-user-circle"></i>
                             <span> Profile </span>
                         </a>
@@ -93,7 +95,7 @@
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('reseller/mails'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('seller/'.$user_url.'/mails'); ?>" class="side-nav-link">
                             <i class="uil-envelope"></i>
                             <span> Mails </span>
                         </a>
@@ -171,7 +173,7 @@
                                         <div class="notify-icon bg-info">
                                             <i class="mdi mdi-heart"></i>
                                         </div>
-                                        <p class="notify-details">Reseller liked
+                                        <p class="notify-details">Reseller/ liked
                                             <b>Admin</b>
                                             <small class="text-muted">13 days ago</small>
                                         </p>
@@ -193,8 +195,8 @@
                                     <img src="<?php echo base_url('assets/images/users/avatar-1.jpg');?>" alt="user-image" class="rounded-circle">
                                 </span>
                                 <span>
-                                    <span class="account-user-name">Reseller</span>
-                                    <span class="account-position">Founder</span>
+                                    <span class="account-user-name"><?php echo ucfirst($user_url);?></span>
+                                    <span class="account-position">Buyer</span>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">

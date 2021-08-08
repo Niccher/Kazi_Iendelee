@@ -51,7 +51,7 @@
     <script src="<?php echo base_url('assets/js/vendor/dropzone.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/ui/component.fileupload.js'); ?>"></script>
 
-
+    <script src="<?php echo base_url('assets/js/pages/demo.quilljs.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/pages/demo.dashboard-projects.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/pages/demo.inbox.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/pages/demo.dashboard.js'); ?>"></script>

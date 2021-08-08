@@ -20,45 +20,29 @@
 
                         <div class="row">
 
+                        <?php 
+                        $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
+                        $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
+                        ?>
+
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row mb-2">
-                                            <div class="col-xl-6">
-                                                <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
-                                                    <div class="col-auto">
-                                                        <label for="inputPassword2" class="visually-hidden">Search</label>
-                                                        <input type="search" class="form-control" id="inputPassword2" placeholder="Search...">
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <div class="d-flex align-items-center">
-                                                            <label for="status-select" class="me-2">Status</label>
-                                                            <select class="form-select" id="status-select">
-                                                                <option selected>Choose...</option>
-                                                                <option value="1">Paid</option>
-                                                                <option value="2">Awaiting Authorization</option>
-                                                                <option value="3">Payment failed</option>
-                                                                <option value="4">Cash On Delivery</option>
-                                                                <option value="5">Fulfilled</option>
-                                                                <option value="6">Unfulfilled</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </form>                            
-                                            </div>
+                                            <div class="col-xl-6"></div>
                                             <div class="col-xl-6">
                                                 <div class="text-xl-end mt-xl-0 mt-2">
                                                 	<div class="text-sm-end">
-				                                        <a href="<?php echo base_url('client/orders');?>">
+				                                        <a href="<?php echo base_url('buyer/'.$user_url.'/orders');?>">
 				                                            <button type="button" class="btn btn-light mb-2 me-1">All</button>
 				                                        </a>
-                                                         <a href="<?php echo base_url('client/orders/add');?>">
+                                                         <a href="<?php echo base_url('buyer/'.$user_url.'/orders/add');?>">
                                                             <button type="button" class="btn btn-info mb-2 me-1">Create New</button>
                                                         </a>
-				                                        <a href="<?php echo base_url('client/orders/pending');?>">
+				                                        <a href="<?php echo base_url('buyer/'.$user_url.'/orders/pending');?>">
 				                                            <button type="button" class="btn btn-light mb-2">Pending</button>
 				                                        </a> 
-				                                        <a href="<?php echo base_url('client/orders/completed');?>">
+				                                        <a href="<?php echo base_url('buyer/'.$user_url.'/orders/completed');?>">
 				                                            <button type="button" class="btn btn-success mb-2">Completed</button>
 				                                        </a> 
 				                                    </div>
@@ -93,7 +77,7 @@
                                                                 <label class="form-check-label" for="customCheck2">&nbsp;</label>
                                                             </div>
                                                         </td>
-                                                        <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9708</a> </td>
+                                                        <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9708</a> </td>
                                                         <td>
                                                             August 05 2018 <small class="text-muted">10:29 PM</small>
                                                         </td>
@@ -123,7 +107,7 @@
                                                                 <label class="form-check-label" for="customCheck3">&nbsp;</label>
                                                             </div>
                                                         </td>
-                                                        <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9707</a> </td>
+                                                        <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9707</a> </td>
                                                         <td>August 04 2018 <small class="text-muted">08:18 AM</small></td>
                                                         <td>
                                                             <h5><span class="badge badge-warning-lighten"><i class="mdi mdi-timer-sand"></i> Awaiting Authorization</span></h5>
@@ -150,7 +134,7 @@
                                                                 <label class="form-check-label" for="customCheck4">&nbsp;</label>
                                                             </div>
                                                         </td>
-                                                        <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9706</a> </td>
+                                                        <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9706</a> </td>
                                                         <td>August 04 2018 <small class="text-muted">10:29 PM</small></td>
                                                         <td>
                                                             <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
@@ -177,7 +161,7 @@
                                                                 <label class="form-check-label" for="customCheck5">&nbsp;</label>
                                                             </div>
                                                         </td>
-                                                        <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9705</a> </td>
+                                                        <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9705</a> </td>
                                                         <td>August 03 2018 <small class="text-muted">07:56 AM</small></td>
                                                         <td>
                                                             <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>

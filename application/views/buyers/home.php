@@ -8,12 +8,10 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                            <li class="breadcrumb-item active">CRM</li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                                            <li class="breadcrumb-item active">Overview</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">CRM</h4>
                                 </div>
                             </div>
                         </div>     
@@ -106,6 +104,11 @@
                         </div>
                         <!-- end row -->
 
+                        <?php 
+                        $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
+                        $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
+                        ?>
+
                         <div class="row">
                             <div class="table-responsive">
                                 <table class="table table-centered mb-0">
@@ -134,7 +137,7 @@
                                                     <label class="form-check-label" for="customCheck2">&nbsp;</label>
                                                 </div>
                                             </td>
-                                            <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9708</a> </td>
+                                            <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9708</a> </td>
                                             <td>
                                                 August 05 2021 <small class="text-muted">10:29 PM</small>
                                             </td>
@@ -164,7 +167,7 @@
                                                     <label class="form-check-label" for="customCheck3">&nbsp;</label>
                                                 </div>
                                             </td>
-                                            <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9707</a> </td>
+                                            <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9707</a> </td>
                                             <td>August 04 2021 <small class="text-muted">08:18 AM</small></td>
                                             <td>
                                                 <h5><span class="badge badge-warning-lighten"><i class="mdi mdi-timer-sand"></i> Awaiting Authorization</span></h5>
@@ -191,7 +194,7 @@
                                                     <label class="form-check-label" for="customCheck4">&nbsp;</label>
                                                 </div>
                                             </td>
-                                            <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9706</a> </td>
+                                            <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9706</a> </td>
                                             <td>August 04 2021 <small class="text-muted">10:29 PM</small></td>
                                             <td>
                                                 <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
@@ -218,7 +221,7 @@
                                                     <label class="form-check-label" for="customCheck5">&nbsp;</label>
                                                 </div>
                                             </td>
-                                            <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9705</a> </td>
+                                            <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9705</a> </td>
                                             <td>August 03 2021 <small class="text-muted">07:56 AM</small></td>
                                             <td>
                                                 <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
@@ -245,7 +248,7 @@
                                                     <label class="form-check-label" for="customCheck6">&nbsp;</label>
                                                 </div>
                                             </td>
-                                            <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9704</a> </td>
+                                            <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9704</a> </td>
                                             <td>May 22 2021 <small class="text-muted">07:22 PM</small></td>
                                             <td>
                                                 <h5><span class="badge badge-danger-lighten"><i class="mdi mdi-cancel"></i> Payment Failed</span></h5>
@@ -265,33 +268,6 @@
                                                 <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="customCheck7">
-                                                    <label class="form-check-label" for="customCheck7">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9703</a> </td>
-                                            <td>April 02 2021 <small class="text-muted">03:02 AM</small></td>
-                                            <td>
-                                                <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
-                                            </td>
-                                            <td>
-                                                $183.20
-                                            </td>
-                                            <td>
-                                                Payoneer
-                                            </td>
-                                            <td>
-                                                <h5><span class="badge badge-info-lighten">Shipped</span></h5>
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                            </td>
-                                        </tr>
 
                                         <tr>
                                             <td>
@@ -300,7 +276,7 @@
                                                     <label class="form-check-label" for="customCheck8">&nbsp;</label>
                                                 </div>
                                             </td>
-                                            <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9702</a> </td>
+                                            <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9702</a> </td>
                                             <td>March 18 2021 <small class="text-muted">11:19 PM</small></td>
                                             <td>
                                                 <h5><span class="badge badge-warning-lighten"><i class="mdi mdi-timer-sand"></i> Awaiting Authorization</span></h5>
@@ -320,89 +296,7 @@
                                                 <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                             </td>
                                         </tr>
-                                        
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="customCheck9">
-                                                    <label class="form-check-label" for="customCheck9">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9701</a> </td>
-                                            <td>February 01 2021 <small class="text-muted">07:22 AM</small></td>
-                                            <td>
-                                                <h5><span class="badge badge-info-lighten"><i class="mdi mdi-cash"></i> Unpaid</span></h5>
-                                            </td>
-                                            <td>
-                                                $3,582.99
-                                            </td>
-                                            <td>
-                                                Paypal
-                                            </td>
-                                            <td>
-                                                <h5><span class="badge badge-info-lighten">Shipped</span></h5>
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="customCheck10">
-                                                    <label class="form-check-label" for="customCheck10">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9700</a> </td>
-                                            <td>January 22 2021 <small class="text-muted">08:09 PM</small></td>
-                                            <td>
-                                                <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
-                                            </td>
-                                            <td>
-                                                $923.95
-                                            </td>
-                                            <td>
-                                                Credit Card
-                                            </td>
-                                            <td>
-                                                <h5><span class="badge badge-success-lighten">Delivered</span></h5>
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="customCheck11">
-                                                    <label class="form-check-label" for="customCheck11">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td><a href="<?php echo base_url('client/orders/view');?>" class="text-body fw-bold">#BM9699</a> </td>
-                                            <td>January 17 2021 <small class="text-muted">02:30 PM</small></td>
-                                            <td>
-                                                <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
-                                            </td>
-                                            <td>
-                                                $5,177.68
-                                            </td>
-                                            <td>
-                                                Mastercard
-                                            </td>
-                                            <td>
-                                                <h5><span class="badge badge-info-lighten">Shipped</span></h5>
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                            </td>
-                                        </tr>
-                                        
+                                                                          
                                     </tbody>
                                 </table>
                             </div>

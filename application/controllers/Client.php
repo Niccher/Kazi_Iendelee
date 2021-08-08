@@ -5,6 +5,8 @@ class Client extends CI_Controller {
 
 	public function index($page = 'home') {
 
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
 		$titl['pag'] = 'home';
 		
 		$this->load->view('buyers/template/header');
@@ -15,7 +17,9 @@ class Client extends CI_Controller {
 
 	public function orders($page = 'orders') {
 		
-		$titl['pag'] = 'questions';
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
+		$titl['pag'] = 'orders';
 
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
@@ -25,7 +29,9 @@ class Client extends CI_Controller {
 
 	public function orders_pending($page = 'pending') {
 		
-		$titl['pag'] = 'questions';
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
+		$titl['pag'] = 'orders';
 
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
@@ -35,7 +41,9 @@ class Client extends CI_Controller {
 
 	public function orders_completed($page = 'completed') {
 		
-		$titl['pag'] = 'questions';
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
+		$titl['pag'] = 'orders';
 
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
@@ -45,7 +53,9 @@ class Client extends CI_Controller {
 
 	public function orders_view($page = 'view') {
 		
-		$titl['pag'] = 'questions';
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
+		$titl['pag'] = 'orders';
 
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
@@ -55,7 +65,9 @@ class Client extends CI_Controller {
 
 	public function orders_create($page = 'create') {
 		
-		$titl['pag'] = 'questions';
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
+		$titl['pag'] = 'orders';
 
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
@@ -65,7 +77,9 @@ class Client extends CI_Controller {
 
 	public function sales($page = 'sales') {
 		
-		$titl['pag'] = 'analytics';
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
+		$titl['pag'] = 'sales';
 
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
@@ -74,6 +88,8 @@ class Client extends CI_Controller {
 	}
 
 	public function invoices($page = 'invoices') {
+		
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		
 		$titl['pag'] = 'invoices';
 
@@ -86,6 +102,8 @@ class Client extends CI_Controller {
 
 	public function profile($page = 'profile') {
 		
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
 		$titl['pag'] = 'profile';
 
 		$this->load->view('buyers/template/header');
@@ -97,6 +115,8 @@ class Client extends CI_Controller {
 
 	public function mails($page = 'mailbox') {
 		
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
 		$titl['pag'] = 'mails';
 
 		$this->load->view('buyers/template/header');
@@ -106,6 +126,8 @@ class Client extends CI_Controller {
 	}
 
 	public function mails_read($page = 'read') {
+		
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		
 		$titl['pag'] = 'mails';
 
