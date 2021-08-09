@@ -173,7 +173,7 @@
                             <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="apps-calendar.html#" role="button" aria-haspopup="false"
                                 aria-expanded="false">
                                 <span class="account-user-avatar"> 
-                                    <img src="<?php echo base_url('assets/images/users/avatar-1.jpg');?>" alt="user-image" class="rounded-circle">
+                                    <img src="<?php echo '../../uploads/profiles/'.$user_info->Avatar;?>" alt="user-image" class="rounded-circle">
                                 </span>
                                 <span>
                                     <span class="account-user-name"><?php echo ucfirst($user_url);?></span>

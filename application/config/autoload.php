@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('mod_users', 'mod_crypt', 'mod_emails');
+$autoload['model'] = array('mod_users', 'mod_crypt', 'mod_emails', 'mod_client', 'mod_posts');

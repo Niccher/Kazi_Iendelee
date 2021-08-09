@@ -118,7 +118,7 @@
                                 </li>
                                 <li class="clearfix odd">
                                     <div class="chat-avatar">
-                                        <img src="<?php echo base_url('assets/images/users/avatar-1.jpg'); ?>" class="rounded" alt="Me:" />
+                                        <img src="<?php echo '../../uploads/profiles/'.$user_info->Avatar; ?>" class="rounded" alt="Me:" />
                                         <i>10:01</i>
                                     </div>
                                     <div class="conversation-text">
@@ -146,7 +146,7 @@
                                 </li>
                                 <li class="clearfix odd">
                                     <div class="chat-avatar">
-                                        <img src="<?php echo base_url('assets/images/users/avatar-1.jpg'); ?>" class="rounded" alt="Me:" />
+                                        <img src="<?php echo '../../uploads/profiles/'.$user_info->Avatar; ?>" class="rounded" alt="Me:" />
                                         <i>10:02</i>
                                     </div>
                                     <div class="conversation-text">
@@ -174,7 +174,7 @@
                                 </li>
                                 <li class="clearfix odd">
                                     <div class="chat-avatar">
-                                        <img src="<?php echo base_url('assets/images/users/avatar-1.jpg'); ?>" alt="Me:" class="rounded" />
+                                        <img src="<?php echo '../../uploads/profiles/'.$user_info->Avatar; ?>" class="rounded" alt="Me:" />
                                         <i>10:03</i>
                                     </div>
                                     <div class="conversation-text">
@@ -217,7 +217,7 @@
                                 </li>
                                 <li class="clearfix odd">
                                     <div class="chat-avatar">
-                                        <img src="<?php echo base_url('assets/images/users/avatar-1.jpg'); ?>" alt="Me:" class="rounded" />
+                                        <img src="<?php echo '../../uploads/profiles/'.$user_info->Avatar; ?>" class="rounded" alt="Me:" />
                                         <i>10:05</i>
                                     </div>
                                     <div class="conversation-text">

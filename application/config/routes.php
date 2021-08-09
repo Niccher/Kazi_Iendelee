@@ -63,6 +63,10 @@ $route['buyer/(:any)/sales'] = 'client/sales';
 $route['buyer/(:any)/mail'] = 'client/mails';
 $route['buyer/(:any)/mails'] = 'client/mails';
 $route['buyer/(:any)/mail/read'] = 'client/mails_read';
+$route['buyer/(:any)/profile_make'] = 'client/profile_make';
+$route['buyer/(:any)/add_post'] = 'client/add_post';
+$route['buyer/(:any)/profile_image'] = 'client/profile_image';
+
 
 $route['default_controller'] = 'pages';
 $route['404_override'] = '';
