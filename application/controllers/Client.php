@@ -5,6 +5,11 @@ class Client extends CI_Controller {
 
 	public function index($page = 'home') {
 
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
+
 		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		
 		$titl['pag'] = 'home';
@@ -16,54 +21,79 @@ class Client extends CI_Controller {
 	}
 
 	public function orders($page = 'orders') {
-		
-		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
 		
 		$titl['pag'] = 'orders';
 
+		$data['user_orders'] = $this->mod_orders->get_orders_by($this->session->userdata('log_id'));
+
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
-		$this->load->view('buyers/orders/'.$page);
+		$this->load->view('buyers/orders/'.$page, $data);
 		$this->load->view('buyers/template/tail');
 	}
 
 	public function orders_pending($page = 'pending') {
-		
-		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
 		
 		$titl['pag'] = 'orders';
 
+		$data['user_orders'] = $this->mod_orders->get_orders_by($this->session->userdata('log_id'));
+
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
-		$this->load->view('buyers/orders/'.$page);
+		$this->load->view('buyers/orders/'.$page, $data);
 		$this->load->view('buyers/template/tail');
 	}
 
 	public function orders_completed($page = 'completed') {
-		
-		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
 		
 		$titl['pag'] = 'orders';
 
+		$data['user_orders'] = $this->mod_orders->get_orders_by($this->session->userdata('log_id'));
+
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
-		$this->load->view('buyers/orders/'.$page);
+		$this->load->view('buyers/orders/'.$page, $data);
 		$this->load->view('buyers/template/tail');
 	}
 
 	public function orders_view($page = 'view') {
-		
-		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
 		
 		$titl['pag'] = 'orders';
 
+		$data['user_orders'] = $this->mod_orders->get_orders_by($this->session->userdata('log_id'));
+
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
-		$this->load->view('buyers/orders/'.$page);
+		$this->load->view('buyers/orders/'.$page, $data);
 		$this->load->view('buyers/template/tail');
 	}
 
 	public function orders_create($page = 'create') {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
 		
 		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		
@@ -75,7 +105,69 @@ class Client extends CI_Controller {
 		$this->load->view('buyers/template/tail');
 	}
 
+	public function orders_make() {
+
+		$order_name = (trim($this->input->post('order_name')));
+	    $order_desc = (trim($this->input->post('order_desc')));
+	    $order_page = (trim($this->input->post('order_page')));
+	    $order_word = (trim($this->input->post('order_word')));
+	    $order_level = (trim($this->input->post('order_level')));
+	    $order_cite = (trim($this->input->post('order_cite')));
+	    $order_date = (trim($this->input->post('order_date')));
+	    $order_info = (trim($this->input->post('order_comment')));
+
+	    $attachments = $this->mod_orders->order_get_attachments();
+
+	    $attachments_elements ="";
+	    foreach ($attachments as $files) {
+	    	$attachments_elements.= $files['Filename'].'|||';
+	    }
+
+	    $this->mod_orders->orders_make($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $attachments_elements);
+
+	    $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($data['user_info']->Name))); 
+
+	    redirect('buyer/'.$user_url.'/orders');
+
+	}
+
+	public function orders_make_attachment() {
+
+		print_r($_FILES);
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
+		
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		$person_id = $data['user_info']->Person_ID;
+
+		if (!empty($_FILES) ) {
+             
+            $tempFile = $_FILES['file']['tmp_name'];
+            $realFile = $_FILES['file']['name'];
+
+            $ext = strtolower(pathinfo($realFile, PATHINFO_EXTENSION));
+
+            $old_name = $_FILES['file']['name'];
+            $new_name = preg_replace('/[^A-Za-z0-9 .]/', '_', $old_name);
+
+            $code = substr(time(), -7);
+            $newfilename = $code."_".$new_name;
+               
+            $this->mod_orders->order_temp_upload($person_id, $newfilename);
+            move_uploaded_file($tempFile, "uploads/temp_orders/" . $newfilename);
+        }
+
+	}
+
 	public function sales($page = 'sales') {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
 		
 		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		
@@ -88,6 +180,11 @@ class Client extends CI_Controller {
 	}
 
 	public function invoices($page = 'invoices') {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
 		
 		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		
@@ -101,6 +198,11 @@ class Client extends CI_Controller {
 
 
 	public function profile($page = 'profile') {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
 		
 		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		
@@ -117,6 +219,11 @@ class Client extends CI_Controller {
 	}
 
 	public function add_post() {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
 		
 		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		$person_id = $data['user_info']->Person_ID;
@@ -135,6 +242,11 @@ class Client extends CI_Controller {
 	}
 
 	public function profile_make($page = 'profile') {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
 
 		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		$person_id = $data['user_info']->Person_ID;
@@ -213,6 +325,11 @@ class Client extends CI_Controller {
 	}
 
 	public function profile_image() {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
 		
 		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		$person_id = $data['user_info']->Person_ID;
@@ -242,6 +359,11 @@ class Client extends CI_Controller {
 
 
 	public function mails($page = 'mailbox') {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
 		
 		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		
@@ -250,18 +372,6 @@ class Client extends CI_Controller {
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
 		$this->load->view('buyers/mails/'.$page, $data);
-		$this->load->view('buyers/template/tail');
-	}
-
-	public function mails_read($page = 'read') {
-		
-		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
-		
-		$titl['pag'] = 'mails';
-
-		$this->load->view('buyers/template/header');
-		$this->load->view('buyers/template/sidebar', $titl);
-		$this->load->view('buyers/mails/'.$page);
 		$this->load->view('buyers/template/tail');
 	}
 

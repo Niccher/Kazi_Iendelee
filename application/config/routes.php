@@ -56,6 +56,8 @@ $route['buyer/(:any)/orders/pending'] = 'client/orders_pending';
 $route['buyer/(:any)/orders/completed'] = 'client/orders_completed';
 $route['buyer/(:any)/orders/view'] = 'client/orders_view';
 $route['buyer/(:any)/orders/add'] = 'client/orders_create';
+$route['buyer/(:any)/orders/create'] = 'client/orders_make';
+$route['buyer/(:any)/orders_make_attachment'] = 'client/orders_make_attachment';
 
 $route['buyer/(:any)/invoices'] = 'client/invoices';
 $route['buyer/(:any)/profile'] = 'client/profile';
@@ -65,8 +67,7 @@ $route['buyer/(:any)/mails'] = 'client/mails';
 $route['buyer/(:any)/mail/read'] = 'client/mails_read';
 $route['buyer/(:any)/profile_make'] = 'client/profile_make';
 $route['buyer/(:any)/add_post'] = 'client/add_post';
-$route['buyer/(:any)/profile_image'] = 'client/profile_image';
-
+$route['buyny)/profile_ier/(:amage'] = 'client/profile_image'; 
 
 $route['default_controller'] = 'pages';
 $route['404_override'] = '';

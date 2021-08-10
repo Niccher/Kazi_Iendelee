@@ -9,9 +9,15 @@ class Auth extends CI_Controller {
 			$this->form_validation->set_rules('lg_as_eml','Email','required|trim');
 	        $this->form_validation->set_rules('lg_as_pwd','Password', 'required|trim');
 
+
 	        if($this->form_validation->run() === FALSE) {
+	        	$data['page_response'] = '
+			        <div class="alert alert-secondary" role="alert">
+					    <strong>Please - </strong> fill in your credentials to proceed.
+					</div>
+		        ';
 	            $this->load->view('template/header_auth');
-				$this->load->view('auth/'.$page);
+				$this->load->view('auth/'.$page, $data);
 				$this->load->view('template/tail_auth');
 	        }else{
 
@@ -20,13 +26,13 @@ class Auth extends CI_Controller {
 
 	            $user_id = $this->mod_users->make_login($lg_eml,$lg_pwd);
 	            $lg_vars = $this->mod_users->get_vars($user_id);
-
-	            $lg_name = $lg_vars->Name;
-	            $lg_eml = $lg_vars->Email;
-	            $user_phone = $lg_vars->Phone;
-	            $user_type = $lg_vars->Privilege;
 	            
 	            if ($user_id) {
+	            	$lg_name = $lg_vars->Name;
+		            $lg_eml = $lg_vars->Email;
+		            $user_phone = $lg_vars->Phone;
+		            $user_type = $this->mod_crypt->Dec_String($lg_vars->Privilege);
+
 	                $user_logged = array(
 	                    'log_mail' => $lg_eml,
 	                    'log_name' => $lg_name,
@@ -36,20 +42,24 @@ class Auth extends CI_Controller {
 	                );
 	                $this->session->set_userdata($user_logged);
 
-	                if($user_type == $this->mod_crypt->Enc_String('cat_Admin')){
+	                if($user_type == 'cat_Admin'){
 	                	redirect('admin');
 	                }
-	                if($user_type == $this->mod_crypt->Enc_String('cat_Reseller')){
+	                if($user_type == 'cat_Reseller'){
 	                	redirect('seller');
 	                }
-	                if($user_type == $this->mod_crypt->Enc_String('cat_Buyer')){
+	                if($user_type == 'cat_Buyer'){
 	                	redirect('client');
 	                }
 
 	            }else{
-	                $this->session->set_flashdata("lg_fail", "Login was unsuccesful");
-	                $this->load->view('template/header_auth');
-					$this->load->view('auth/'.$page);
+	                $data['page_response'] = '
+						<div class="alert alert-danger" role="alert">
+						    <strong>Wrong - </strong> either email or password or both are wrong!
+						</div>
+			        	';
+	               	$this->load->view('template/header_auth');
+					$this->load->view('auth/'.$page, $data);
 					$this->load->view('template/tail_auth');
 	            }
 	            

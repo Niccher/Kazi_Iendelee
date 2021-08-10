@@ -23,26 +23,9 @@
             }else{
                 return false;
             }
-        }
-
-        public function Enc_String( $value ) {
-            $cipher_algo = "AES-128-CTR"; 
-
-            $iv_length = openssl_cipher_iv_length($cipher_algo); 
-
-            $options = 0; 
-
-            $crypt_iv = '4564756651654555'; 
-
-            $crypt_key = "�s��0F&�C�!uA�o���)Q{Ԇ\~`�ݲ)���<�M";
-
-            $enc_val = openssl_encrypt($value, $cipher_algo, $crypt_key, $options, $crypt_iv); 
-            return base64_encode(($enc_val));
-        }
+        } 
 
         public function make_user($nw_name, $nw_eml, $nw_pwd, $nw_cat){
-            //$this->mod_users->make_user($rg_name , $rg_eml , $rg_pwd, $rg_type);
-
             $data = array(
                 'Name' => ($nw_name),
                 'Phone' => ('0000000000'),
