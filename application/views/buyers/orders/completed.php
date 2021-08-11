@@ -50,141 +50,96 @@
                                             </div><!-- end col-->
                                         </div>
                 
-                                        <div class="table-responsive">
-                                            <table class="table table-centered mb-0">
-                                                <thead class="table-light">
-                                                    <tr>
-                                                        <th style="width: 20px;">
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input" id="customCheck1">
-                                                                <label class="form-check-label" for="customCheck1">&nbsp;</label>
-                                                            </div>
-                                                        </th>
-                                                        <th>Order ID</th>
-                                                        <th>Date</th>
-                                                        <th>Payment Status</th>
-                                                        <th>Total</th>
-                                                        <th>Payment Method</th>
-                                                        <th>Order Status</th>
-                                                        <th style="width: 125px;">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9708</a> </td>
-                                                        <td>
-                                                            August 05 2018 <small class="text-muted">10:29 PM</small>
-                                                        </td>
-                                                        <td>
-                                                            <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
-                                                        </td>
-                                                        <td>
-                                                            $176.41
-                                                        </td>
-                                                        <td>
-                                                            Mastercard
-                                                        </td>
-                                                        <td>
-                                                            <h5><span class="badge badge-info-lighten">Shipped</span></h5>
-                                                        </td>
-                                                        <td>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input" id="customCheck3">
-                                                                <label class="form-check-label" for="customCheck3">&nbsp;</label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9707</a> </td>
-                                                        <td>August 04 2018 <small class="text-muted">08:18 AM</small></td>
-                                                        <td>
-                                                            <h5><span class="badge badge-warning-lighten"><i class="mdi mdi-timer-sand"></i> Awaiting Authorization</span></h5>
-                                                        </td>
-                                                        <td>
-                                                            $1,458.65
-                                                        </td>
-                                                        <td>
-                                                            Visa
-                                                        </td>
-                                                        <td>
-                                                            <h5><span class="badge badge-info-lighten">Shipped</span></h5>
-                                                        </td>
-                                                        <td>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input" id="customCheck4">
-                                                                <label class="form-check-label" for="customCheck4">&nbsp;</label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9706</a> </td>
-                                                        <td>August 04 2018 <small class="text-muted">10:29 PM</small></td>
-                                                        <td>
-                                                            <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
-                                                        </td>
-                                                        <td>
-                                                            $801.99
-                                                        </td>
-                                                        <td>
-                                                            Credit Card
-                                                        </td>
-                                                        <td>
-                                                            <h5><span class="badge badge-success-lighten">Delivered</span></h5>
-                                                        </td>
-                                                        <td>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input" id="customCheck5">
-                                                                <label class="form-check-label" for="customCheck5">&nbsp;</label>
-                                                            </div>
-                                                        </td>
-                                                        <td><a href="<?php echo base_url('buyer/'.$user_url.'/orders/view');?>" class="text-body fw-bold">#BM9705</a> </td>
-                                                        <td>August 03 2018 <small class="text-muted">07:56 AM</small></td>
-                                                        <td>
-                                                            <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Paid</span></h5>
-                                                        </td>
-                                                        <td>
-                                                            $215.35
-                                                        </td>
-                                                        <td>
-                                                            Mastercard
-                                                        </td>
-                                                        <td>
-                                                            <h5><span class="badge badge-success-lighten">Delivered</span></h5>
-                                                        </td>
-                                                        <td>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                                <div class="row">
+                            <div class="table-responsive">
+                                <table class="table table-centered mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Date</th>
+                                            <th>Attachment</th>
+                                            <th>Size</th>
+                                            <th>Status</th>
+                                            <th>Paid</th>
+                                            <th style="width: 125px;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+            <?php 
+                foreach($user_orders as $order){
+                    $o_id = urlencode($this->mod_crypt->Enc_String($order['Order_Id']));
+                    $started = date('d-M-Y', $order['Order_Created']);
+                    $stopped =  $order['Order_Deadline'];
+                    $cite =  $order['Order_Cite'];
+                    $page = $order['Order_Pages'];
+                    $word = $order['Order_Words'];
+                    $paid = $order['Order_Paid'];
+                    $status = $order['Order_Status'];
+                    $attachment = str_replace("|||","", $order['Order_Attachment']);
+                    if ($attachment != '') {
+                        $attached = '<h5><span class="badge badge-info-lighten">Present</span></h5>';
+                    }else{
+                        $attached = '<h5><span class="badge badge-info-lighten">Absent</span></h5>';
+                    }
+
+                    if ($paid == '00') {
+                        $payment = '<h5><span class="badge badge-warning-lighten">Unpaid</span></h5>';
+                    }else{
+                        $payment = '<h5><span class="badge badge-success-lighten">Paid</span></h5>';
+                    }
+
+                    if ($status == 'Inactive') {
+                        $state = '<h5><span class="badge badge-warning-lighten">Inactive</span></h5>';
+                    }else{
+                        $state = '<h5><span class="badge badge-success-lighten">Active</span></h5>';
+                    }
+
+                    if ($status == 'Completed') {
+                        echo '
+                            <tr> 
+                                <td><a href="'.base_url('buyer/'.$user_url.'/orders/view/'.$o_id).'" class="text-body fw-bold">#'.$order['Order_Id'].'</a> 
+                                </td>
+                                <td>
+                                    <small class="text-muted">Created '.$started.'</small><br>
+                                    <small class="text-muted">Due '.$stopped.'</small>
+                                </td>
+                                <td>
+                                    <small class="text-muted">'.$attached.'</small>
+                                </td>
+                                <td>
+                                    <small class="text-muted">Pages '.$page.' </small><br>
+                                    <small class="text-muted">Words '.$word.'</small>
+                                </td>
+                                <td>
+                                    <small class="text-muted">'.$state.'</small>
+                                </td>
+                                <td>
+                                    <small class="text-muted">'.$payment.'</small>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                                    <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                    <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                </td>
+                            </tr>
+                        ';
+                    }
+
+
+                    
+
+                }
+                
+            ?>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <!-- end row-->
+
+
                                     </div> <!-- end card-body-->
                                 </div> <!-- end card-->
                             </div> <!-- end col -->

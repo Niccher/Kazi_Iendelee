@@ -15,11 +15,19 @@
             $this->db->where($array);
             $query = $this->db->get('tbl_Orders');
             return $query->result_array();
+
+        }
+
+        public function get_orders_id($order_id){
+            $array = array('Order_Id =' => $order_id);
+            $this->db->where($array);
+            $query = $this->db->get('tbl_Orders');
+            return $query->row_array();
+
         }
         
 
         public function order_temp_upload($p_id, $file_name){
-
             $data = array(
                 'Person_ID' => $p_id,
                 'Filename' => $file_name,

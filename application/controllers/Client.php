@@ -10,14 +10,16 @@ class Client extends CI_Controller {
             redirect('auth/login');
         }
 
+		$titl['pag'] = 'orders';
+
 		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
-		
-		$titl['pag'] = 'home';
-		
+		$data['user_orders'] = $this->mod_orders->get_orders_by($this->session->userdata('log_id'));
+
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
-		$this->load->view('buyers/'.$page);
+		$this->load->view('buyers/'.$page, $data);
 		$this->load->view('buyers/template/tail');
+
 	}
 
 	public function orders($page = 'orders') {
@@ -71,7 +73,7 @@ class Client extends CI_Controller {
 		$this->load->view('buyers/template/tail');
 	}
 
-	public function orders_view($page = 'view') {
+	public function orders_view() {
 
 		$typ = $this->session->userdata('log_type');
         if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
@@ -79,8 +81,12 @@ class Client extends CI_Controller {
         }
 		
 		$titl['pag'] = 'orders';
+		$page = 'view'; 
+		$order_id = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(5)));
 
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		$data['user_orders'] = $this->mod_orders->get_orders_by($this->session->userdata('log_id'));
+		$data['order_info'] = $this->mod_orders->get_orders_id($order_id);
 
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
@@ -191,7 +197,7 @@ class Client extends CI_Controller {
 		$titl['pag'] = 'invoices';
 
 		$this->load->view('buyers/template/header');
-		$this->load->view('buyers/template/sidebar', $titl);
+		//$this->load->view('buyers/template/sidebar', $titl);
 		$this->load->view('buyers/sales/'.$page);
 		$this->load->view('buyers/template/tail');
 	}
