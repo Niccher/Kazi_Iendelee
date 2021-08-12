@@ -58,6 +58,9 @@ $route['buyer/(:any)/orders/view/(:any)'] = 'client/orders_view/$2';
 $route['buyer/(:any)/orders/add'] = 'client/orders_create';
 $route['buyer/(:any)/orders/create'] = 'client/orders_make';
 $route['buyer/(:any)/orders_make_attachment'] = 'client/orders_make_attachment';
+$route['buyer/(:any)/orders/attachment/(:any)'] = 'client/orders_get_attachment/$2';
+$route['buyer/(:any)/orders/convo/(:any)'] = 'client/orders_convo';
+$route['buyer/(:any)/orders/get_convo/(:any)'] = 'client/orders_get_convo';
 
 $route['buyer/(:any)/invoices'] = 'client/invoices';
 $route['buyer/(:any)/profile'] = 'client/profile';

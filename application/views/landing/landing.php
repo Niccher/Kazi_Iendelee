@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class="nav-item me-0">
-                            <a href="<?php echo base_url('auth/register');?>" target="_blank" class="nav-link d-lg-none">Login now</a>
+                            <a href="<?php echo base_url('auth/register');?>" target="_blank" class="nav-link d-lg-none">Sign Up Now</a>
                             <a href="<?php echo base_url('auth/register');?>" target="_blank" class="btn btn-sm btn-light btn-rounded d-none d-lg-inline-flex">
                                 <i class="uil-user-plus me-2"></i> Sign Up Now
                             </a>
@@ -69,8 +69,7 @@
                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            cillum dolore eu fugiat nulla pariatur.</p>
 
                             <a href="<?php echo base_url('auth/login');?>" target="_blank" class="btn btn-success">Get Started <i
                                     class="mdi mdi-arrow-right ms-1"></i></a>

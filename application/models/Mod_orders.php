@@ -25,6 +25,13 @@
             return $query->row_array();
 
         }
+
+        public function get_attachment_size($attachment_size){
+            $units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+            $power = $attachment_size > 0 ? floor(log($attachment_size, 1024)) : 0;
+            return number_format($attachment_size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
+
+        }
         
 
         public function order_temp_upload($p_id, $file_name){
@@ -68,6 +75,36 @@
             );
 
             return $this->db->insert('tbl_Orders ', $data);
+        }
+
+        public function order_make_convo($senda, $reciva, $convo_body, $order_id){   
+            $data = array(
+                'Sender' => $senda,
+                'Recipient' => $reciva,
+                'Sent' => time(),
+                'Seen' => "00",
+                'Message' => $convo_body,
+                'Order_Id' => $order_id,
+            );
+
+            return $this->db->insert('tbl_Chat_Orders', $data);
+        }
+
+        public function get_orders_convo_by_sender($p_id){
+            $array = array('Sender =' => $p_id);
+            $this->db->where($array);
+            $query = $this->db->get('tbl_Chat_Orders');
+            return $query->result_array();
+
+        }
+
+        public function get_orders_convo_by_order($order_id){
+            $array = array('Order_Id =' => $order_id);
+            $this->db->where($array);
+            $this->db->order_by('Order_Id','ASC');
+            $query = $this->db->get('tbl_Chat_Orders');
+            return $query->result_array();
+
         }
               
 	}

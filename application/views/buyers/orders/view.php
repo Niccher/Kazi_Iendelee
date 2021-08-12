@@ -11,10 +11,15 @@
                         <div class="row">
                             <div class="col">
 
+                                <?php 
+                                    $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
+                                    $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
+                                ?>
+
                                 <h4><?php echo $order_info['Order_Name']; ?></h4>
 
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <!-- assignee -->
                                         <p class="mt-2 mb-1 text-muted">Assigned To</p>
                                         <div class="d-flex">
@@ -25,7 +30,7 @@
                                         </div>
                                     </div> <!-- end col -->
 
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <!-- start due date -->
                                         <p class="mt-2 mb-1 text-muted">Started</p>
                                         <div class="d-flex">
@@ -38,14 +43,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <!-- start due date -->
                                         <p class="mt-2 mb-1 text-muted">Due Date</p>
                                         <div class="d-flex">
                                             <i class='uil uil-schedule font-18 text-success me-1'></i>
                                             <div>
                                                 <h5 class="mt-1 font-14">
-                                                    <?php echo $order_info['Order_Deadline']; ?>
+                                                    <?php echo $order_info['Order_Deadline']; ?> 00:00:00
                                                 </h5>
                                             </div>
                                         </div>
@@ -128,19 +133,12 @@
                                 <h5 class="mt-4 mb-2 font-16">Order Progress and Milestones</h5>
 
                                     <div class="form-check mt-1">
-                                        Paid:
                                             <?php 
                                                 if ($order_info['Order_Paid'] == '00') {
-                                                    echo '<span class="badge badge-outline-danger">Initiate the payment to proceed with your order</span>';
-                                                }else{
-                                                    echo '<span class="badge badge-outline-success">Order has been paid for</span>';
-                                                }
-                                            ?>
-                                            <br>
-                                            Started:
-                                            <?php 
-                                                if ($order_info['Order_Paid'] == '00') {
-                                                    echo '<span class="badge badge-outline-danger">Initiate the payment to proceed with your order</span>';
+                                                    echo '
+                                                    <div class="alert alert-danger" role="alert">
+                                                        <strong>Not Paid - </strong> your order has not been paid for, this means that it cannot be worked upon. To overcome this please pay.
+                                                    </div>';
                                                 }
                                             ?>
                                     </div>
@@ -148,65 +146,86 @@
 
                                 <!-- start attachments -->
                                 <h5 class="mt-4 mb-2 font-16">Attachments</h5>
-                                <div class="card mb-2 shadow-none border">
-                                    <div class="p-1">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="avatar-sm">
-                                                    <span class="avatar-title rounded">
-                                                        .attach
-                                                    </span>
+
+                                <?php
+                                    $each_file = explode('|||', $order_info['Order_Attachment']);
+                                    for ($i=0; $i < count($each_file)-1; $i++) { 
+                                        $human_size = $this->mod_orders->get_attachment_size(filesize('uploads/temp_orders/'.urldecode($each_file[$i])));
+
+                                        echo '
+                                            <div class="card mb-2 shadow-none border">
+                                                <div class="p-1">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-auto">
+                                                            <div class="avatar-sm">
+                                                                <span class="avatar-title rounded">
+                                                                    .'.pathinfo($each_file[$i], PATHINFO_EXTENSION).'
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col ps-0">
+                                                            <a href="javascript:void(0);" class="text-muted fw-bold">'.$each_file[$i].'</a>
+                                                            <p class="mb-0">'.$human_size.'</p>
+                                                        </div>
+                                                        <div class="col-auto" id="tooltip-container9">
+                                                            <!-- Button -->
+                                                            <a href="'.base_url('buyer/'.$user_url.'/orders/attachment/'.$each_file[$i]).'" target="_blank"
+                                                                class="btn btn-link text-muted btn-lg p-0">
+                                                                <i class="uil uil-cloud-download"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col ps-0">
-                                                <a href="javascript:void(0);" class="text-muted fw-bold"><?php echo $order_info['Order_Attachment']; ?></a>
-                                                <p class="mb-0">2.3 MB</p>
-                                            </div>
-                                            <div class="col-auto" id="tooltip-container9">
-                                                <!-- Button -->
-                                                <a href="javascript:void(0);" data-bs-container="#tooltip-container9" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Download"
-                                                    class="btn btn-link text-muted btn-lg p-0">
-                                                    <i class='uil uil-cloud-download'></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                                ';
+
+                                    }
+                                ?>
                                 <!-- end attachments -->
 
                                 <!-- comments -->
-                                <!--<div class="row mt-3">
+                                <div class="row mt-3">
                                     <div class="col">
                                         <h5 class="mb-2 font-16">Comments</h5>
-                                        <div class="d-flex mt-3 p-1">
-                                            <img src="<?php echo base_url('assets/images/users/avatar-9.jpg');?>" class="me-2 rounded-circle"
-                                                height="36" alt="Arya Stark" />
-                                            <div class="w-100">
-                                                <h5 class="mt-0 mb-0">
-                                                    <span class="float-end text-muted font-12">4:30am</span>
-                                                    Client
-                                                </h5>
-                                                <p class="mt-1 mb-0 text-muted">
-                                                    Should I review the last 3 years legal documents as well?
-                                                </p>
-                                            </div>
+                                        <div class="comment_section" id="comment_section">
+                                            <?php
+            foreach ($order_chats as $order_chat) {
+                if ($order_chat['Sender'] == $user_info->Person_ID) {
+                    echo '
+                        <div class="d-flex mt-3 p-1">
+                            <img src="<?php echo base_url("../../../../uploads/profiles"'.$user_info->Avatar.')" class="me-2 rounded-circle" height="36" />
+                            <div class="w-100">
+                                <h5 class="mt-0 mb-0">
+                                    <span class="float-end text-muted font-12">'.date('H:i:s A',$order_chat['Sent']).'</span>
+                                    '.$this->mod_crypt->Dec_String($user_info->Name).'
+                                </h5>
+                                <p class="mt-1 mb-0 text-muted">
+                                    '.$this->mod_crypt->Dec_String($order_chat['Message']).'
+                                </p>
+                            </div>
+                        </div>
+                        <hr>
+                    ';
+                }else{
+                    echo '
+                        <div class="d-flex mt-3 p-1">
+                            <img src="" class="me-2 rounded-circle" height="36" />
+                            <div class="w-100">
+                                <h5 class="mt-0 mb-0">
+                                    <span class="float-end text-muted font-12">'.date('H:i:s A',$order_chat['Sent']).'</span>
+                                    '.$order_chat['Sender'].'
+                                </h5>
+                                <p class="mt-1 mb-0 text-muted">
+                                    '.$this->mod_crypt->Dec_String($order_chat['Message']).'
+                                </p>
+                            </div>
+                        </div>
+                        <hr>
+                    ';
+                }
+            }
+                                            ?>
                                         </div>
-                                        <hr />
-                                        <div class="d-flex mt-2 p-1">
-                                            <img src="<?php echo base_url('assets/images/users/avatar-5.jpg');?>"
-                                                class="me-2 rounded-circle" height="36" alt="Dominc B" />
-                                            <div class="w-100">
-                                                <h5 class="mt-0 mb-0">
-                                                    <span class="float-end text-muted font-12">3:30am</span>
-                                                    Me
-                                                </h5>
-                                                <p class="mt-1 mb-0 text-muted">
-                                                    have created some general guidelines last year.
-                                                </p>
-                                            </div>
-                                        </div> 
-
-                                        <hr />
 
                                     </div>
                                 </div>
@@ -214,12 +233,12 @@
                                 <div class="row mt-2">
                                     <div class="col">
                                         <div class="border rounded">
-                                            <form action="#" class="comment-area-box">
+                                            <form action="<?php echo base_url('buyer/'.$user_url.'/orders/convo/'.urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']))); ?>" method="POST" class="comment-area-box">
                                                 <textarea rows="3" class="form-control border-0 resize-none"
-                                                placeholder="Your comment..."></textarea>
+                                                placeholder="Your comment..." id="convo_msg"></textarea>
                                                 <div class="p-2 bg-light">
                                                     <div class="float-end">
-                                                        <button type="submit" class="btn btn-sm btn-success"><i class='uil uil-message me-1'></i>Submit</button>
+                                                        <button type="button" id="convo_send" class="btn btn-sm btn-success"><i class='uil uil-message me-1'></i>Submit</button>
                                                     </div>
                                                     <div>
                                                         <a href="#" class="btn btn-sm px-1 btn-light"><i class='uil uil-cloud-upload'></i></a>
@@ -229,7 +248,7 @@
                                             </form>
                                         </div>
                                     </div> 
-                                </div> -->
+                                </div>
 
 
                                 <!-- end comments -->

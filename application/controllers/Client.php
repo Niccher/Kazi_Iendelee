@@ -87,6 +87,7 @@ class Client extends CI_Controller {
 		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
 		$data['user_orders'] = $this->mod_orders->get_orders_by($this->session->userdata('log_id'));
 		$data['order_info'] = $this->mod_orders->get_orders_id($order_id);
+		$data['order_chats'] = $this->mod_orders->get_orders_convo_by_order($order_id);
 
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
@@ -168,6 +169,111 @@ class Client extends CI_Controller {
 
 	}
 
+	public function orders_get_attachment() {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
+		
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		$person_id = $data['user_info']->Person_ID;
+
+
+		echo $filename = urldecode($this->uri->segment(5));
+		echo '<br>';
+		echo $filepath = 'uploads/temp_orders/'.$filename;
+		force_download($filepath, NULL);
+
+	}
+
+	public function orders_convo() {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
+		
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		$person_id = $data['user_info']->Person_ID;
+		$order_id = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(5)));
+
+		$data['order_info'] = $this->mod_orders->get_orders_id($order_id);
+
+		$convo_msg = trim($_POST['convo_body']);
+
+		if ($data['order_info']['Order_Status']) {
+			$reciva = 'Admin';
+		}else{
+			$reciva = 'Reseller';
+		}
+
+		if (isset($_POST['convo_body']) && $convo_msg != "") {
+			$safe_msg = $this->mod_crypt->Enc_String($convo_msg);
+			$this->mod_orders->order_make_convo($person_id, $reciva, $safe_msg, $order_id);
+			echo "1";
+		}else{
+			echo "Failed";
+		}
+
+	}
+
+	public function orders_get_convo() {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
+		
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		$person_id = $data['user_info']->Person_ID;
+
+		$order_id = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(5)));
+
+		if ($order_id != "") {
+			$order_chats = $this->mod_orders->get_orders_convo_by_order($order_id);
+			foreach ($order_chats as $order_chat) {
+				if ($order_chat['Sender'] == $person_id) {
+					echo '
+						<div class="d-flex mt-3 p-1">
+			                <img src="<?php echo base_url("../../../../uploads/profiles"'.$data['user_info']->Avatar.'" class="me-2 rounded-circle" height="36" />
+			                <div class="w-100">
+			                    <h5 class="mt-0 mb-0">
+			                        <span class="float-end text-muted font-12">'.date('H:i:s A',$order_chat['Sent']).'</span>
+			                        '.$this->mod_crypt->Dec_String($data['user_info']->Name).'
+			                    </h5>
+			                    <p class="mt-1 mb-0 text-muted">
+			                        '.$this->mod_crypt->Dec_String($order_chat['Message']).'
+			                    </p>
+			                </div>
+			            </div>
+			            <hr>
+					';
+				}else{
+					echo '
+						<div class="d-flex mt-3 p-1">
+			                <img src="" class="me-2 rounded-circle" height="36" />
+			                <div class="w-100">
+			                    <h5 class="mt-0 mb-0">
+			                        <span class="float-end text-muted font-12">'.date('H:i:s A',$order_chat['Sent']).'</span>
+			                        '.$order_chat['Sender'].'
+			                    </h5>
+			                    <p class="mt-1 mb-0 text-muted">
+			                        '.$this->mod_crypt->Dec_String($order_chat['Message']).'
+			                    </p>
+			                </div>
+			            </div>
+			            <hr>
+					';
+				}
+			}
+		} else {
+			echo "No data";
+		}
+		
+
+	}
+
 	public function sales($page = 'sales') {
 
 		$typ = $this->session->userdata('log_type');
@@ -201,7 +307,6 @@ class Client extends CI_Controller {
 		$this->load->view('buyers/sales/'.$page);
 		$this->load->view('buyers/template/tail');
 	}
-
 
 	public function profile($page = 'profile') {
 
@@ -362,7 +467,6 @@ class Client extends CI_Controller {
 	    //$user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($data['user_info']->Name))); 
 	    //redirect('buyer/'.$user_url.'/profile');
 	}
-
 
 	public function mails($page = 'mailbox') {
 
