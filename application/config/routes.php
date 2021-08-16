@@ -5,6 +5,7 @@ $route['home'] = 'pages';
 
 $route['admin'] = 'admin';
 $route['admin/home'] = 'admin';
+$route['admin/dashboard'] = 'admin';
 
 $route['admin/users'] = 'adminusers';
 $route['users/sellers'] = 'adminusers/sellers';
@@ -14,9 +15,15 @@ $route['users/view'] = 'adminusers/view';
 $route['admin/orders'] = 'adminorders';
 $route['orders/completed'] = 'adminorders/completed';
 $route['orders/pending'] = 'adminorders/pending';
-$route['orders/view'] = 'adminorders/view';
+$route['orders/view/(:any)'] = 'adminorders/view';
+$route['admin/orders/attachment/(:any)'] = 'adminorders/orders_get_attachment';
+
 
 $route['admin/mails'] = 'adminmails';
+$route['admin/mail/all'] = 'adminmails';
+$route['admin/mail/inbox'] = 'adminmails/inbox';
+$route['admin/mail/sent'] = 'adminmails/sent';
+$route['admin/mail/trash'] = 'adminmails/trash';
 $route['mails/read'] = 'adminmails/read';
 
 $route['auth/login'] = 'auth/login';
@@ -61,6 +68,7 @@ $route['buyer/(:any)/orders_make_attachment'] = 'client/orders_make_attachment';
 $route['buyer/(:any)/orders/attachment/(:any)'] = 'client/orders_get_attachment/$2';
 $route['buyer/(:any)/orders/convo/(:any)'] = 'client/orders_convo';
 $route['buyer/(:any)/orders/get_convo/(:any)'] = 'client/orders_get_convo';
+$route['buyer/(:any)/orders/pay/(:any)'] = 'client/orders_pay';
 
 $route['buyer/(:any)/invoices'] = 'client/invoices';
 $route['buyer/(:any)/profile'] = 'client/profile';
@@ -70,7 +78,7 @@ $route['buyer/(:any)/mails'] = 'client/mails';
 $route['buyer/(:any)/mail/read'] = 'client/mails_read';
 $route['buyer/(:any)/profile_make'] = 'client/profile_make';
 $route['buyer/(:any)/add_post'] = 'client/add_post';
-$route['buyny)/profile_ier/(:amage'] = 'client/profile_image'; 
+$route['buyer)/profile/image'] = 'client/profile_image'; 
 
 $route['default_controller'] = 'pages';
 $route['404_override'] = '';

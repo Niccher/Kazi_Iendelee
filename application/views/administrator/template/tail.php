@@ -47,7 +47,24 @@
 
     <script src="<?php echo base_url('assets/js/vendor/apexcharts.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/vendor/Chart.bundle.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/vendor/simplemde.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/plugins/summernote/summernote-lite.js'); ?>"></script>
+    <script type="text/javascript">
+        $('#summernote').summernote({
+            height: 300,
+            placeholder: 'Please describe how the order should be',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+              ['style', ['style']],
+              ['font', ['bold', 'underline', 'clear']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['table', ['table']],
+              ['insert', ['link', 'picture', 'video']],
+              ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    </script>
 
     <script src="https://apexcharts.com/samples/assets/stock-prices.js"></script>
     <script src="https://apexcharts.com/samples/assets/irregular-data-series.js"></script>

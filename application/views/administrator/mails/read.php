@@ -31,10 +31,12 @@
                                             </div>
 
                                             <div class="email-menu-list mt-3">
-                                                <a href="javascript: void(0);" class="text-danger fw-bold"><i class="dripicons-inbox me-2"></i>Inbox<span class="badge badge-danger-lighten float-end ms-2">7</span></a>
-                                             	<a href="javascript: void(0);"><i class="dripicons-document me-2"></i>Draft<span class="badge badge-info-lighten float-end ms-2">32</span></a>
-                                                <a href="javascript: void(0);"><i class="dripicons-exit me-2"></i>Sent Mail</a>
-                                                <a href="javascript: void(0);"><i class="dripicons-trash me-2"></i>Trash</a>
+                                                <a href="<?php echo base_url('admin/mail/all');?>">
+                                                    <i class="dripicons-inbox me-2"></i>Mailbox
+                                                    <span class="badge badge-danger-lighten float-end ms-2">7</span>
+                                                </a>
+                                                <a href="<?php echo base_url('admin/mail/inbox');?>"><i class="dripicons-inbox me-2"></i>Inbox</a>
+                                                <a href="<?php echo base_url('admin/mail/sent');?>" class="text-danger fw-bold"><i class="dripicons-exit me-2"></i>Sentbox</a>
                                             </div>
 
                                         </div>
@@ -192,7 +194,7 @@
                                         </div>
                                         <div class="write-mdg-box mb-3">
                                             <label class="form-label">Message</label>
-                                            <textarea id="simplemde1"></textarea>
+                                            <textarea id="summernote"></textarea>
                                         </div>
                                     </form>
                                 </div>

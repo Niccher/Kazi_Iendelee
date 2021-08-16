@@ -128,6 +128,10 @@
                                     </div> <!-- end col -->
                                 </div>
                                 <!-- end task description -->
+                                <a href="<?php echo base_url("buyer/".$user_url."/orders/pay/".urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']))); ?>">
+                                    <button type="button" class="btn btn-primary btn-block btn-rounded">Proceed to pay
+                                    </button>
+                                </a>
 
                                 <!-- start sub tasks/checklists -->
                                 <h5 class="mt-4 mb-2 font-16">Order Progress and Milestones</h5>
@@ -137,8 +141,22 @@
                                                 if ($order_info['Order_Paid'] == '00') {
                                                     echo '
                                                     <div class="alert alert-danger" role="alert">
-                                                        <strong>Not Paid - </strong> your order has not been paid for, this means that it cannot be worked upon. To overcome this please pay.
-                                                    </div>';
+                                                        <strong>Not Paid - </strong> your order has not been paid for, this means that it cannot be worked upon. To overcome this please pay. 
+
+                                                        <br>
+                                                        <hr>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-9"></div>
+                                                            <div class="col-lg-3">
+                                <a href="'.base_url("buyer/".$user_url."/orders/pay/".urlencode($this->mod_crypt->Enc_String($order_info["Order_Id"]))).'">
+                                    <button type="button" class="btn btn-primary btn-block btn-rounded">Proceed to pay
+                                    </button>
+                                </a>
+                                                            </div>
+                                                        </div>    
+                                                    </div>
+                                                    ';
                                                 }
                                             ?>
                                     </div>
@@ -164,7 +182,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="col ps-0">
-                                                            <a href="javascript:void(0);" class="text-muted fw-bold">'.$each_file[$i].'</a>
+                                                            <a href="'.base_url('admin/orders/attachment/'.$each_file[$i]).'" class="text-muted fw-bold">'.$each_file[$i].'</a>
                                                             <p class="mb-0">'.$human_size.'</p>
                                                         </div>
                                                         <div class="col-auto" id="tooltip-container9">

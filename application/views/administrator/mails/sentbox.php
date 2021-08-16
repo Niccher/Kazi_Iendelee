@@ -12,7 +12,7 @@
                                 <li class="breadcrumb-item active">Mailbox</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Mailbox</h4>
+                        <h4 class="page-title">Sentbox</h4>
                     </div>
                 </div>
             </div>     
@@ -31,12 +31,12 @@
                                 </div>
 
                                 <div class="email-menu-list mt-3">
-                                    <a href="<?php echo base_url('admin/mail/all');?>" class="text-danger fw-bold">
+                                    <a href="<?php echo base_url('admin/mail/all');?>">
                                         <i class="dripicons-inbox me-2"></i>Mailbox
                                         <span class="badge badge-danger-lighten float-end ms-2">7</span>
                                     </a>
                                     <a href="<?php echo base_url('admin/mail/inbox');?>"><i class="dripicons-inbox me-2"></i>Inbox</a>
-                                    <a href="<?php echo base_url('admin/mail/sent');?>"><i class="dripicons-exit me-2"></i>Sent Mail</a>
+                                    <a href="<?php echo base_url('admin/mail/sent');?>" class="text-danger fw-bold"><i class="dripicons-exit me-2"></i>Sentbox</a>
                                 </div>
 
                             </div>

@@ -18,6 +18,13 @@
 
         }
 
+        public function get_orders_last5(){
+            $this->db->order_by('Order_Id', 'DESC');
+            $this->db->limit(5);
+            $query = $this->db->get('tbl_Orders');
+            return $query->result_array();
+        }
+
         public function get_orders_id($order_id){
             $array = array('Order_Id =' => $order_id);
             $this->db->where($array);

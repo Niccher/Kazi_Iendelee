@@ -15,6 +15,8 @@
     <link href="<?php echo base_url('assets/css/vendor/dataTables.bootstrap5.css'); ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('assets/css/vendor/responsive.bootstrap5.css'); ?>" rel="stylesheet" type="text/css" />
 
+    <link href="<?php echo base_url('assets/plugins/summernote/summernote-lite.css'); ?>" rel="stylesheet" type="text/css"/> 
+
     <link href="<?php echo base_url('assets/css/icons.min.css'); ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('assets/css/app.min.css'); ?>" rel="stylesheet" type="text/css" id="light-style" />
     <link href="<?php echo base_url('assets/css/app-dark.min.css'); ?>" rel="stylesheet" type="text/css" id="dark-style" />

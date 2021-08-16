@@ -274,6 +274,23 @@ class Client extends CI_Controller {
 
 	}
 
+	public function orders_pay($page = 'billing') {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
+		
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		
+		$titl['pag'] = 'orders';
+
+		$this->load->view('buyers/template/header');
+		$this->load->view('buyers/template/sidebar', $titl);
+		$this->load->view('buyers/sales/'.$page);
+		$this->load->view('buyers/template/tail');
+	}
+
 	public function sales($page = 'sales') {
 
 		$typ = $this->session->userdata('log_type');

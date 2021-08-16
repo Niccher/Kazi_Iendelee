@@ -6,8 +6,15 @@
         }
 
         public function get_users(){
-            $array = array('Privilege =' => 'Client');
-            $this->db->where($array);
+            //$array = array('Privilege =' => 'Client');
+            //$this->db->where($array);
+            $query = $this->db->get('tbl_Users');
+            return $query->result_array();
+        }
+
+        public function get_users_last5(){
+            $this->db->order_by('Person_ID', 'DESC');
+            $this->db->limit(5);
             $query = $this->db->get('tbl_Users');
             return $query->result_array();
         }
@@ -58,49 +65,6 @@
             }
         }
         
-        public function obfuscate_email($email){
-            $em   = explode("@",$email);
-            $name = implode('@', array_slice($em, 0, count($em)-1));
-            $len  = floor(strlen($name)/2);
-        
-            return substr($name,0, $len) . str_repeat('*', $len) . "@" . end($em);   
-        }
-        
-        public function otp_verify($phone,$otp){
-            $this->db->where('Phone',$phone);
-            $this->db->where('Otp',$otp);
-            $this->db->where('Valid','TRUE');
-            $times = time();
-            
-            $result = $this->db->get('tbl_Users_Otp');
-
-            if ($result->num_rows()==1) {
-                return $result->row(0)->Count;
-            }else{
-                return false;
-            }
-        }
-        
-        public function create_otp($nw_phone, $nw_eml, $otp){
-            $dt = time();
-            $data = array(
-                'Phone' => $nw_phone,
-                'Email' => $nw_eml,
-                'Otp' => $otp,
-                'Timestamps' => time(),
-            );
-
-            return $this->db->insert('tbl_Users_Otp', $data);
-            
-        }
-        
-        public function update_otp($count){
-            $this->db->where('Count', $count);
-            //$this->db->where('Timestamps + 7200 < ' , () );
-            $data = array( 'Valid' => 'FALSE' , 'Tested_at' => time() );
-            return $this->db->update('tbl_Users_Otp',$data);
-        }
-        
         public function update_profile($uuid, $image){
             $this->db->where('Phone', $uuid);
             $data = array( 'Avatar' =>  base64_encode($image));
@@ -136,16 +100,6 @@
             );
 
             return $this->db->insert('tbl_Users_Removed', $data);
-        }
-        
-        public function checkotp_exists($otp){
-            $query = $this->db->get_where('tbl_Users_Otp', array('Otp'=>$otp));
-
-            if (empty($query->row_array())) {
-                return true;
-            }else{
-                return false;
-            }
         }
 
         public function checkphone_exists($phone){

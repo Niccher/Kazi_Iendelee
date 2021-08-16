@@ -17,9 +17,11 @@ class Adminusers extends CI_Controller {
 
 		$titl['pag'] = 'users';
 
+		$data['user_list'] = $this->mod_users->get_users();
+
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
-		$this->load->view('administrator/users/'.$page);
+		$this->load->view('administrator/users/'.$page, $data);
 		$this->load->view('administrator/template/tail');
 	}
 
@@ -27,9 +29,11 @@ class Adminusers extends CI_Controller {
 		
 		$titl['pag'] = 'users';
 
+		$data['user_list'] = $this->mod_users->get_users();
+
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
-		$this->load->view('administrator/users/'.$page);
+		$this->load->view('administrator/users/'.$page, $data);
 		$this->load->view('administrator/template/tail');
 	}
 
