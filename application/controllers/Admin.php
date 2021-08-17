@@ -13,11 +13,29 @@ class Admin extends CI_Controller {
 		$data['users_last_5'] = $this->mod_users->get_users_last5();
 		$data['orders_last_5'] = $this->mod_orders->get_orders_last5();
 
+		$order_listing = "";
+
+		foreach ( $data['orders_list'] as $one_order) {
+			$eachyear = date('Y', $one_order['Order_Created']);
+			$eachmonth = date('m', $one_order['Order_Created'])-1;
+			$eachday = date('d', $one_order['Order_Created']);
+
+			$order_listing.='
+			{
+                title: "'.$this->mod_crypt->Dec_String($one_order['Order_Name']).'",
+                start: new Date("'.$eachyear.'", "'.$eachmonth.'", "'.$eachday.'" ),
+                className: "bg-success"
+            },
+			';
+
+			$data['cal'] = $order_listing;
+		}
+
 		
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/'.$page, $data);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/template/tail_home');
 	}
 
 
@@ -28,7 +46,7 @@ class Admin extends CI_Controller {
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/users/'.$page);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/template/tail_users');
 	}
 
 	public function orders($page = 'questions') {

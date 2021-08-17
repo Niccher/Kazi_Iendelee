@@ -61,7 +61,7 @@
 
         }
 
-        public function orders_make($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_attachments){
+        public function orders_make($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $attachments_elements){
 
             $data = array(
                 'Order_Name' => $order_name,
@@ -79,6 +79,7 @@
                 'Order_Deadline' => $order_date,
                 'Order_Cite' => $order_cite,
                 'Order_Level' => $order_level,
+                'Order_Cost' => $order_cost,
             );
 
             return $this->db->insert('tbl_Orders ', $data);

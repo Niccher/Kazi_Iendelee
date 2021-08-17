@@ -84,16 +84,28 @@
 
                                             <br>
 
-                                            <div class="col-md">
-                                                <div class="form-floating">
-                                                    <select class="form-select" name="order_cite">
-                                                        <option value="task_cite_APA">APA</option>
-                                                        <option value="task_cite_Chicago">Chicago</option>
-                                                        <option value="task_cite_Harvard">Harvard</option>
-                                                        <option value="task_cite_MLA">MLA</option>
-                                                        <option value="task_cite_Turabian">Turabian</option>
-                                                    </select>
-                                                    <label for="floatingSelectGrid">Citation Style</label>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="col-md">
+                                                        <div class="form-floating">
+                                                            <input type="number" class="form-control" name="order_price" placeholder="Estimated Price" value="1" required="">
+                                                            <label>Estimated Price <span class="badge bg-warning rounded-pill">Required</span> </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="col-md">
+                                                        <div class="form-floating">
+                                                            <select class="form-select" name="order_cite">
+                                                                <option value="task_cite_APA">APA</option>
+                                                                <option value="task_cite_Chicago">Chicago</option>
+                                                                <option value="task_cite_Harvard">Harvard</option>
+                                                                <option value="task_cite_MLA">MLA</option>
+                                                                <option value="task_cite_Turabian">Turabian</option>
+                                                            </select>
+                                                            <label for="floatingSelectGrid">Citation Style</label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

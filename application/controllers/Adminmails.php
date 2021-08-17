@@ -10,7 +10,7 @@ class Adminmails extends CI_Controller {
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/mails/'.$page);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/template/tail_mini');
 	}
 
 	public function inbox($page = 'inbox') {
@@ -20,7 +20,7 @@ class Adminmails extends CI_Controller {
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/mails/'.$page);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/template/tail_mini');
 	}
 
 	public function sent($page = 'sentbox') {
@@ -30,7 +30,7 @@ class Adminmails extends CI_Controller {
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/mails/'.$page);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/template/tail_mini');
 	}
 
 	public function trash($page = 'trash') {
@@ -40,7 +40,7 @@ class Adminmails extends CI_Controller {
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/mails/'.$page);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/template/tail_mini');
 	}
 
 	public function read($page = 'read') {
@@ -50,7 +50,7 @@ class Adminmails extends CI_Controller {
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/mails/'.$page);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/template/tail_mini');
 	}
 
 }

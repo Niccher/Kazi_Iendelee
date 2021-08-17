@@ -191,7 +191,7 @@
                                 </span>
                                 <span>
                                     <span class="account-user-name"><?php echo ucfirst($user_url);?></span>
-                                    <span class="account-position">Buyer</span>
+                                    <span class="account-position">Reseller</span>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">

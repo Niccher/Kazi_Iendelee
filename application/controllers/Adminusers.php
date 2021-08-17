@@ -7,10 +7,12 @@ class Adminusers extends CI_Controller {
 
 		$titl['pag'] = 'users';
 
+		$data['user_list'] = $this->mod_users->get_users();
+
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
-		$this->load->view('administrator/users/'.$page);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/users/'.$page, $data);
+		$this->load->view('administrator/template/tail_mini');
 	}
 
 	public function buyers($page = 'buyers') {
@@ -22,7 +24,7 @@ class Adminusers extends CI_Controller {
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/users/'.$page, $data);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/template/tail_mini');
 	}
 
 	public function sellers($page = 'sellers') {
@@ -34,7 +36,7 @@ class Adminusers extends CI_Controller {
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/users/'.$page, $data);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/template/tail_mini');
 	}
 
 
@@ -45,7 +47,7 @@ class Adminusers extends CI_Controller {
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/users/'.$page);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/template/tail_mini');
 	}
 
 }
