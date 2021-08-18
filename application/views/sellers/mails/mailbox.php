@@ -35,7 +35,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <div data-simplebar style="max-height: 550px">
-                                                <a href="javascript:void(0);" class="text-body">
+                                                <a href="javascript:void(0);" class="text-body userlisting" id="id_0">
                                                     <div class="d-flex align-items-start mt-1 p-2">
                                                         <img src="<?php echo base_url('assets/images/users/avatar-2.jpg'); ?>" class="me-2 rounded-circle" height="48" alt="User M" />
                                                         <div class="w-100 overflow-hidden">
@@ -50,7 +50,7 @@
                                                         </div>
                                                     </div>
                                                 </a>
-                                                <a href="javascript:void(0);" class="text-body">
+                                                <a href="javascript:void(0);" class="text-body userlisting" id="id_1">
                                                     <div class="d-flex align-items-start bg-light p-2">
                                                         <img src="<?php echo base_url('assets/images/users/avatar-5.jpg'); ?>" class="me-2 rounded-circle" height="48" alt="User N" />
                                                         <div class="w-100 overflow-hidden">
@@ -64,7 +64,7 @@
                                                         </div>
                                                     </div>
                                                 </a>
-                                                <a href="javascript:void(0);" class="text-body">
+                                                <a href="javascript:void(0);" class="text-body userlisting" id="id_2">
                                                     <div class="d-flex align-items-start mt-1 p-2">
                                                         <img src="<?php echo base_url('assets/images/users/avatar-7.jpg'); ?>" class="me-2 rounded-circle" height="48" alt="User O" />
                                                         <div class="w-100 overflow-hidden">
@@ -102,105 +102,6 @@
                     <div class="card">
                         <div class="card-body">
                             <ul class="conversation-list" data-simplebar style="max-height: 537px">
-                                <li class="clearfix">
-                                    <div class="chat-avatar">
-                                        <img src="<?php echo base_url('assets/images/users/avatar-5.jpg'); ?>" class="rounded" alt="User N" />
-                                        <i>10:00</i>
-                                    </div>
-                                    <div class="conversation-text">
-                                        <div class="ctext-wrap">
-                                            <i>User N</i>
-                                            <p>
-                                                Hello!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="clearfix odd">
-                                    <div class="chat-avatar">
-                                        <img src="<?php echo base_url('assets/images/users/avatar-1.jpg'); ?>" class="rounded" alt="Me:" />
-                                        <i>10:01</i>
-                                    </div>
-                                    <div class="conversation-text">
-                                        <div class="ctext-wrap">
-                                            <i>Me:</i>
-                                            <p>
-                                                Hi, How are you? What about our next meeting?
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="clearfix">
-                                    <div class="chat-avatar">
-                                        <img src="<?php echo base_url('assets/images/users/avatar-5.jpg'); ?>" class="rounded" alt="User N" />
-                                        <i>10:01</i>
-                                    </div>
-                                    <div class="conversation-text">
-                                        <div class="ctext-wrap">
-                                            <i>User N</i>
-                                            <p>
-                                                Yeah everything is fine
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="clearfix odd">
-                                    <div class="chat-avatar">
-                                        <img src="<?php echo base_url('assets/images/users/avatar-1.jpg'); ?>" class="rounded" alt="Me:" />
-                                        <i>10:02</i>
-                                    </div>
-                                    <div class="conversation-text">
-                                        <div class="ctext-wrap">
-                                            <i>Me:</i>
-                                            <p>
-                                                Wow that's great
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="clearfix">
-                                    <div class="chat-avatar">
-                                        <img src="<?php echo base_url('assets/images/users/avatar-5.jpg'); ?>" alt="User N" class="rounded" />
-                                        <i>10:02</i>
-                                    </div>
-                                    <div class="conversation-text">
-                                        <div class="ctext-wrap">
-                                            <i>User N</i>
-                                            <p>
-                                                Let's have it today if you are free
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="clearfix odd">
-                                    <div class="chat-avatar">
-                                        <img src="<?php echo base_url('assets/images/users/avatar-1.jpg'); ?>" alt="Me:" class="rounded" />
-                                        <i>10:03</i>
-                                    </div>
-                                    <div class="conversation-text">
-                                        <div class="ctext-wrap">
-                                            <i>Me:</i>
-                                            <p>
-                                                Sure thing! let me know if 2pm works for you
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="clearfix">
-                                    <div class="chat-avatar">
-                                        <img src="<?php echo base_url('assets/images/users/avatar-5.jpg'); ?>" alt="User N" class="rounded" />
-                                        <i>10:04</i>
-                                    </div>
-                                    <div class="conversation-text">
-                                        <div class="ctext-wrap">
-                                            <i>User N</i>
-                                            <p>
-                                                Sorry, I have another meeting scheduled at 2pm. Can we have it
-                                                at 3pm instead?
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
                                 <li class="clearfix">
                                     <div class="chat-avatar">
                                         <img src="<?php echo base_url('assets/images/users/avatar-5.jpg'); ?>" alt="User N" class="rounded" />

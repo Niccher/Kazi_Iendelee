@@ -1,7 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
+/*
+	'username' => 'tendolla_kazi',
+	'password' => 'V#6u~vDaw1RE',
+	'database' => 'tendolla_kazi',
+*/
 $active_group = 'default';
 $query_builder = TRUE;
 

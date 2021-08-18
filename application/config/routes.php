@@ -11,6 +11,10 @@ $route['admin/users'] = 'adminusers';
 $route['users/sellers'] = 'adminusers/sellers';
 $route['users/buyers'] = 'adminusers/buyers';
 $route['users/view'] = 'adminusers/view';
+$route['admin/user_profile/(:any)'] = 'adminusers/view_profile/$1';
+$route['admin/user_msg/(:any)'] = 'adminusers/send_msg/$1';
+$route['admin/user_fetch/(:any)'] = 'adminusers/user_fetch/$1';
+$route['admin/user_prof/(:any)'] = 'adminusers/view_profile/$1';
 
 $route['admin/orders'] = 'adminorders';
 $route['orders/completed'] = 'adminorders/completed';

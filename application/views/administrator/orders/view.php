@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <h3 class="mt-0">
                         <?php
-                            echo $orders_info['Order_Name'];
+                            echo $this->mod_crypt->Dec_String($orders_info['Order_Name']);
                         ?>
                     </h3>
 
@@ -49,7 +49,7 @@
 
                     <p class="text-muted mb-2">
                         <?php
-                            echo $orders_info['Order_Body'];
+                            echo $this->mod_crypt->Dec_String($orders_info['Order_Body']);
                         ?>
                     </p>
 
@@ -57,20 +57,20 @@
                         <div class="col-md-4">
                             <div class="mb-4">
                                 <h5>Citation</h5>
-                                <p><?php echo ucfirst(str_replace('task_cite_', '', $orders_info['Order_Cite'])); ?> </p>
+                                <p><?php echo ucfirst(str_replace('task_cite_', '', $this->mod_crypt->Dec_String($orders_info['Order_Cite']))); ?> </p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-4">
                                 <h5>Subject</h5>
-                                <p><?php echo ucfirst(str_replace('task_level_', '', $orders_info['Order_Cite'])); ?> </p>
+                                <p><?php echo ucfirst(str_replace('task_level_', '', $this->mod_crypt->Dec_String($orders_info['Order_Level']))); ?> </p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-4">
                                 <h5>Size</h5>
-                                <p>Pages: <?php echo $orders_info['Order_Pages']; ?> </p>
-                                <p>Words: <?php echo $orders_info['Order_Words']; ?> </p>
+                                <p>Pages: <?php echo $this->mod_crypt->Dec_String($orders_info['Order_Pages']); ?> </p>
+                                <p>Words: <?php echo $this->mod_crypt->Dec_String($orders_info['Order_Words']); ?> </p>
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                         <div class="col-md-4">
                             <div class="mb-4">
                                 <h5>Budget</h5>
-                                <p><b>****</b></p>
+                                <p><b><?php echo $this->mod_crypt->Dec_String($orders_info['Order_Cost']); ?></b></p>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
 
                     <div class="card mb-1 shadow-none border">
                         <div class="p-2">
-                            <p><?php echo ucfirst(str_replace('task_cite_', '', $orders_info['Order_Comment'])); ?> </p>
+                            <p><?php echo ucfirst(str_replace('task_cite_', '', $this->mod_crypt->Dec_String($orders_info['Order_Comment']))); ?> </p>
                         </div>
                     </div>
 

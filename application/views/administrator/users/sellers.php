@@ -80,11 +80,11 @@
                 </td>
 
                 <td>
-                    <a href="javascript:void(0);" class="action-icon"> 
-                        <i class="mdi mdi-square-edit-outline"></i>
+                    <a href="javascript:void(0);" class="action-icon pop_user" id="'.urlencode($this->mod_crypt->Enc_String($user['Person_ID'])).'"> 
+                        <i class="mdi mdi-eye"></i>
                     </a>
-                    <a href="javascript:void(0);" class="action-icon">
-                        <i class="mdi mdi-delete"></i>
+                    <a href="javascript:void(0);" class="action-icon pop_chat" id="'.urlencode($this->mod_crypt->Enc_String($user['Person_ID'])).'"> 
+                        <i class="mdi mdi-comment-plus"></i>
                     </a>
                 </td>
             </tr>
@@ -102,5 +102,56 @@
         </div> <!-- end col -->
     </div>
     <!-- end row -->
+
+    <div id="modal_profile" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="standard-modalLabel">User Profile</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="profile_info"></div>
+                        </div>
+                        <!-- end card-body -->
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    </div>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal_chat" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="standard-modalLabel">Send Message</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <!-- comment box -->
+                            <div class="border rounded">
+                                <form action="#" class="comment-area-box">
+                                    <textarea rows="4" class="form-control border-0 resize-none" id="modal_msg_box" placeholder="Write something...."></textarea>
+                                    <div class="p-2 bg-light d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button> 
+                                        </div>
+                                        <button type="button" class="btn btn-sm btn-success modal_send_msg"><i class="uil uil-message me-1"></i>Send</button>
+                                    </div>
+                                </form>
+                            </div> <!-- end .border-->
+                            <!-- end comment box -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </div> <!-- container -->

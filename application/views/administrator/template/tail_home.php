@@ -1,5 +1,3 @@
-tail_home.php
-
 
             <!-- Footer Start -->
             <footer class="footer">

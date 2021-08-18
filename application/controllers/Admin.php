@@ -27,9 +27,9 @@ class Admin extends CI_Controller {
                 className: "bg-success"
             },
 			';
-
-			$data['cal'] = $order_listing;
 		}
+
+		$data['cal'] = $order_listing;
 
 		
 		$this->load->view('administrator/template/header');
