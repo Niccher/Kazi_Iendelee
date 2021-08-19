@@ -145,7 +145,7 @@ class Adminusers extends CI_Controller {
                 $code_var .= '
                     <li class="clearfix odd">
                         <div class="chat-avatar">
-                            <img src="'.base_url('assets/profiles/'.$user_info->Avatar).'" alt="'.$this->mod_crypt->Dec_String($user_info->Name).'" class="rounded" />
+                            <img src="'.base_url('uploads/profiles/'.$user_info->Avatar).'" alt="'.$this->mod_crypt->Dec_String($user_info->Name).'" class="rounded" />
                             <i>'.date('d H:i',$chats['Chat_Sent']).'</i>
                         </div>
                         <div class="conversation-text">

@@ -56,30 +56,31 @@
             <div class="col-xxl-6 col-xl-12 order-xl-2">
                 <div class="card">
                     <div class="card-body">
-                        <ul class="conversation-list" id="message_view_box" data-simplebar style="max-height: 537px">
-                        </ul>
+                        <ul class="conversation-list" data-simplebar style="max-height: 537px">
+                                <div id="message_view_box"></div>
+                            </ul>
                         <div class="row">
                             <div class="col">
                                 <div class="mt-2 bg-light p-3 rounded">
                                     <form class="needs-validation" novalidate="" name="chat-form"
-                                        id="chat-form">
+                                            id="chat-form">
                                         <div class="row">
                                             <div class="col mb-2 mb-sm-0">
-                                                <input type="text" class="form-control border-0" placeholder="Enter your text" required="">
+                                                <input type="text" class="form-control border-0" placeholder="Enter your text" id="admin_msg_box" required="">
                                                 <div class="invalid-feedback">
                                                     Please enter your messsage
                                                 </div>
                                             </div>
                                             <div class="col-sm-auto">
                                                 <div class="btn-group">
-                                                    <a href="apps-chat.html#" class="btn btn-light">
+                                                    <a href="#" class="btn btn-light">
                                                         <i class="uil uil-paperclip"></i>
                                                     </a>
-                                                    <a href="apps-chat.html#" class="btn btn-light"> 
+                                                    <a href="#" class="btn btn-light"> 
                                                         <i class='uil uil-smile'></i> 
                                                     </a>
                                                     <div class="d-grid">
-                                                        <button type="submit" class="btn btn-success chat-send">
+                                                        <button type="button" class="btn btn-success chat-send" id="admin_send">
                                                             <i class='uil uil-message'></i>
                                                         </button>
                                                     </div>

@@ -119,6 +119,43 @@
                    
             });
 
+            $("#admin_send").click(function(){
+                var msg_body = $('#admin_msg_box').val();
+                if (msg_body == "") {
+                    window.alert("Message cannot be empty");
+                }else{
+                    console.log('Message as '+msg_body);
+                    /*$.ajax({
+                        url: '<?php echo base_url("buyer/".$user_url."/send_message/"); ?>'+user_id,
+                        type: 'POST',
+                        data: { msg_content:msg_body},
+                        success: function(response){
+                            if(response == 11){
+                                $("#client_msg_box").attr("value", ""); 
+                                $('#client_msg_box').empty()
+                                $("#client_msg_box").val("")
+                                $.ajax({
+                                    url: '<?php //echo base_url("buyer/".$user_url."/user_fetch/"); ?>'+user_id,
+                                    type: 'POST',
+                                    data: { msg_content:"Hello"},
+                                    success: function(response){
+                                        if(response == 1){
+                                            alert('Cannot fetch messages, please try again or refresh the webpage.');
+                                        }else{
+                                            $("#message_view_box").html(response).load(response).fadeIn();
+                                        }
+
+                                    }
+                                });
+                            }else if(response == 22){
+                                window.alert('Message not sent, please try again or refresh the page.');
+                            }
+                        }
+                    });*/
+                }  
+                     
+            });;
+
             
         });
     </script>

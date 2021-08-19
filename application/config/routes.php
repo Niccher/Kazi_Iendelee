@@ -83,6 +83,9 @@ $route['buyer/(:any)/mail/read'] = 'client/mails_read';
 $route['buyer/(:any)/profile_make'] = 'client/profile_make';
 $route['buyer/(:any)/add_post'] = 'client/add_post';
 $route['buyer/(:any)/profile_image'] = 'client/profile_image'; 
+$route['buyer/(:any)/send_message/(:any)'] = 'client/send_message'; 
+$route['buyer/(:any)/user_fetch/(:any)'] = 'client/user_fetch'; 
+
 
 $route['default_controller'] = 'pages';
 $route['404_override'] = 'pages/error_404';
