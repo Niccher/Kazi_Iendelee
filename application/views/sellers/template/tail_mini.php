@@ -1,5 +1,6 @@
 
 
+
             <!-- Footer Start -->
             <footer class="footer">
                 <div class="container-fluid">
@@ -32,19 +33,18 @@
     <div class="rightbar-overlay"></div>
     <!-- /End-bar -->
 
-
     <!-- bundle -->
     <script src="<?php echo base_url('assets/js/vendor.min.js');?>"></script>
     <script src="<?php echo base_url('assets/js/app.min.js'); ?>"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".userlisting").click(function(){
-		        var id = this.id;
-		        console.log('Current Id is'+$(this).attr("id"));
-		    }); 
-        });
-    </script>
+
+    <script src="<?php echo base_url('assets/js/vendor/jquery.dataTables.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/vendor/dataTables.bootstrap5.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/vendor/dataTables.responsive.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/vendor/responsive.bootstrap5.min.js'); ?>"></script>
+
+    <script src="<?php echo base_url('assets/js/vendor/dropzone.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/ui/component.fileupload.js'); ?>"></script>
 
 </body>
 

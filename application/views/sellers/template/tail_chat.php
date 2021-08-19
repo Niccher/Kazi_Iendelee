@@ -1,3 +1,5 @@
+tail_chat.php
+
 
 
             <!-- Footer Start -->
@@ -37,11 +39,6 @@
     <script src="<?php echo base_url('assets/js/app.min.js'); ?>"></script>
 
 
-    <script src="<?php echo base_url('assets/js/vendor/jquery.dataTables.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/vendor/dataTables.bootstrap5.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/vendor/dataTables.responsive.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/vendor/responsive.bootstrap5.min.js'); ?>"></script>
-
     <script src="<?php echo base_url('assets/js/vendor/dropzone.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/ui/component.fileupload.js'); ?>"></script>
 
@@ -55,21 +52,21 @@
             ?>
             var user_id= "<?php echo urlencode($this->mod_crypt->Enc_String($this->session->userdata('log_id')));?>"
 
-            $("#client_send").click(function(){
-                var msg_body = $('#client_msg_box').val();
+            $("#reseller_send").click(function(){
+                var msg_body = $('#reseller_msg_box').val();
                 if (msg_body == "") {
                     window.alert("Message cannot be empty");
                 }else{
                 	console.log('Message as '+msg_body);
                     $.ajax({
-                        url: '<?php echo base_url("buyer/".$user_url."/send_message/"); ?>'+user_id,
+                        url: '<?php echo base_url("seller/".$user_url."/send_message/"); ?>'+user_id,
                         type: 'POST',
                         data: { msg_content:msg_body},
                         success: function(response){
                             if(response == 11){
-                                $("#client_msg_box").val("")
+                                $("#reseller_msg_box").val("")
                                 $.ajax({
-                                    url: '<?php echo base_url("buyer/".$user_url."/user_fetch/"); ?>'+user_id,
+                                    url: '<?php echo base_url("seller/".$user_url."/user_fetch/"); ?>'+user_id,
                                     type: 'GET',
                                     success: function(response){
                                         if(response == 1){
@@ -91,7 +88,7 @@
 
             function sendRequest(){
                 $.ajax({ 
-                    url: '<?php echo base_url("buyer/".$user_url."/user_fetch/"); ?>'+user_id,
+                    url: '<?php echo base_url("seller/".$user_url."/user_fetch/"); ?>'+user_id,
                     type: 'POST',
                     data: { msg_content:"Hello"},
                     success: function(response){
@@ -108,7 +105,7 @@
                 }); 
             }
 
-            sendRequest();
+            //sendRequest();
             
         });
     </script>

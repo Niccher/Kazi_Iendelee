@@ -115,46 +115,53 @@
                             $(".profile_info").html(response).load(response).fadeIn();
                         }
                     });   
+
+                    $("#admin_send").click(function(){
+                        var msg_body = $('#admin_msg_box').val();
+                        if (msg_body == "") {
+                            window.alert("Message cannot be empty");
+                        }else{
+                            console.log('Message as '+msg_body);
+                            $.ajax({
+                                url: '<?php echo base_url("admin/user_msg/"); ?>'+splitid[2],
+                                type: 'POST',
+                                data: { msg_content:msg_body, prof_id:splitid[2]},
+                                success: function(response){
+                                    $("#admin_msg_box").val("")
+                                    $.ajax({
+                                        url: '<?php echo base_url("admin/user_fetch/"); ?>'+splitid[2],
+                                        type: 'GET',
+                                        success: function(response){
+                                            $("#message_view_box").html(response).load(response).fadeIn();
+                                            $("#message_view_box")[0].scrollBottom($("#message_view_box")[0].scrollHeight);
+                                        }
+                                    }); 
+                                }
+                            });
+                        }  
+                             
+                    });;
+
+                    function sendRequest(){
+                        $.ajax({ 
+                            url: '<?php echo base_url("admin/user_fetch/"); ?>'+splitid[2],
+                            type: 'GET',
+                            success: function(response){
+                                $("#message_view_box").html(response).load(response).fadeIn();
+                                var height = $("#message_view_box")[0].scrollHeight;
+                                $("#message_view_box")[0].scrollBottom(height);
+                                setTimeout(function(){
+                                    sendRequest();
+                                }, 5000);
+
+                            } 
+                        }); 
+                    }
+
+                    sendRequest();
                 }  
                    
             });
-
-            $("#admin_send").click(function(){
-                var msg_body = $('#admin_msg_box').val();
-                if (msg_body == "") {
-                    window.alert("Message cannot be empty");
-                }else{
-                    console.log('Message as '+msg_body);
-                    /*$.ajax({
-                        url: '<?php echo base_url("buyer/".$user_url."/send_message/"); ?>'+user_id,
-                        type: 'POST',
-                        data: { msg_content:msg_body},
-                        success: function(response){
-                            if(response == 11){
-                                $("#client_msg_box").attr("value", ""); 
-                                $('#client_msg_box').empty()
-                                $("#client_msg_box").val("")
-                                $.ajax({
-                                    url: '<?php //echo base_url("buyer/".$user_url."/user_fetch/"); ?>'+user_id,
-                                    type: 'POST',
-                                    data: { msg_content:"Hello"},
-                                    success: function(response){
-                                        if(response == 1){
-                                            alert('Cannot fetch messages, please try again or refresh the webpage.');
-                                        }else{
-                                            $("#message_view_box").html(response).load(response).fadeIn();
-                                        }
-
-                                    }
-                                });
-                            }else if(response == 22){
-                                window.alert('Message not sent, please try again or refresh the page.');
-                            }
-                        }
-                    });*/
-                }  
-                     
-            });;
 
             
         });

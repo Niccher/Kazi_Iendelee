@@ -10,17 +10,11 @@
 
     <link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>">
 
-    <link href="<?php echo base_url('assets/css/vendor/fullcalendar.min.css'); ?>" rel="stylesheet" type="text/css" />
-
     <link href="<?php echo base_url('assets/css/vendor/dataTables.bootstrap5.css'); ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('assets/css/vendor/responsive.bootstrap5.css'); ?>" rel="stylesheet" type="text/css" />
 
     <link href="<?php echo base_url('assets/css/vendor/jquery-jvectormap-1.2.2.css'); ?>" rel="stylesheet" type="text/css" />
 
-    <!-- Quill css -->
-    <link href="<?php echo base_url('assets/css/vendor/quill.bubble.css'); ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('assets/css/vendor/quill.core.css'); ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('assets/css/vendor/quill.snow.css'); ?>" rel="stylesheet" type="text/css" />
 
     <link href="<?php echo base_url('assets/css/icons.min.css'); ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('assets/css/app.min.css'); ?>" rel="stylesheet" type="text/css" id="light-style" />

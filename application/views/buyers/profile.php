@@ -26,7 +26,7 @@
         <div class="col-xl-4 col-lg-5">
             <div class="card text-center">
                 <div class="card-body">
-                    <img src="<?php echo '../../uploads/profiles/'.$user_info->Avatar;?>" class="rounded-circle avatar-lg img-thumbnail"
+                    <img src="<?php echo base_url('uploads/profiles/'.$user_info->Avatar);?>" class="rounded-circle avatar-lg img-thumbnail"
                     alt="profile-image">
 
                     <h4 class="mb-0 mt-2"><?php echo $this->mod_crypt->Dec_String($user_info->Name);?></h4>

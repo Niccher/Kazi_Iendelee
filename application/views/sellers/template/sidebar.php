@@ -33,7 +33,10 @@
 
                     <li class="side-nav-title side-nav-item">Kazi Iendelee</li>
 
-                    <?php $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($urls))); ?>
+                    <?php 
+                        $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
+                        $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
+                        ?>
 
                     <?php 
                         if ($pag =='home') {echo '<li class="side-nav-item menuitem-active">';} 
@@ -184,10 +187,10 @@
                         </li>
 
                         <li class="dropdown notification-list">
-                            <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="apps-calendar.html#" role="button" aria-haspopup="false"
+                            <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                                 aria-expanded="false">
                                 <span class="account-user-avatar"> 
-                                    <img src="<?php echo base_url('assets/images/users/avatar-1.jpg');?>" alt="user-image" class="rounded-circle">
+                                    <img src="<?php echo base_url('uploads/profiles/'.$user_info->Avatar);?>" alt="user-image" class="rounded-circle">
                                 </span>
                                 <span>
                                     <span class="account-user-name"><?php echo ucfirst($user_url);?></span>

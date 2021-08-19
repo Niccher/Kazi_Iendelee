@@ -52,10 +52,16 @@ $route['seller/(:any)/orders/completed'] = 'reseller/orders_completed';
 $route['seller/(:any)/orders/view'] = 'reseller/orders_view';
 
 $route['seller/(:any)/invoices'] = 'reseller/invoices';
-$route['seller/(:any)/profile'] = 'reseller/profile';
 $route['seller/(:any)/sales'] = 'reseller/sales';
 $route['seller/(:any)/mails'] = 'reseller/mails';
 $route['seller/(:any)/mail/read'] = 'reseller/mails_read';
+
+$route['seller/(:any)/profile'] = 'reseller/profile';
+$route['seller/(:any)/profile_make'] = 'reseller/profile_make';
+$route['seller/(:any)/add_post'] = 'reseller/add_post';
+$route['seller/(:any)/profile_image'] = 'reseller/profile_image'; 
+$route['seller/(:any)/send_message/(:any)'] = 'reseller/send_message'; 
+$route['seller/(:any)/user_fetch/(:any)'] = 'reseller/user_fetch'; 
 
 $route['buyer/'] = 'client';
 $route['buyer/(:any)'] = 'client';
