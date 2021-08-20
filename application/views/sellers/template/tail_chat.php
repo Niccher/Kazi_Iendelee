@@ -1,4 +1,4 @@
-tail_chat.php
+
 
 
 
@@ -105,7 +105,7 @@ tail_chat.php
                 }); 
             }
 
-            //sendRequest();
+            sendRequest();
             
         });
     </script>
