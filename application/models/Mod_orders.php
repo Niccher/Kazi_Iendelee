@@ -52,16 +52,24 @@
         }
 
         public function order_get_attachments(){
-            $this->db->where('Posted >=', time()-3600);
-            $this->db->where('Posted <=', time()-2);
-            $this->db->where('Person_ID', $this->session->userdata('log_id'));
-            $this->db->order_by('Upload_Id','DESC');
-            $query = $this->db->get('tbl_Temp_Upload');
-            return $query->result_array();
+            $p_id = $this->session->userdata('log_id')."__";
+
+            $file_list = "";
+            $this_file = "";
+
+            $path = './uploads/temp_orders/*';
+            foreach(glob($path) as $file)  {
+                $this_file = str_replace("./uploads/temp_orders/","",$file);
+                if (str_starts_with($this_file, $p_id)) {
+                   $file_list.= "|__|".$this_file;
+                }
+            }
+
+            return $file_list;
 
         }
 
-        public function orders_make($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $attachments_elements){
+        public function orders_make($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $order_attachments){
 
             $data = array(
                 'Order_Name' => $order_name,
@@ -83,6 +91,54 @@
             );
 
             return $this->db->insert('tbl_Orders ', $data);
+        }
+
+        public function orders_make_edit($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $order_attachments, $order_id){
+
+            $data = array(
+                'Order_Name' => $order_name,
+                'Order_Body' => $order_desc,
+                'Order_Pages' => $order_page,
+                'Order_Words' => $order_word,
+                'Order_Comment' => $order_info,
+                'Order_Attachment' => $order_attachments,
+                'Order_Deadline' => $order_date,
+                'Order_Cite' => $order_cite,
+                'Order_Level' => $order_level,
+                'Order_Cost' => $order_cost,
+            );
+
+            return $this->db->update('tbl_Orders', $data, "Order_Id = ".$order_id);
+        }
+
+        public function orders_make_delete($order_id){
+
+            $order_data = $this->mod_orders->get_orders_id($order_id);
+            $data = array(
+                'Order_Original' => $order_data['Order_Id'],
+                'Order_Name' => $order_data['Order_Name'],
+                'Order_Body' => $order_data['Order_Body'],
+                'Order_Pages' => $order_data['Order_Pages'],
+                'Order_Words' => $order_data['Order_Words'],
+                'Order_Comment' => $order_data['Order_Comment'],
+                'Order_Attachment' => $order_data['Order_Attachment'],
+                'Order_Status' => $order_data['Order_Status'],
+                'Order_Paid' => $order_data['Order_Paid'],
+                'Order_Owner' => $order_data['Order_Owner'],
+                'Order_Assigned' => $order_data['Order_Assigned'],
+                'Order_Accepted' => $order_data['Order_Accepted'],
+                'Order_Created' => $order_data['Order_Created'],
+                'Order_Deadline' => $order_data['Order_Deadline'],
+                'Order_Cite' => $order_data['Order_Cite'],
+                'Order_Level' => $order_data['Order_Level'],
+                'Order_Cost' => $order_data['Order_Cost'],
+            );
+
+            $this->db->where('Order_Id',$order_id);
+            $this->db->delete('tbl_Orders');
+
+            return $this->db->insert('tbl_Orders_Deleted', $data);
+
         }
 
         public function order_make_convo($senda, $reciva, $convo_body, $order_id){   

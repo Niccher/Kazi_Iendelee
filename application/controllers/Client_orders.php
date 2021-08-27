@@ -96,6 +96,8 @@ class Client_orders extends CI_Controller {
 
 	public function orders_make() {
 
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+
 		$order_name = $this->mod_crypt->Enc_String(trim($this->input->post('order_name')));
 	    $order_desc = $this->mod_crypt->Enc_String(trim($this->input->post('order_desc')));
 	    $order_page = $this->mod_crypt->Enc_String(trim($this->input->post('order_page')));
@@ -108,12 +110,11 @@ class Client_orders extends CI_Controller {
 
 	    $attachments = $this->mod_orders->order_get_attachments();
 
-	    $attachments_elements ="";
-	    foreach ($attachments as $files) {
-	    	$attachments_elements.= $files['Filename'].'|||';
+	    if ($order_date == "") {
+	    	$order_date = date('d-M-Y',strtotime("+1 week"));
 	    }
 
-	    $this->mod_orders->orders_make($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $attachments_elements);
+	    $this->mod_orders->orders_make($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $attachments);
 
 	    $head1 ='Order, <b>'.$this->mod_crypt->Dec_String($order_name).'</b>, created succesfully';
             
@@ -134,9 +135,6 @@ class Client_orders extends CI_Controller {
 	}
 
 	public function orders_make_attachment() {
-
-		print_r($_FILES);
-
 		$typ = $this->session->userdata('log_type');
         if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
             redirect('auth/login');
@@ -156,11 +154,14 @@ class Client_orders extends CI_Controller {
             $new_name = preg_replace('/[^A-Za-z0-9.]/', '_', $old_name);
 
             $code = substr(time(), -7);
-            $newfilename = $code."_".$new_name;
+            $newfilename = $person_id."__".$code."_".$new_name;
                
             $this->mod_orders->order_temp_upload($person_id, $newfilename);
             move_uploaded_file($tempFile, "uploads/temp_orders/" . $newfilename);
         }
+
+        //echo $this->mod_orders->order_get_attachments();
+        echo date('d-M-Y',strtotime("+1 week"));
 
 	}
 
@@ -284,6 +285,96 @@ class Client_orders extends CI_Controller {
 		$this->load->view('buyers/template/sidebar', $titl);
 		$this->load->view('buyers/sales/'.$page);
 		$this->load->view('buyers/template/tail');
+	}
+
+
+	public function delete() {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
+
+		$user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
+        $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
+		
+		$order_id = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(5)));
+		$order_info = $this->mod_orders->get_orders_id($order_id);
+
+		if (empty($order_info)) {
+			redirect('buyer/'.$user_url.'/orders');
+		}
+
+		if ($order_info['Order_Id'] == $order_id) {
+			$this->mod_orders->orders_make_delete($order_id);
+			redirect('buyer/'.$user_url.'/orders');
+		}else{
+			redirect('buyer/'.$user_url.'/orders');
+		}
+
+	}
+
+	public function order_edit($page = 'edit') {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Buyer") {
+            redirect('auth/login');
+        }
+
+        $titl['pag'] = 'orders';
+
+		$user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
+        $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
+		
+		$order_id = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(5)));
+		$order_info = $this->mod_orders->get_orders_id($order_id);
+
+		if (empty($order_info)) {
+			redirect('buyer/'.$user_url.'/orders');
+		}
+
+		if ($order_info['Order_Id'] == $order_id) {
+
+			$data['order_info'] = $order_info;
+
+			$this->load->view('buyers/template/header');
+			$this->load->view('buyers/template/sidebar', $titl);
+			$this->load->view('buyers/orders/'.$page, $data);
+			$this->load->view('buyers/template/tail');
+		}else{
+			redirect('buyer/'.$user_url.'/orders');
+		}
+
+	}
+
+	public function orders_make_edit_change() {
+
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+
+		$order_name = $this->mod_crypt->Enc_String(trim($this->input->post('order_name')));
+	    $order_desc = $this->mod_crypt->Enc_String(trim($this->input->post('order_desc')));
+	    $order_page = $this->mod_crypt->Enc_String(trim($this->input->post('order_page')));
+	    $order_word = $this->mod_crypt->Enc_String(trim($this->input->post('order_word')));
+	   $order_level = $this->mod_crypt->Enc_String(trim($this->input->post('order_level')));
+	    $order_cite = $this->mod_crypt->Enc_String(trim($this->input->post('order_cite')));
+	    $order_date = $this->mod_crypt->Enc_String(trim($this->input->post('order_date')));
+	    $order_info = $this->mod_crypt->Enc_String(trim($this->input->post('order_comment')));
+	    $order_cost = $this->mod_crypt->Enc_String(trim($this->input->post('order_price')));
+
+	    $attachments = $this->mod_orders->order_get_attachments();
+
+	    if ($order_date == "") {
+	    	$order_date = date('d-M-Y',strtotime("+1 week"));
+	    }
+
+	    $order_id = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(5)));
+	    $this->mod_orders->orders_make_edit($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $attachments, $order_id);
+
+
+	    $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($data['user_info']->Name))); 
+
+	    redirect('buyer/'.$user_url.'/orders');
+
 	}
 
 }

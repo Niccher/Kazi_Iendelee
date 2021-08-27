@@ -50,10 +50,10 @@
                                             <div class="col-md">
                                                 <div class="form-floating">
                                                     <select class="form-select" name="order_level">
-                                                        <option value="task_level_hs">High School</option>
-                                                        <option value="task_level_col">College</option>
-                                                        <option value="task_level_underg">Undergraduate</option>
-                                                        <option value="task_level_postg">Post Graduate</option>
+                                                        <option value="task_level_high_school">High School</option>
+                                                        <option value="task_level_college">College</option>
+                                                        <option value="task_level_undergraduate">Undergraduate</option>
+                                                        <option value="task_level_postgraduate">Post Graduate</option>
                                                         <option value="task_level_masters">Masters</option>
                                                         <option value="task_level_php">PHD</option>
                                                     </select>

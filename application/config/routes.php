@@ -79,6 +79,9 @@ $route['buyer/(:any)/orders/attachment/(:any)'] = 'client_orders/orders_get_atta
 $route['buyer/(:any)/orders/convo/(:any)'] = 'client_orders/orders_convo';
 $route['buyer/(:any)/orders/get_convo/(:any)'] = 'client_orders/orders_get_convo';
 $route['buyer/(:any)/orders/pay/(:any)'] = 'client_orders/orders_pay';
+$route['buyer/(:any)/orders/delete/(:any)'] = 'client_orders/delete';
+$route['buyer/(:any)/orders/edit/(:any)'] = 'client_orders/order_edit'; 
+$route['buyer/(:any)/orders/edit_id/(:any)'] = 'client_orders/orders_make_edit_change'; 
 
 $route['buyer/(:any)/invoices'] = 'client/invoices';
 $route['buyer/(:any)/profile'] = 'client/profile';
@@ -91,7 +94,6 @@ $route['buyer/(:any)/add_post'] = 'client/add_post';
 $route['buyer/(:any)/profile_image'] = 'client/profile_image'; 
 $route['buyer/(:any)/send_message/(:any)'] = 'client/send_message'; 
 $route['buyer/(:any)/user_fetch/(:any)'] = 'client/user_fetch'; 
-
 
 $route['default_controller'] = 'pages';
 $route['404_override'] = 'pages/error_404';

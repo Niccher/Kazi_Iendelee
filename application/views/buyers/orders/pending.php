@@ -71,7 +71,7 @@ $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->
     foreach($user_orders as $order){
         $o_id = urlencode($this->mod_crypt->Enc_String($order['Order_Id']));
         $started = date('d-M-Y', $order['Order_Created']);
-        $stopped =  $this->mod_crypt->Dec_String($order['Order_Deadline']);
+        $stopped =  ($order['Order_Deadline']);
         $cite =  $this->mod_crypt->Dec_String($order['Order_Cite']);
         $page = $this->mod_crypt->Dec_String($order['Order_Pages']);
         $word = $this->mod_crypt->Dec_String($order['Order_Words']);
@@ -95,6 +95,8 @@ $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->
         }else{
             $state = '<h5><span class="badge badge-success-lighten">Active</span></h5>';
         }
+
+        $delte_id = urlencode($this->mod_crypt->Enc_String($order['Order_Id']));
 
         if ($status != 'Completed') {
             echo '
@@ -120,7 +122,7 @@ $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->
                     </td>
                     <td>
                         <a href="'.base_url('buyer/'.$user_url.'/orders/view/'.$o_id).'" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="'.base_url('buyer/'.$user_url.'/orders/edit/'.$delte_id).'" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
                         <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                     </td>
                 </tr>

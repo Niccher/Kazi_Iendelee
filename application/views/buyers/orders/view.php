@@ -5,8 +5,34 @@
         <div class="col-xxl-12">
             <div class="card">
                 <div class="card-body">
-                
-                    <hr class="mt-4 mb-2" />
+
+                <?php 
+                    $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
+                    $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
+                    $delte_id = urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']));
+                ?>
+
+                    <div class="row">
+                        <div class="row mb-2">
+                            <div class="col-xl-6"></div>
+                            <div class="col-xl-6">
+                                <div class="text-xl-end mt-xl-0 mt-2">
+                                    <div class="text-sm-end">
+                                        <a href="<?php echo base_url('buyer/'.$user_url.'/orders');?>">
+                                            <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-keyboard-backspace me-1"></i>Back</button>
+                                        </a>
+                                        <a href="<?php echo base_url('buyer/'.$user_url.'/orders/edit/'.$delte_id);?>">
+                                            <button type="button" class="btn btn-primary mb-2"><i class="mdi mdi-book-edit me-1"></i>Edit</button>
+                                        </a> 
+                                        <a href="<?php echo base_url('buyer/'.$user_url.'/orders/delete/'.$delte_id);?>">
+                                            <button type="button" class="btn btn-danger mb-2"><i class="mdi mdi-trash-can me-1"></i>Delete</button>
+                                        </a> 
+                                    </div>
+                                </div>
+                            </div><!-- end col-->
+                        </div>
+                    </div>
+                    <!-- end row-->
 
                     <div class="row">
                         <div class="col">
@@ -50,7 +76,7 @@
                                         <i class='uil uil-schedule font-18 text-success me-1'></i>
                                         <div>
                                             <h5 class="mt-1 font-14">
-                                                <?php echo $this->mod_crypt->Dec_String($order_info['Order_Deadline']); ?> 00:00:00
+                                                <?php echo ($order_info['Order_Deadline']); ?>
                                             </h5>
                                         </div>
                                     </div>
@@ -162,8 +188,8 @@
                             <h5 class="mt-4 mb-2 font-16">Attachments</h5>
 
                             <?php
-                                $each_file = explode('|||', $order_info['Order_Attachment']);
-                                for ($i=0; $i < count($each_file)-1; $i++) { 
+                                $each_file = explode('|__|', $order_info['Order_Attachment']);
+                                for ($i=0; $i < count($each_file); $i++) { 
                                     $human_size = $this->mod_orders->get_attachment_size(filesize('uploads/temp_orders/'.urldecode($each_file[$i])));
 
                                     echo '

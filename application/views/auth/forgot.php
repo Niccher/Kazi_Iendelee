@@ -8,7 +8,7 @@
                         <div class="card">
                             <!-- Logo -->
                             <div class="card-header pt-4 pb-4 text-center bg-primary">
-                                <a href="index.html">
+                                <a href="#">
                                     <span><img src="assets/images/logo.png" alt="" height="18"></span>
                                 </a>
                             </div>
@@ -20,10 +20,10 @@
                                     <p class="text-muted mb-4">Enter your email address and we'll send you an email with instructions to reset your password.</p>
                                 </div>
 
-                                <form action="<?php echo base_url('auth/activate'); ?>">
+                                <form action="<?php echo base_url('auth/forgot'); ?>">
                                     <div class="mb-3">
                                         <label for="emailaddress" class="form-label">Email address</label>
-                                        <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">
+                                        <input class="form-control" type="email" required="" placeholder="Enter the email address used." name="forgot_email">
                                     </div>
 
                                     <div class="mb-0 text-center">
