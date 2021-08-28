@@ -170,6 +170,34 @@
             return $query->result_array();
 
         }
+
+        public function make_assign($assignee, $order_id){
+
+            $data = array(
+                'Assign_Time' => time(),
+                'Assigner' => "Admin",
+                'Assignee' => $assignee,
+                'Assign_Staus' => "00",
+                'Assign_Reply' => "00",
+                'Assign_Reply_Time' => "00",
+                'Assign_Order' => $order_id,
+            );
+
+            return $this->db->insert('tbl_Assignments ', $data);
+        }
+
+        public function get_assigned_to($order_id){
+            $this->db->where('Assign_Order', $order_id);
+
+            $result = $this->db->get('tbl_Assignments');
+
+            if ($result->num_rows()==1) {
+                return $result->row(0);
+            }else{
+                return false;
+            }
+        } 
+
               
 	}
 ?>

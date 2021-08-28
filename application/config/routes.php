@@ -22,6 +22,7 @@ $route['orders/pending'] = 'adminorders/pending';
 $route['orders/view/(:any)'] = 'adminorders/view';
 $route['admin/orders/attachment/(:any)'] = 'adminorders/orders_get_attachment';
 
+$route['admin/assign/(:any)'] = 'adminorders/assign';
 
 $route['admin/mails'] = 'adminmails';
 $route['admin/mail/all'] = 'adminmails';
