@@ -43,18 +43,18 @@
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('seller/'.$user_url.'/home'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('writer/'.$user_url.'/home'); ?>" class="side-nav-link">
                             <i class="uil-home-alt"></i>
                             <span> Home </span>
                         </a>
                     </li>
 
                     <?php 
-                        if ($pag =='questions') {echo '<li class="side-nav-item menuitem-active">';} 
+                        if ($pag =='questions' || $pag =='orders') {echo '<li class="side-nav-item menuitem-active">';} 
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('seller/'.$user_url.'/orders'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('writer/'.$user_url.'/orders'); ?>" class="side-nav-link">
                             <i class="dripicons-folder-open"></i>
                             <span> Orders </span>
                         </a>
@@ -65,7 +65,7 @@
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('seller/'.$user_url.'/sales'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('writer/'.$user_url.'/sales'); ?>" class="side-nav-link">
                             <i class="mdi mdi-google-analytics"></i>
                             <span> Sales </span>
                         </a>
@@ -76,7 +76,7 @@
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('seller/'.$user_url.'/invoices'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('writer/'.$user_url.'/invoices'); ?>" class="side-nav-link">
                             <i class="mdi mdi-credit-card-clock"></i>
                             <span> Invoices </span>
                         </a>
@@ -87,7 +87,7 @@
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('seller/'.$user_url.'/profile'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('writer/'.$user_url.'/profile'); ?>" class="side-nav-link">
                             <i class="uil-user-circle"></i>
                             <span> Profile </span>
                         </a>
@@ -98,7 +98,7 @@
                         else {echo '<li class="side-nav-item">';} 
 
                     ?>
-                        <a href="<?php echo base_url('seller/'.$user_url.'/mails'); ?>" class="side-nav-link">
+                        <a href="<?php echo base_url('writer/'.$user_url.'/mails'); ?>" class="side-nav-link">
                             <i class="uil-envelope"></i>
                             <span> Mails </span>
                         </a>
@@ -171,7 +171,7 @@
                                         <div class="notify-icon bg-info">
                                             <i class="mdi mdi-heart"></i>
                                         </div>
-                                        <p class="notify-details">Reseller/ liked
+                                        <p class="notify-details">Rewriter/ liked
                                             <b>Admin</b>
                                             <small class="text-muted">13 days ago</small>
                                         </p>
@@ -194,7 +194,7 @@
                                 </span>
                                 <span>
                                     <span class="account-user-name"><?php echo ucfirst($user_url);?></span>
-                                    <span class="account-position">Reseller</span>
+                                    <span class="account-position">Rewriter</span>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">

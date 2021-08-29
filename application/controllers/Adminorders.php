@@ -45,6 +45,9 @@ class Adminorders extends CI_Controller {
 
 		$word_id = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(3)));
 		$data['orders_info'] = $this->mod_orders->get_orders_id($word_id);
+		if (empty($data['orders_info'])) {
+			redirect('admin/orders');
+		}
 		$data['user_list'] = $this->mod_users->get_users();
 		$data['assign_list'] = $this->mod_orders->get_assigned_to($word_id);
 

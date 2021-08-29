@@ -130,7 +130,7 @@
                             <!-- comment box -->
                             <div class="border rounded mt-2 mb-3">
 
-                                <form action="<?php echo base_url('seller/'.$user_url.'/add_post'); ?>" method='POST' class="comment-area-box">
+                                <form action="<?php echo base_url('writer/'.$user_url.'/add_post'); ?>" method='POST' class="comment-area-box">
                                     <textarea rows="3" class="form-control border-0 resize-none" placeholder="Write something...." name="new_post"></textarea>
                                     <div class="p-2 bg-light d-flex justify-content-between align-items-center">
                                         <button type="submit" class="btn btn-sm btn-dark waves-effect">Post</button>
@@ -193,7 +193,7 @@
                             <?php 
                                 
                                 echo validation_errors(); 
-                                echo form_open('seller/'.$user_url.'/profile_make'); ?>
+                                echo form_open('writer/'.$user_url.'/profile_make'); ?>
                                 <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Personal Info</h5>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -302,7 +302,7 @@
 
                             <h5 class="mb-3 text-uppercase bg-light p-2"><i class="uil-user-square"></i> Profile Picture</h5>
                             <!-- File Upload -->
-                                <form action="<?php echo base_url('seller/'.$user_url.'/profile_image'); ?>" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
+                                <form action="<?php echo base_url('writer/'.$user_url.'/profile_image'); ?>" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
                                     data-upload-preview-template="#uploadPreviewTemplate" enctype="multipart/form-data">
                                     <div class="fallback">
                                         <input name="file" type="file" />

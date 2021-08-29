@@ -42,27 +42,31 @@ $route['auth/home'] = 'auth/home';
 
 
 
-$route['seller'] = 'reseller';
-$route['seller/(:any)'] = 'reseller';
-$route['seller/(:any)/home'] = 'reseller';
-$route['seller/(:any)/dashboard'] = 'reseller';
+$route['writer'] = 'writer';
+$route['writer/(:any)'] = 'writer';
+$route['writer/(:any)/home'] = 'writer';
+$route['writer/(:any)/dashboard'] = 'writer';
 
-$route['seller/(:any)/orders'] = 'reseller/orders';
-$route['seller/(:any)/orders/pending'] = 'reseller/orders_pending';
-$route['seller/(:any)/orders/completed'] = 'reseller/orders_completed';
-$route['seller/(:any)/orders/view'] = 'reseller/orders_view';
+$route['writer/(:any)/orders'] = 'writer_orders/orders';
+$route['writer/(:any)/orders/pending'] = 'writer_orders/orders_pending';
+$route['writer/(:any)/orders/completed'] = 'writer_orders/orders_completed';
+$route['writer/(:any)/orders/view/(:any)'] = 'writer_orders/orders_view';
+$route['writer/(:any)/orders/attachment/(:any)'] = 'writer_orders/orders_get_attachment/$2';
 
-$route['seller/(:any)/invoices'] = 'reseller/invoices';
-$route['seller/(:any)/sales'] = 'reseller/sales';
-$route['seller/(:any)/mails'] = 'reseller/mails';
-$route['seller/(:any)/mail/read'] = 'reseller/mails_read';
+$route['writer/(:any)/orders/accept/(:any)'] = 'writer_orders/make_accept';
+$route['writer/(:any)/orders/reject/(:any)'] = 'writer_orders/make_accept';
 
-$route['seller/(:any)/profile'] = 'reseller/profile';
-$route['seller/(:any)/profile_make'] = 'reseller/profile_make';
-$route['seller/(:any)/add_post'] = 'reseller/add_post';
-$route['seller/(:any)/profile_image'] = 'reseller/profile_image'; 
-$route['seller/(:any)/send_message/(:any)'] = 'reseller/send_message'; 
-$route['seller/(:any)/user_fetch/(:any)'] = 'reseller/user_fetch'; 
+$route['writer/(:any)/invoices'] = 'writer/invoices';
+$route['writer/(:any)/sales'] = 'writer/sales';
+$route['writer/(:any)/mails'] = 'writer/mails';
+$route['writer/(:any)/mail/read'] = 'writer/mails_read';
+
+$route['writer/(:any)/profile'] = 'writer_profile/profile';
+$route['writer/(:any)/profile_make'] = 'writer_profile/profile_make';
+$route['writer/(:any)/add_post'] = 'writer_profile/add_post';
+$route['writer/(:any)/profile_image'] = 'writer_profile/profile_image'; 
+$route['writer/(:any)/send_message/(:any)'] = 'writer/send_message'; 
+$route['writer/(:any)/user_fetch/(:any)'] = 'writer/user_fetch'; 
 
 $route['buyer/'] = 'client';
 $route['buyer/(:any)'] = 'client';

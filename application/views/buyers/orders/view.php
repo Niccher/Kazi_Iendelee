@@ -190,7 +190,7 @@
                             <?php
                                 $each_file = explode('|__|', $order_info['Order_Attachment']);
                                 for ($i=0; $i < count($each_file); $i++) { 
-                                    $human_size = $this->mod_orders->get_attachment_size(filesize('uploads/temp_orders/'.urldecode($each_file[$i])));
+                                    $human_size = $this->mod_orders->get_attachment_size(filesize('uploads/orders/'.urldecode($each_file[$i])));
 
                                     echo '
                                         <div class="card mb-2 shadow-none border">

@@ -60,7 +60,7 @@
             $path = './uploads/temp_orders/*';
             foreach(glob($path) as $file)  {
                 $this_file = str_replace("./uploads/temp_orders/","",$file);
-                if (str_starts_with($this_file, $p_id)) {
+                if (/*str_starts_with($this_file, $p_id)*/ substr( $this_file, 0, strlen($p_id) ) == $p_id) {
                    $file_list.= "|__|".$this_file;
                 }
             }
@@ -171,6 +171,22 @@
 
         }
 
+        public function get_all_assigned_to($userID){
+            $array = array('Assign_Order =' => $userID);
+            $this->db->where($array);
+            $query = $this->db->get('tbl_Assignments');
+            return $query->result_array();
+
+        }
+
+        public function get_assigned_vars($order_id){
+            $array = array('Assign_Order =' => $order_id);
+            $this->db->where($array);
+            $query = $this->db->get('tbl_Assignments');
+            return $query->row_array();
+
+        }
+
         public function make_assign($assignee, $order_id){
 
             $data = array(
@@ -197,6 +213,16 @@
                 return false;
             }
         } 
+
+        public function get_assigned_update($ass_reply, $order_id){
+
+            $data = array(
+                'Assign_Reply' => $ass_reply,
+                'Assign_Reply_Time' => time(),
+            );
+
+            return $this->db->update('tbl_Assignments', $data, "Assign_Order = ".$order_id);
+        }
 
               
 	}

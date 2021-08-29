@@ -116,6 +116,11 @@ class Client_orders extends CI_Controller {
 
 	    $this->mod_orders->orders_make($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $attachments);
 
+	    $each_file = explode('|__|', $attachments);
+        for ($i=0; $i < count($each_file); $i++) { 
+            rename('./uploads/temp_orders/'.$each_file[$i], './uploads/orders/'.$each_file[$i]);
+        }
+
 	    $head1 ='Order, <b>'.$this->mod_crypt->Dec_String($order_name).'</b>, created succesfully';
             
         $head ='<td class="header-row-td" style="font-family: Arial, sans-serif; font-weight: normal; line-height: 19px; color: #478fca; margin: 0px; font-size: 18px; padding-bottom: 10px; padding-top: 15px;" width="378" valign="top" align="left">'.$head1.'</td>';

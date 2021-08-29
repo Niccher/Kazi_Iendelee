@@ -1,281 +1,289 @@
+<!-- Start Content-->
+<div class="container-fluid">
+    <div class="row">
+        <!-- task details -->
+        <div class="col-xxl-12">
+            <div class="card">
+                <div class="card-body">
 
+                <?php 
+                    $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
+                    $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
+                    $delte_id = urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']));
 
-                    <!-- Start Content-->
-                    <div class="container-fluid">
+                    $assigned = ($this->mod_orders->get_assigned_vars($order_info['Order_Id']));
+                    if ($assigned['Assign_Reply'] == "00") {
+                        $select = '
+                        <a href="'.base_url('writer/'.$user_url.'/orders/accept/'.$delte_id).'">
+                            <button type="button" class="btn btn-primary mb-2"><i class="mdi mdi-progress-check me-1"></i>Accept</button>
+                        </a> 
+                        <a href="'.base_url('writer/'.$user_url.'/orders/reject/'.$delte_id).'">
+                            <button type="button" class="btn btn-danger mb-2"><i class="mdi mdi-progress-close me-1"></i>Reject</button>
+                        </a>
+                        ';
+                    }else{
+                        $select ="";
+                    }
 
-                        <div class="row">
-                            <div class="col-xxl-8">
-                                <!-- start page title -->
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <div class="app-search">
-                                            <form>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="Search..." />
-                                                    <span class="mdi mdi-magnify search-icon"></span>
-                                                    <button class="input-group-text btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        <i class='uil uil-sort-amount-down'></i>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="apps-tasks.html#">Due Date</a>
-                                                        <a class="dropdown-item" href="apps-tasks.html#">Added Date</a>
-                                                        <a class="dropdown-item" href="apps-tasks.html#">Assignee</a>
-                                                    </div>
-                                                </div>
-                                            </form>
+                    //print_r($assigned);
+                ?>
+
+                    <div class="row">
+                        <div class="row mb-2">
+                            <div class="col-xl-6"></div>
+                            <div class="col-xl-6">
+                                <div class="text-xl-end mt-xl-0 mt-2">
+                                    <div class="text-sm-end">
+                                        <a href="<?php echo base_url('writer/'.$user_url.'/orders');?>">
+                                            <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-keyboard-backspace me-1"></i>Back</button>
+                                        </a>
+                                        <?php echo $select; ?>
+                                    </div>
+                                </div>
+                            </div><!-- end col-->
+                        </div>
+                    </div>
+                    <!-- end row-->
+
+                    <div class="row">
+                        <div class="col">
+
+                            <?php 
+                                $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
+                                $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
+                            ?>
+
+                            <h4><?php echo ucfirst($this->mod_crypt->Dec_String($order_info['Order_Name'])); ?></h4>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <!-- assignee -->
+                                    <p class="mt-2 mb-1 text-muted">Assigned To</p>
+                                    <div class="d-flex">
+                                        <img src="<?php echo '../../../../uploads/profiles/'.$user_info->Avatar;?>" class="rounded-circle me-2" height="24" />
+                                            <h5 class="mt-1 font-14">
+                                                <?php echo ucfirst($this->mod_crypt->Dec_String($user_info->Name));?>
+                                            </h5>
+                                    </div>
+                                </div> <!-- end col -->
+
+                                <div class="col-4">
+                                    <!-- start due date -->
+                                    <p class="mt-2 mb-1 text-muted">Started</p>
+                                    <div class="d-flex">
+                                        <i class='uil uil-schedule font-18 text-success me-1'></i>
+                                        <div>
+                                            <h5 class="mt-1 font-14">
+                                                <?php echo date('F d Y H:i:s A', $order_info['Order_Created']); ?>
+                                            </h5>
                                         </div>
                                     </div>
-                                    <h4 class="page-title">Order # </h4>
                                 </div>
-                                <!-- end page title -->
-                            </div> <!-- end col -->
 
-                            <!-- task details -->
-                            <div class="col-xxl-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="dropdown card-widgets">
-                                            <a href="apps-tasks.html#" class="dropdown-toggle arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class='uil uil-ellipsis-h'></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <i class='uil uil-file-upload me-1'></i>Attachment
-                                                </a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <i class='uil uil-edit me-1'></i>Edit
-                                                </a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <i class='uil uil-file-copy-alt me-1'></i>Mark as Duplicate
-                                                </a>
-                                                <div class="dropdown-divider"></div>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item text-danger">
-                                                    <i class='uil uil-trash-alt me-1'></i>Delete
-                                                </a>
-                                            </div> <!-- end dropdown menu-->
-                                        </div> <!-- end dropdown-->
-                                        
-                                        <div class="form-check float-start">
-                                            <input type="checkbox" class="form-check-input" id="completedCheck">
-                                            <label class="form-check-label" for="completedCheck">
-                                                Mark as completed
-                                            </label>
-                                        </div> <!-- end form-check-->
+                                <div class="col-4">
+                                    <!-- start due date -->
+                                    <p class="mt-2 mb-1 text-muted">Due Date</p>
+                                    <div class="d-flex">
+                                        <i class='uil uil-schedule font-18 text-success me-1'></i>
+                                        <div>
+                                            <h5 class="mt-1 font-14">
+                                                <?php echo ($order_info['Order_Deadline']); ?>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                        <hr class="mt-4 mb-2" />
+                            </div> <!-- end row -->
 
-                                        <div class="row">
-                                            <div class="col">
+                            <div class="row">
+                                <div class="col-3">
+                                    <!-- start due date -->
+                                    <p class="mt-2 mb-1 text-muted">Pages</p>
+                                    <div class="d-flex">
+                                        <i class='mdi mdi-book-open-page-variant font-18 text-success me-1'></i>
+                                        <div>
+                                            <h5 class="mt-1 font-14">
+                                                <?php echo $this->mod_crypt->Dec_String($order_info['Order_Pages']); ?>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                                <h4>The real order name here</h4>
+                                <div class="col-3">
+                                    <!-- start due date -->
+                                    <p class="mt-2 mb-1 text-muted">Words</p>
+                                    <div class="d-flex">
+                                        <i class='uil uil-schedule font-18 text-success me-1'></i>
+                                        <div>
+                                            <h5 class="mt-1 font-14">
+                                                <?php echo $this->mod_crypt->Dec_String($order_info['Order_Words']); ?>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <!-- assignee -->
-                                                        <p class="mt-2 mb-1 text-muted">Assigned To</p>
-                                                        <div class="d-flex">
-                                                            <img src="<?php echo base_url('assets/images/users/avatar-9.jpg');?>" alt="Arya S" class="rounded-circle me-2" height="24" />
-                                                            <div>
-                                                                <h5 class="mt-1 font-14">
-                                                                    Client Name
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <!-- end assignee -->
-                                                    </div> <!-- end col -->
+                                <div class="col-3">
+                                    <!-- start due date -->
+                                    <p class="mt-2 mb-1 text-muted">Citation</p>
+                                    <div class="d-flex">
+                                        <i class='mdi mdi-format-quote-close-outline font-18 text-success me-1'></i>
+                                        <div>
+                                            <h5 class="mt-1 font-14">
+                                                <?php echo str_replace("task_cite_", "", $this->mod_crypt->Dec_String($order_info['Order_Cite'])); ?>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                                    <div class="col-6">
-                                                        <!-- start due date -->
-                                                        <p class="mt-2 mb-1 text-muted">Due Date</p>
-                                                        <div class="d-flex">
-                                                            <i class='uil uil-schedule font-18 text-success me-1'></i>
-                                                            <div>
-                                                                <h5 class="mt-1 font-14">
-                                                                    Today 10am
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <!-- end due date -->
-                                                    </div> <!-- end col -->
-                                                </div> <!-- end row -->
+                                <div class="col-3">
+                                    <!-- start due date -->
+                                    <p class="mt-2 mb-1 text-muted">Level</p>
+                                    <div class="d-flex">
+                                        <i class='mdi mdi-home-group font-18 text-success me-1'></i>
+                                        <div>
+                                            <h5 class="mt-1 font-14">
+                                                <?php echo ucfirst(str_replace("task_level_", "", $this->mod_crypt->Dec_String($order_info['Order_Level']))); ?>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                                                <!-- task description -->
-                                                <div class="row mt-3">
-                                                    <div class="col">
-                                                        <div class="border rounded">
-                                                            <div id="bubble-editor" style="height: 130px;">
-                                                                <h3>This is an order description area.</h3>
-                                                                <ul>
-                                                                    <li>
-                                                                        Select a text to reveal the toolbar.
-                                                                    </li>
-                                                                    <li>
-                                                                        Edit rich document on-the-fly, so elastic!
-                                                                    </li>
-                                                                </ul>
-                                                                <p>
-                                                                    End of simple area
-                                                                </p>
-                                                            </div> <!-- end Snow-editor-->
-                                                        </div>
-                                                    </div> <!-- end col -->
-                                                </div>
-                                                <!-- end task description -->
+                            <!-- task description -->
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <div class="border rounded">
+                                        <div>
+                                            <h3>Order Description.</h3>
+                                            <ul>
+                                                <li>
+                                                    <?php echo $this->mod_crypt->Dec_String($order_info['Order_Body']); ?>
+                                                </li>
+                                            </ul>
+                                        </div> <!-- end Snow-editor-->
+                                    </div>
+                                </div> <!-- end col -->
+                            </div>
+                            <!-- end task description -->
 
-                                                <!-- start sub tasks/checklists -->
-                                                <h5 class="mt-4 mb-2 font-16">Checklists/Sub-tasks</h5>
-                                                <div class="form-check mt-1">
-                                                    <input type="checkbox" class="form-check-input" id="checklist1">
-                                                    <label class="form-check-label strikethrough" for="checklist1">
-                                                        Find out the old contract documents
-                                                    </label>
-                                                </div>
+                            <!-- start attachments -->
+                            <h5 class="mt-4 mb-2 font-16">Attachments</h5>
 
-                                                <div class="form-check mt-1">
-                                                    <input type="checkbox" class="form-check-input" id="checklist2">
-                                                    <label class="form-check-label strikethrough" for="checklist2">
-                                                        Organize meeting sales associates to understand need in detail
-                                                    </label>
-                                                </div>
+                            <?php
+                                $each_file = explode('|__|', $order_info['Order_Attachment']);
+                                for ($i=0; $i < count($each_file); $i++) { 
+                                    $human_size = $this->mod_orders->get_attachment_size(filesize('uploads/orders/'.urldecode($each_file[$i])));
 
-                                                <div class="form-check mt-1">
-                                                    <input type="checkbox" class="form-check-input" id="checklist3">
-                                                    <label class="form-check-label strikethrough" for="checklist3">
-                                                        Make sure to cover every small details
-                                                    </label>
-                                                </div>
-                                                <!-- end sub tasks/checklists -->
-
-                                                <!-- start attachments -->
-                                                <h5 class="mt-4 mb-2 font-16">Attachments</h5>
-                                                <div class="card mb-2 shadow-none border">
-                                                    <div class="p-1">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-auto">
-                                                                <div class="avatar-sm">
-                                                                    <span class="avatar-title rounded">
-                                                                        .ZIP
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col ps-0">
-                                                                <a href="javascript:void(0);" class="text-muted fw-bold">sales-assets.zip</a>
-                                                                <p class="mb-0">2.3 MB</p>
-                                                            </div>
-                                                            <div class="col-auto" id="tooltip-container9">
-                                                                <!-- Button -->
-                                                                <a href="javascript:void(0);" data-bs-container="#tooltip-container9" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Download"
-                                                                    class="btn btn-link text-muted btn-lg p-0">
-                                                                    <i class='uil uil-cloud-download'></i>
-                                                                </a>
-                                                                <a href="javascript:void(0);" data-bs-container="#tooltip-container9" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"
-                                                                    class="btn btn-link text-danger btn-lg p-0">
-                                                                    <i class='uil uil-multiply'></i>
-                                                                </a>
-                                                            </div>
+                                    echo '
+                                        <div class="card mb-2 shadow-none border">
+                                            <div class="p-1">
+                                                <div class="row align-items-center">
+                                                    <div class="col-auto">
+                                                        <div class="avatar-sm">
+                                                            <span class="avatar-title rounded">
+                                                                .'.pathinfo($each_file[$i], PATHINFO_EXTENSION).'
+                                                            </span>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="card mb-2 shadow-none border">
-                                                    <div class="p-1">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-auto">
-                                                                <img src="<?php echo base_url('assets/images/projects/project-1.jpg');?>"
-                                                                    class="avatar-sm rounded" alt="file-image">
-                                                            </div>
-                                                            <div class="col ps-0">
-                                                                <a href="javascript:void(0);" class="text-muted fw-bold">new-contarcts.docx</a>
-                                                                <p class="mb-0">1.25 MB</p>
-                                                            </div>
-                                                            <div class="col-auto" id="tooltip-container10">
-                                                                <!-- Button -->
-                                                                <a href="javascript:void(0);" data-bs-container="#tooltip-container10" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Download"
-                                                                    class="btn btn-link text-muted btn-lg p-0">
-                                                                    <i class='uil uil-cloud-download'></i>
-                                                                </a>
-                                                                <a href="javascript:void(0);" data-bs-container="#tooltip-container10" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"
-                                                                    class="btn btn-link text-danger btn-lg p-0">
-                                                                    <i class='uil uil-multiply'></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
+                                                    <div class="col ps-0">
+                                                        <a href="'.base_url('writer/'.$user_url.'/orders/attachment/'.$each_file[$i]).'" class="text-muted fw-bold">'.$each_file[$i].'</a>
+                                                        <p class="mb-0">'.$human_size.'</p>
+                                                    </div>
+                                                    <div class="col-auto" id="tooltip-container9">
+                                                        <!-- Button -->
+                                                        <a href="'.base_url('writer/'.$user_url.'/orders/attachment/'.$each_file[$i]).'" target="_blank"
+                                                            class="btn btn-link text-muted btn-lg p-0">
+                                                            <i class="uil uil-cloud-download"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
-                                                <!-- end attachments -->
+                                            </div>
+                                        </div>
+                                            ';
 
-                                                <!-- comments -->
-                                                <div class="row mt-3">
-                                                    <div class="col">
-                                                        <h5 class="mb-2 font-16">Comments</h5>
+                                }
+                                if ($order_info['Order_Attachment'] == "") {
+                                    echo 'No attachment';
+                                }
+                            ?>
+                            <!-- end attachments -->
 
-                                                        <div class="d-flex mt-3 p-1">
-                                                            <img src="<?php echo base_url('assets/images/users/avatar-9.jpg');?>" class="me-2 rounded-circle"
-                                                                height="36" alt="Arya Stark" />
-                                                            <div class="w-100">
-                                                                <h5 class="mt-0 mb-0">
-                                                                    <span class="float-end text-muted font-12">4:30am</span>
-                                                                    Client
-                                                                </h5>
-                                                                <p class="mt-1 mb-0 text-muted">
-                                                                    Should I review the last 3 years legal documents as well?
-                                                                </p>
-                                                            </div>
-                                                        </div> <!-- end comment -->
-
-                                                        <hr />
-
-                                                        <div class="d-flex mt-2 p-1">
-                                                            <img src="<?php echo base_url('assets/images/users/avatar-5.jpg');?>"
-                                                                class="me-2 rounded-circle" height="36" alt="Dominc B" />
-                                                            <div class="w-100">
-                                                                <h5 class="mt-0 mb-0">
-                                                                    <span class="float-end text-muted font-12">3:30am</span>
-                                                                    Me
-                                                                </h5>
-                                                                <p class="mt-1 mb-0 text-muted">
-                                                                    have created some general guidelines last year.
-                                                                </p>
-                                                            </div>
-                                                        </div> <!-- end comment-->
-
-                                                        <hr />
-
-                                                    </div> <!-- end col -->
-                                                </div> <!-- end row -->
-
-                                                <div class="row mt-2">
-                                                    <div class="col">
-                                                        <div class="border rounded">
-                                                            <form action="apps-tasks.html#" class="comment-area-box">
-                                                                <textarea rows="3" class="form-control border-0 resize-none"
-                                                                placeholder="Your comment..."></textarea>
-                                                                <div class="p-2 bg-light">
-                                                                    <div class="float-end">
-                                                                        <button type="submit" class="btn btn-sm btn-success"><i class='uil uil-message me-1'></i>Submit</button>
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="apps-tasks.html#" class="btn btn-sm px-1 btn-light"><i class='uil uil-cloud-upload'></i></a>
-                                                                        <a href="apps-tasks.html#" class="btn btn-sm px-1 btn-light"><i class='uil uil-at'></i></a>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div> <!-- end .border-->
-                                                    </div> <!-- end col-->
-                                                </div> <!-- end row-->
-                                                <!-- end comments -->
-                                            </div> <!-- end col -->
-                                        </div> <!-- end row-->
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card-->
-                            </div> <!-- end col -->
+                            <!-- comments -->
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <h5 class="mb-2 font-16">Comments</h5>
+                                    <div class="comment_section" id="comment_section">
+<?php
+        foreach ($order_chats as $order_chat) {
+            if ($order_chat['Sender'] == $user_info->Person_ID) {
+                $img = base_url('uploads/profiles/'.$user_info->Avatar);
+                echo '
+                    <div class="d-flex mt-3 p-1">
+                        <img src="'.$img.'" class="me-2 rounded-circle" height="36" />
+                        <div class="w-100">
+                            <h5 class="mt-0 mb-0">
+                                <span class="float-end text-muted font-12">'.date('H:i:s A',$order_chat['Sent']).'</span>
+                                '.$this->mod_crypt->Dec_String($user_info->Name).'
+                            </h5>
+                            <p class="mt-1 mb-0 text-muted">
+                                '.$this->mod_crypt->Dec_String($order_chat['Message']).'
+                            </p>
                         </div>
-                        <!-- end row-->
+                    </div>
+                    <hr>
+                ';
+            }else{
+                echo '
+                    <div class="d-flex mt-3 p-1">
+                        <img src="" class="me-2 rounded-circle" height="36" />
+                        <div class="w-100">
+                            <h5 class="mt-0 mb-0">
+                                <span class="float-end text-muted font-12">'.date('H:i:s A',$order_chat['Sent']).'</span>
+                                '.$order_chat['Sender'].'
+                            </h5>
+                            <p class="mt-1 mb-0 text-muted">
+                                '.$this->mod_crypt->Dec_String($order_chat['Message']).'
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                ';
+            }
+        }
+    ?>
+                                    </div>
 
-                    </div> <!-- container -->
+                                </div>
+                            </div>
 
-                </div> <!-- content -->
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <div class="border rounded">
+                                        <form action="<?php echo base_url('buyer/'.$user_url.'/orders/convo/'.urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']))); ?>" method="POST" class="comment-area-box">
+                                            <textarea rows="3" class="form-control border-0 resize-none"
+                                            placeholder="Your comment..." id="convo_msg"></textarea>
+                                            <div class="p-2 bg-light">
+                                                <div class="float-end">
+                                                    <button type="button" id="convo_send" class="btn btn-sm btn-success"><i class='uil uil-message me-1'></i>Submit</button>
+                                                </div>
+                                                <div>
+                                                    <a href="#" class="btn btn-sm px-1 btn-light"><i class='uil uil-cloud-upload'></i></a>
+                                                    <a href="#" class="btn btn-sm px-1 btn-light"><i class='uil uil-at'></i></a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div> 
+                            </div>
+
+
+                            <!-- end comments -->
+                        </div> <!-- end col -->
+                    </div> <!-- end row-->
+                </div> <!-- end card-body -->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row-->
+
+</div> <!-- container -->

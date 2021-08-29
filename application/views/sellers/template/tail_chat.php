@@ -59,14 +59,14 @@
                 }else{
                 	console.log('Message as '+msg_body);
                     $.ajax({
-                        url: '<?php echo base_url("seller/".$user_url."/send_message/"); ?>'+user_id,
+                        url: '<?php echo base_url("writer/".$user_url."/send_message/"); ?>'+user_id,
                         type: 'POST',
                         data: { msg_content:msg_body},
                         success: function(response){
                             if(response == 11){
                                 $("#reseller_msg_box").val("")
                                 $.ajax({
-                                    url: '<?php echo base_url("seller/".$user_url."/user_fetch/"); ?>'+user_id,
+                                    url: '<?php echo base_url("writer/".$user_url."/user_fetch/"); ?>'+user_id,
                                     type: 'GET',
                                     success: function(response){
                                         if(response == 1){
@@ -88,7 +88,7 @@
 
             function sendRequest(){
                 $.ajax({ 
-                    url: '<?php echo base_url("seller/".$user_url."/user_fetch/"); ?>'+user_id,
+                    url: '<?php echo base_url("writer/".$user_url."/user_fetch/"); ?>'+user_id,
                     type: 'POST',
                     data: { msg_content:"Hello"},
                     success: function(response){

@@ -46,7 +46,7 @@ class Auth extends CI_Controller {
                 	redirect('admin');
                 }
                 if($user_type == 'cat_Reseller'){
-                	redirect('seller');
+                	redirect('writer');
                 }
                 if($user_type == 'cat_Buyer'){
                 	redirect('client');

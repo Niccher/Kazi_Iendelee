@@ -166,7 +166,7 @@
 
                                 <div class="dz-message needsclick">
                                     <i class="h1 text-muted dripicons-cloud-upload"></i>
-                                    <h3>Upload your new profile picture.</h3>
+                                    <h3>Upload your attachments.</h3>
                                 </div>
                             </form>
                             <!-- Preview -->
