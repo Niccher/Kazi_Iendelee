@@ -11,13 +11,14 @@ class Writer extends CI_Controller {
         }
 
 		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		$data['assigned'] = $this->mod_orders->get_all_assigned_to($this->session->userdata('log_id'));
 		
 		$titl['pag'] = 'home';
 		$titl['urls'] = $data['user_info']->Name;
-		
+
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);
-		$this->load->view('sellers/'.$page);
+		$this->load->view('sellers/'.$page, $data);
 		$this->load->view('sellers/template/tail');
 	}
 

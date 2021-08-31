@@ -130,4 +130,21 @@ class Writer_orders extends CI_Controller {
 	    redirect('writer/'.$user_url.'/profile');
 	}
 
+	public function orders_get_attachment() {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Reseller") {
+            redirect('auth/login');
+        }
+		
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		$person_id = $data['user_info']->Person_ID;
+
+
+		$filename = urldecode($this->uri->segment(5));
+		$filepath = 'uploads/orders/'.$filename;
+		force_download($filepath, NULL);
+
+	}
+
 }

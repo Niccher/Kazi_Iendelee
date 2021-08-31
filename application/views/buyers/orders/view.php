@@ -204,7 +204,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col ps-0">
-                                                        <a href="'.base_url('admin/orders/attachment/'.$each_file[$i]).'" class="text-muted fw-bold">'.$each_file[$i].'</a>
+                                                        <a href="'.base_url('buyer/'.$user_url.'/orders/attachment/'.$each_file[$i]).'" class="text-muted fw-bold">'.$each_file[$i].'</a>
                                                         <p class="mb-0">'.$human_size.'</p>
                                                     </div>
                                                     <div class="col-auto" id="tooltip-container9">

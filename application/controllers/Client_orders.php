@@ -135,6 +135,8 @@ class Client_orders extends CI_Controller {
 
 	    $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($data['user_info']->Name))); 
 
+	    //buyer/(:any)/orders/pay/(:any)
+
 	    redirect('buyer/'.$user_url.'/orders');
 
 	}
@@ -181,9 +183,8 @@ class Client_orders extends CI_Controller {
 		$person_id = $data['user_info']->Person_ID;
 
 
-		echo $filename = urldecode($this->uri->segment(5));
-		echo '<br>';
-		echo $filepath = 'uploads/temp_orders/'.$filename;
+		$filename = urldecode($this->uri->segment(5));
+		$filepath = 'uploads/orders/'.$filename;
 		force_download($filepath, NULL);
 
 	}
