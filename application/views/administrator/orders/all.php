@@ -24,19 +24,15 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row mb-2">
-                        <div class="col-xl-8">
-                            <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
-                                <div class="col-auto">
-                                    <label for="inputPassword2" class="visually-hidden">Search</label>
-                                    <input type="search" class="form-control" id="inputPassword2" placeholder="Search...">
-                                </div>
-                            </form>                            
-                        </div>
-                        <div class="col-xl-4">
+                        <div class="col-xl-6"></div>
+                        <div class="col-xl-6">
                             <div class="text-xl-end mt-xl-0 mt-2">
                             	<div class="text-sm-end">
                                     <a href="<?php echo base_url('admin/orders');?>">
                                         <button type="button" class="btn btn-success mb-2 me-1">All</button>
+                                    </a>
+                                    <a href="<?php echo base_url('admin/orders/create');?>">
+                                        <button type="button" class="btn btn-info mb-2 me-1">Create</button>
                                     </a>
                                     <a href="<?php echo base_url('orders/pending');?>">
                                         <button type="button" class="btn btn-light mb-2">Pending</button>

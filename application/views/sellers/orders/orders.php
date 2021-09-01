@@ -22,6 +22,24 @@
                             $all = count($assigned);
                             $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
                             $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
+
+
+                            $all_cost = 0; $all_paid = 0; $all_completed = 0;
+
+                            foreach ($assigned as $orders) {
+                                $order_info = $this->mod_orders->get_orders_id($orders['Assign_Order']);
+                                $all_cost.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
+                                if ($order_info['Order_Status'] == "Completed") {
+                                    $all_paid.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
+                                    $all_completed++;
+                                }
+                            }
+
+                            if ($all < 5) {
+                                $last_five = $assigned;
+                            }else{
+                                $last_five = array_slice($assigned,-5,5);
+                            }
                         ?>
 
                         <div class="row">
@@ -43,7 +61,7 @@
                                                 <div class="card shadow-none m-0 border-start">
                                                     <div class="card-body text-center">
                                                         <i class="dripicons-checklist text-muted" style="font-size: 24px;"></i>
-                                                        <h3><span>715</span></h3>
+                                                        <h3><span><?php echo $all_completed;?></span></h3>
                                                         <p class="text-muted font-15 mb-0">Completed Orders</p>
                                                     </div>
                                                 </div>
@@ -54,7 +72,7 @@
                                                     <div class="card-body text-center">
                                                         <i class="dripicons-user-group text-muted" style="font-size: 24px;"></i>
                                                         <h3><span>31</span></h3>
-                                                        <p class="text-muted font-15 mb-0">Clients</p>
+                                                        <p class="text-muted font-15 mb-0">Approved</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -64,7 +82,7 @@
                                                     <div class="card-body text-center">
                                                         <i class="dripicons-graph-line text-muted" style="font-size: 24px;"></i>
                                                         <h3><span>93%</span> <i class="mdi mdi-arrow-up text-success"></i></h3>
-                                                        <p class="text-muted font-15 mb-0">Productivity</p>
+                                                        <p class="text-muted font-15 mb-0">Rejected</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -96,45 +114,8 @@
                                     </div>
                                 </div><!-- end col-->
                             </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title mb-4">Orders Status</h4>
 
-                                        <div class="my-4 chartjs-chart" style="height: 202px;">
-                                            <canvas id="project-status-chart" data-colors="#0acf97,#727cf5,#fa5c7c"></canvas>
-                                        </div>
-
-                                        <div class="row text-center mt-2 py-2">
-                                            <div class="col-4">
-                                                <i class="mdi mdi-trending-up text-success mt-3 h3"></i>
-                                                <h3 class="fw-normal">
-                                                    <span>64%</span>
-                                                </h3>
-                                                <p class="text-muted mb-0">Completed</p>
-                                            </div>
-                                            <div class="col-4">
-                                                <i class="mdi mdi-trending-down text-primary mt-3 h3"></i>
-                                                <h3 class="fw-normal">
-                                                    <span>26%</span>
-                                                </h3>
-                                                <p class="text-muted mb-0"> In-progress</p>
-                                            </div>
-                                            <div class="col-4">
-                                                <i class="mdi mdi-trending-down text-danger mt-3 h3"></i>
-                                                <h3 class="fw-normal">
-                                                    <span>10%</span>
-                                                </h3>
-                                                <p class="text-muted mb-0"> Behind</p>
-                                            </div>
-                                        </div>
-                                        <!-- end row-->
-
-                                    </div> <!-- end card body-->
-                                </div> <!-- end card -->
-                            </div><!-- end col-->
-
-                            <div class="col-lg-8">
+                            <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="header-title mb-3"> My Orders</h4>

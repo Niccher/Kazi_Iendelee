@@ -25,8 +25,8 @@
                                 echo form_open('auth/register'); ?>
 
                                     <div class="mb-3">
-                                        <label for="fullname" class="form-label">Full Name</label>
-                                        <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required name="rg_as_fn">
+                                        <label for="fullname" class="form-label">Username</label>
+                                        <input class="form-control" type="text" id="fullname" placeholder="Enter your username" required name="rg_as_fn">
                                     </div>
 
                                     <div class="mb-3">
@@ -50,7 +50,7 @@
                                         <div class="input-group input-group-merge">
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" name="cat_usertype" value="cat_Reseller">
-                                                <label class="form-check-label">Reseller.</label>
+                                                <label class="form-check-label">Writer.</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" name="cat_usertype" value="cat_Buyer">
@@ -61,7 +61,7 @@
 
                                     <div class="mb-3">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox-signup">
+                                            <input type="checkbox" class="form-check-input" id="checkbox-signup" checked="" disabled="">
                                             <label class="form-check-label" for="checkbox-signup">I accept <a href="<?php echo base_url('auth/register'); ?>" class="text-muted">Terms and Conditions</a></label>
                                         </div>
                                     </div>

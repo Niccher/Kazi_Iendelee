@@ -208,9 +208,9 @@
                     <h5 class="card-title mb-3">Attachments</h5>
 
                     <?php
-                        $each_file = explode('|||', $orders_info['Order_Attachment']);
+                        $each_file = explode('|__|', $orders_info['Order_Attachment']);
                         for ($i=0; $i < count($each_file)-1; $i++) { 
-                            $human_size = $this->mod_orders->get_attachment_size(filesize('uploads/temp_orders/'.urldecode($each_file[$i])));
+                            $human_size = $this->mod_orders->get_attachment_size(filesize('uploads/orders/'.urldecode($each_file[$i])));
 
                             echo '
                                 <div class="card mb-2 shadow-none border">
@@ -242,32 +242,6 @@
                         }
                     ?>
 
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title mb-3">Submitted Files</h5>
-
-                    <div class="card mb-1 shadow-none border">
-                        <div class="p-2">
-                            <div class="row align-items-center">
-                                <div class="col-auto">
-                                    <img src="<?php echo base_url('assets/images/projects/project-1.jpg');?>" class="avatar-sm rounded" alt="file-image" />
-                                </div>
-                                <div class="col ps-0">
-                                    <a href="javascript:void(0);" class="text-muted fw-bold">Dashboard-design.jpg</a>
-                                    <p class="mb-0">3.25 MB</p>
-                                </div>
-                                <div class="col-auto">
-                                    <!-- Button -->
-                                    <a href="javascript:void(0);" class="btn btn-link btn-lg text-muted">
-                                        <i class="dripicons-download"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 

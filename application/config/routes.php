@@ -17,10 +17,16 @@ $route['admin/user_fetch/(:any)'] = 'adminusers/user_fetch/$1';
 $route['admin/user_prof/(:any)'] = 'adminusers/view_profile/$1';
 
 $route['admin/orders'] = 'adminorders';
+$route['admin/orders/create'] = 'adminorders/orders_create';
+$route['admin/orders/make'] = 'adminorders/orders_make';
 $route['orders/completed'] = 'adminorders/completed';
 $route['orders/pending'] = 'adminorders/pending';
 $route['orders/view/(:any)'] = 'adminorders/view';
 $route['admin/orders/attachment/(:any)'] = 'adminorders/orders_get_attachment';
+$route['admin/orders_make_attachment'] = 'adminorders/orders_make_attachment';
+$route['admin/fetch_attachment_ui'] = 'adminorders/orders_make_attachment_ui';
+$route['admin/attachment_delete/(:any)'] = 'adminorders/orders_attachment_delete/$1';
+//admin/orders_make_attachment
 
 $route['admin/assign/(:any)'] = 'adminorders/assign';
 

@@ -30,7 +30,10 @@
                             <a class="nav-link" href="#">Clients</a>
                         </li>
                         <li class="nav-item mx-lg-1">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="#">Blogs</a>
+                        </li>
+                        <li class="nav-item mx-lg-1">
+                            <a class="nav-link" href="#">Contact Us</a>
                         </li>
                     </ul>
 

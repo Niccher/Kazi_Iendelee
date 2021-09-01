@@ -166,10 +166,7 @@ class Client_orders extends CI_Controller {
             $this->mod_orders->order_temp_upload($person_id, $newfilename);
             move_uploaded_file($tempFile, "uploads/temp_orders/" . $newfilename);
         }
-
-        //echo $this->mod_orders->order_get_attachments();
-        echo date('d-M-Y',strtotime("+1 week"));
-
+        echo "Uploaded";
 	}
 
 	public function orders_get_attachment() {

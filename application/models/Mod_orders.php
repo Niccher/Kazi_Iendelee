@@ -69,6 +69,24 @@
 
         }
 
+        public function order_get_attachments_admin(){
+            $p_id = "admin__";
+
+            $file_list = "";
+            $this_file = "";
+
+            $path = './uploads/temp_orders/*';
+            foreach(glob($path) as $file)  {
+                $this_file = str_replace("./uploads/temp_orders/","",$file);
+                if (/*str_starts_with($this_file, $p_id)*/ substr( $this_file, 0, strlen($p_id) ) == $p_id) {
+                   $file_list.= "|__|".$this_file;
+                }
+            }
+
+            return $file_list;
+
+        }
+
         public function orders_make($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $order_attachments){
 
             $data = array(
@@ -81,6 +99,30 @@
                 'Order_Status' => "Inactive",
                 'Order_Paid' => '00',
                 'Order_Owner' => $this->session->userdata('log_id'),
+                'Order_Assigned' => '00',
+                'Order_Accepted' => '00',
+                'Order_Created' => time(),
+                'Order_Deadline' => $order_date,
+                'Order_Cite' => $order_cite,
+                'Order_Level' => $order_level,
+                'Order_Cost' => $order_cost,
+            );
+
+            return $this->db->insert('tbl_Orders ', $data);
+        }
+
+        public function orders_make_admin($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $order_attachments){
+
+            $data = array(
+                'Order_Name' => $order_name,
+                'Order_Body' => $order_desc,
+                'Order_Pages' => $order_page,
+                'Order_Words' => $order_word,
+                'Order_Comment' => $order_info,
+                'Order_Attachment' => $order_attachments,
+                'Order_Status' => "Inactive",
+                'Order_Paid' => '00',
+                'Order_Owner' => "Admin",
                 'Order_Assigned' => '00',
                 'Order_Accepted' => '00',
                 'Order_Created' => time(),

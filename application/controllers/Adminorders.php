@@ -101,4 +101,105 @@ class Adminorders extends CI_Controller {
 		redirect('orders/view/'.$this->uri->segment(3));
 	}
 
+
+	public function orders_create($page = 'create') {
+			
+		$titl['pag'] = 'orders';
+
+		$this->load->view('administrator/template/header');
+		$this->load->view('administrator/template/sidebar', $titl);
+		$this->load->view('administrator/orders/'.$page);
+		$this->load->view('administrator/template/tail_add_order');
+	}
+
+	public function orders_make() {
+
+		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+
+		$order_name = $this->mod_crypt->Enc_String(trim($this->input->post('order_name')));
+	    $order_desc = $this->mod_crypt->Enc_String(trim($this->input->post('order_desc')));
+	    $order_page = $this->mod_crypt->Enc_String(trim($this->input->post('order_page')));
+	    $order_word = $this->mod_crypt->Enc_String(trim($this->input->post('order_word')));
+	    $order_level = $this->mod_crypt->Enc_String(trim($this->input->post('order_level')));
+	    $order_cite = $this->mod_crypt->Enc_String(trim($this->input->post('order_cite')));
+	    $order_date = $this->mod_crypt->Enc_String(trim($this->input->post('order_date')));
+	    $order_info = $this->mod_crypt->Enc_String(trim($this->input->post('order_comment')));
+	    $order_cost = $this->mod_crypt->Enc_String(trim($this->input->post('order_price')));
+
+	    $attachments = $this->mod_orders->order_get_attachments_admin();
+
+	    if ($order_date == "") {
+	    	$order_date = date('d-M-Y',strtotime("+1 week"));
+	    }
+
+	    $this->mod_orders->orders_make_admin($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $attachments);
+
+	    $each_file = explode('|__|', $attachments);
+        for ($i=0; $i < count($each_file); $i++) { 
+            rename('./uploads/temp_orders/'.$each_file[$i], './uploads/orders/'.$each_file[$i]);
+        }
+
+	    redirect('admin/orders');
+
+	}
+
+	public function orders_make_attachment() {
+
+		$person_id = "admin";
+		print_r(empty($_FILES));
+
+		if (!empty($_FILES) ) {
+             
+            $tempFile = $_FILES['file']['tmp_name'];
+            $realFile = $_FILES['file']['name'];
+
+            $ext = strtolower(pathinfo($realFile, PATHINFO_EXTENSION));
+
+            $old_name = $_FILES['file']['name'];
+            $new_name = preg_replace('/[^A-Za-z0-9.]/', '_', $old_name);
+
+            $code = substr(time(), -7);
+            $newfilename = $person_id."__".$code."_".$new_name;
+               
+            $this->mod_orders->order_temp_upload($person_id, $newfilename);
+            move_uploaded_file($tempFile, "uploads/temp_orders/" . $newfilename);
+            echo "File sent";
+        }else{
+        	echo "File not sent";
+        }
+
+	}
+
+	public function orders_make_attachment_ui() {
+
+		$each_file = explode("|__|", $this->mod_orders->order_get_attachments_admin());
+        $fina_file_list='';
+
+        $fina_file_list.='
+            <div class="mb-3 position-relative">
+                <div class="text-start">';
+
+        for ($i=1; $i < count($each_file); $i++) { 
+            $fina_file_list.= '
+                <p class="text-muted mb-0">
+                    <strong>'.$each_file[$i].' </strong>
+                    <span class="text-danger mdi mdi-trash-can delete_attach_file_" id="delete_attach_file_'.$each_file[$i].'"></span>
+                </p>';
+        }
+
+        $fina_file_list.= '
+                </div>
+            </div>';
+
+        echo $fina_file_list;
+
+	}
+
+	public function orders_attachment_delete($fileid) {
+        $file = explode("delete_attach_file_", $fileid);
+        echo "file at -> ".$file[1];
+        unlink('uploads/temp_orders/'.$file[1]);
+
+	}
+
 }

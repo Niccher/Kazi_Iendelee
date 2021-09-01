@@ -32,7 +32,6 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <a href="pages-recoverpw.html" class="text-muted float-end"><small>Forgot your password?</small></a>
                                         <label for="password" class="form-label">Password</label>
                                         <div class="input-group input-group-merge">
                                             <input type="password" id="password" class="form-control" placeholder="Enter your password" name="lg_as_pwd">
@@ -44,7 +43,7 @@
 
                                     <div class="mb-3 mb-3">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
+                                            <input type="checkbox" class="form-check-input" id="checkbox-signin" checked disabled="">
                                             <label class="form-check-label" for="checkbox-signin">Remember me</label>
                                         </div>
                                     </div>
@@ -60,10 +59,10 @@
 
                         <div class="row mt-3">
                             <div class="col-12 text-center">
-                                <p class="text-muted">Don't have an account? <a href="<?php echo base_url('auth/forgot'); ?>" class="text-muted ms-1"><b>Forgot Password</b></a></p>
+                                <p class="text-muted">Forgot password ? <a href="<?php echo base_url('auth/forgot'); ?>" class="text-muted ms-1"><b>Forgot Password</b></a></p>
                             </div> <!-- end col -->
                             <div class="col-12 text-center">
-                                <p class="text-muted">Don't have an account? <a href="<?php echo base_url('auth/register'); ?>" class="text-muted ms-1"><b>Sign Up</b></a></p>
+                                <p class="text-muted">Don't have an account ? <a href="<?php echo base_url('auth/register'); ?>" class="text-muted ms-1"><b>Sign Up</b></a></p>
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->
