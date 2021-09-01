@@ -18,7 +18,7 @@
     <!-- end page title -->
     <div class="row">
         <!-- chat area -->
-        <div class="col-xxl-12 col-xl-8 order-xl-2">
+        <div class="col-xxl-12 col-xl-12 order-xl-12">
             <div class="card">
                 <div class="card-body">
                     <ul class="conversation-list" data-simplebar style="max-height: 537px">

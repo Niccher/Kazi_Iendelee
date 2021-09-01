@@ -80,7 +80,7 @@ class Writer_orders extends CI_Controller {
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);
 		$this->load->view('sellers/orders/'.$page, $data);
-		$this->load->view('sellers/template/tail');
+		$this->load->view('sellers/template/tail_orderview'); 
 	}
 
 	public function make_accept() {
@@ -127,7 +127,7 @@ class Writer_orders extends CI_Controller {
 
 		$user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($data['user_info']->Name))); 
 
-	    redirect('writer/'.$user_url.'/profile');
+	    redirect('writer/'.$user_url.'/orders/view/'.$this->uri->segment(5));
 	}
 
 	public function orders_get_attachment() {
@@ -144,6 +144,55 @@ class Writer_orders extends CI_Controller {
 		$filename = urldecode($this->uri->segment(5));
 		$filepath = 'uploads/orders/'.$filename;
 		force_download($filepath, NULL);
+
+	}
+
+	public function orders_make_attachment() {
+		$person_id = $this->session->userdata('log_id');
+		print_r(empty($_FILES));
+
+		if (!empty($_FILES) ) {
+             
+            $tempFile = $_FILES['file']['tmp_name'];
+            $realFile = $_FILES['file']['name'];
+
+            $ext = strtolower(pathinfo($realFile, PATHINFO_EXTENSION));
+
+            $old_name = $_FILES['file']['name'];
+            $new_name = preg_replace('/[^A-Za-z0-9.]/', '_', $old_name);
+
+            $code = substr(time(), -7);
+            $newfilename = $person_id."__".$code."_".$new_name;
+               
+            $this->mod_orders->order_temp_upload($person_id, $newfilename);
+            move_uploaded_file($tempFile, "uploads/temp_submissions/" . $newfilename);
+            echo "File sent";
+        }else{
+        	echo "File not sent";
+        }
+	}
+
+	public function orders_make_attachment_ui() {
+		$each_file = explode("|__|", $this->mod_orders->order_get_attachments_submitted());
+        $fina_file_list='';
+
+        $fina_file_list.='
+            <div class="mb-3 position-relative">
+                <div class="text-start">';
+
+        for ($i=1; $i < count($each_file); $i++) { 
+            $fina_file_list.= '
+                <p class="text-muted mb-0">
+                    <strong>'.$each_file[$i].' </strong>
+                    <span class="text-danger mdi mdi-trash-can delete_attach_file_" id="delete_attach_file_'.$each_file[$i].'"></span>
+                </p>';
+        }
+
+        $fina_file_list.= '
+                </div>
+            </div>';
+
+        echo $fina_file_list;
 
 	}
 

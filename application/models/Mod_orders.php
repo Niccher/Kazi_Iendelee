@@ -33,6 +33,14 @@
 
         }
 
+        public function get_orders_assigned_id($order_id){
+            $array = array('Assign_Order =' => $order_id);
+            $this->db->where($array);
+            $query = $this->db->get('tbl_Assignments');
+            return $query->row_array();
+
+        }
+
         public function get_attachment_size($attachment_size){
             $units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
             $power = $attachment_size > 0 ? floor(log($attachment_size, 1024)) : 0;
@@ -61,6 +69,24 @@
             foreach(glob($path) as $file)  {
                 $this_file = str_replace("./uploads/temp_orders/","",$file);
                 if (/*str_starts_with($this_file, $p_id)*/ substr( $this_file, 0, strlen($p_id) ) == $p_id) {
+                   $file_list.= "|__|".$this_file;
+                }
+            }
+
+            return $file_list;
+
+        }
+
+        public function order_get_attachments_submitted(){
+            $p_id = $this->session->userdata('log_id')."__";
+
+            $file_list = "";
+            $this_file = "";
+
+            $path = './uploads/temp_submissions/*';
+            foreach(glob($path) as $file)  {
+                $this_file = str_replace("./uploads/temp_submissions/","",$file);
+                if (substr( $this_file, 0, strlen($p_id) ) == $p_id) {
                    $file_list.= "|__|".$this_file;
                 }
             }
@@ -214,7 +240,7 @@
         }
 
         public function get_all_assigned_to($userID){
-            $array = array('Assign_Order =' => $userID);
+            $array = array('Assignee =' => $userID);
             $this->db->where($array);
             $query = $this->db->get('tbl_Assignments');
             return $query->result_array();

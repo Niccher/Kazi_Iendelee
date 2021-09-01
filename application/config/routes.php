@@ -61,6 +61,8 @@ $route['writer/(:any)/orders/attachment/(:any)'] = 'writer_orders/orders_get_att
 
 $route['writer/(:any)/orders/accept/(:any)'] = 'writer_orders/make_accept';
 $route['writer/(:any)/orders/reject/(:any)'] = 'writer_orders/make_accept';
+$route['writer/(:any)/orders_make_order_attachment'] = 'writer_orders/orders_make_attachment';
+$route['writer/(:any)/orders_submission_ui'] = 'writer_orders/orders_make_attachment_ui'; 
 
 $route['writer/(:any)/invoices'] = 'writer/invoices';
 $route['writer/(:any)/sales'] = 'writer/sales';
