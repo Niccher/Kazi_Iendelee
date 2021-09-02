@@ -13,7 +13,7 @@
                             <div class="text-xl-end mt-xl-0 mt-2">
                                 <div class="text-sm-end">
                                     <a href="<?php echo base_url('admin/orders');?>">
-                                        <button type="button" class="btn btn-light mb-2 me-1">All Orders</button>
+                                        <button type="button" class="btn btn-success mb-2 me-1">Back to Orders</button>
                                     </a>
                                     <a href="<?php echo base_url('admin/orders/create');?>">
                                         <button type="button" class="btn btn-info mb-2 me-1">Create</button>

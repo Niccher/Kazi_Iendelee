@@ -222,7 +222,7 @@
 
                                     echo '
                                     <div class="d-flex align-items-start">
-                                        <img class="me-3 rounded-circle" src="'.base_url("uploads/profile/".($user['Avatar'])).'" alt="'.$this->mod_crypt->Dec_String($user["Name"]).'" width="40">
+                                        <img class="me-3 rounded-circle" src="'.base_url("uploads/profiles/".($user['Avatar'])).'" alt="'.$this->mod_crypt->Dec_String($user["Name"]).'" width="40">
                                         <div class="w-100 overflow-hidden">
                                             <h5 class="mt-0 mb-1">'.ucfirst($this->mod_crypt->Dec_String($user["Name"])).'</h5>
                                             <span class="font-13">'.ucfirst($this->mod_crypt->Dec_String($user["Email"])).'</span>

@@ -60,7 +60,7 @@ class Adminorders extends CI_Controller {
 	public function orders_get_attachment() {
 		
 		$filename = urldecode($this->uri->segment(4));
-		$filepath = 'uploads/temp_orders/'.$filename;
+		$filepath = 'uploads/orders/'.$filename;
 		force_download($filepath, NULL);
 	}
 

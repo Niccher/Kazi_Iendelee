@@ -245,6 +245,16 @@
 
         }
 
+        public function get_submission_convo_($person_id, $order_id){
+            /*$array = array('Order_Id =' => $order_id);
+            $array = array('Order_Id =' => $order_id);
+            $this->db->where($array);
+            $this->db->order_by('Order_Id','ASC');
+            $query = $this->db->get('tbl_Chat_Orders');
+            return $query->result_array();*/
+
+        }
+
         public function get_all_assigned_to($userID){
             $array = array('Assignee =' => $userID);
             $this->db->where($array);
@@ -296,6 +306,20 @@
             );
 
             return $this->db->update('tbl_Assignments', $data, "Assign_Order = ".$order_id);
+        }
+
+        public function make_submission($sub_message, $order_id, $sender, $sub_attached){
+            $data = array(
+                'Sender' => $sender,
+                'Recipient' => "Admin",
+                'Sent' => time(),
+                'Seen' => "00",
+                'Message' => $sub_message,
+                'Order_Id' => $order_id,
+                'Attachment' => $sub_attached,
+            );
+
+            return $this->db->insert('tbl_Chat_Orders', $data);
         }
               
 	}

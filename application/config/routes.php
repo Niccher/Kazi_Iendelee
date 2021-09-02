@@ -66,6 +66,7 @@ $route['writer/(:any)/orders/accept/(:any)'] = 'writer_orders/make_accept';
 $route['writer/(:any)/orders/reject/(:any)'] = 'writer_orders/make_accept';
 $route['writer/(:any)/orders_make_order_attachment'] = 'writer_orders/orders_make_attachment';
 $route['writer/(:any)/orders_submission_ui'] = 'writer_orders/orders_make_attachment_ui'; 
+$route['writer/(:any)/attachment_delete/(:any)'] = 'writer_orders/orders_attachment_delete';
 
 $route['writer/(:any)/invoices'] = 'writer/invoices';
 $route['writer/(:any)/sales'] = 'writer/sales';
@@ -77,7 +78,10 @@ $route['writer/(:any)/profile_make'] = 'writer_profile/profile_make';
 $route['writer/(:any)/add_post'] = 'writer_profile/add_post';
 $route['writer/(:any)/profile_image'] = 'writer_profile/profile_image'; 
 $route['writer/(:any)/send_message/(:any)'] = 'writer/send_message'; 
+$route['writer/(:any)/send_submission/(:any)'] = 'writer/send_submission'; 
 $route['writer/(:any)/user_fetch/(:any)'] = 'writer/user_fetch'; 
+$route['writer/(:any)/orders/submision/(:any)'] = 'writer_orders/orders_get_submission'; 
+$route['writer/(:any)/orders_submission_chats/(:any)'] = 'writer_orders/orders_get_submission_chats'; 
 
 $route['buyer/'] = 'client';
 $route['buyer/(:any)'] = 'client';

@@ -17,6 +17,12 @@
             return $this->db->update('tbl_Users',$data);
         }
 
+        public function update_profile_phone($p_id, $new_phone){
+            $this->db->where('Person_ID', $p_id);
+            $data = array( 'Phone' =>  $new_phone);
+            return $this->db->update('tbl_Users',$data);
+        }
+
         public function update_profile_bio($p_id, $bio){
             $this->db->where('Person_ID', $p_id);
             $data = array( 'Bio' =>  $bio);

@@ -140,6 +140,28 @@ class Writer extends CI_Controller {
 		}
 	}
 
+	public function send_submission() {
+
+		$typ = $this->session->userdata('log_type');
+        if (! $this->session->userdata('log_id') || $typ != "cat_Reseller") {
+            redirect('auth/login');
+        }
+
+        $msg = $this->mod_crypt->Enc_String($_POST['msg_content']);
+		
+		$user_id = $this->session->userdata('log_id');
+		$order_id = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(4)));
+		$sub_attached = $this->mod_orders->order_get_attachments_submitted();
+
+		$this->mod_orders->make_submission($msg, $order_id, $user_id, $sub_attached);
+
+		$each_file = explode('|__|', $sub_attached);
+        for ($i=0; $i < count($each_file); $i++) { 
+            rename('./uploads/temp_submissions/'.$each_file[$i], './uploads/submissions/'.$each_file[$i]);
+        }
+
+	}
+
 	public function user_fetch() {
         $user_id = $this->session->userdata('log_id');
 		$url_id = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(4)));

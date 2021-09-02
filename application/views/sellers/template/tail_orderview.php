@@ -47,42 +47,49 @@
 	                $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
 	                $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
 	            ?>
-	            var user_id= "<?php echo urlencode($this->mod_crypt->Enc_String($this->session->userdata('log_id')));?>"
+	            var user_id= "<?php echo urlencode($this->uri->segment(5));?>"
 
 	            $("#convo_send").click(function(){
 	                var msg_body = $('#convo_msg').val();
 	                if (msg_body == "") {
 	                    window.alert("Message cannot be empty");
 	                }else{
-	                	console.log('Message as '+msg_body);
-	                	$('#convo_msg').val("");
-	                    /*$.ajax({
-	                        url: '<?php //echo base_url("writer/".$user_url."/send_message/"); ?>'+user_id,
+	                    $.ajax({
+	                        url: '<?php echo base_url("writer/".$user_url."/send_submission/"); ?>'+user_id,
 	                        type: 'POST',
 	                        data: { msg_content:msg_body},
 	                        success: function(response){
-	                            if(response == 11){
-	                                $("#reseller_msg_box").val("")
-	                                $.ajax({
-	                                    url: '<?php //echo base_url("writer/".$user_url."/user_fetch/"); ?>'+user_id,
-	                                    type: 'GET',
-	                                    success: function(response){
-	                                        if(response == 1){
-	                                            alert('Cannot fetch messages, please try again or refresh the webpage.');
-	                                        }else{
-	                                            $("#message_view_box").html(response).load(response).fadeIn();
-	                                        }
-
-	                                    }
-	                                });
-	                            }else if(response == 22){
-	                                window.alert('Message not sent, please try again or refresh the page.');
-	                            }
+	                            $('#convo_msg').val("");
 	                        }
-	                    });*/
+	                    });
 	                }  
 	                     
 	            });;
+
+	            $('#message_view_box').scrollTop($('#message_view_box')[0].scrollHeight);
+	            $('.message_view_box').scrollTop($('.message_view_box')[0].scrollHeight);
+	            $("#message_view_box").animate({ scrollTop: $('#message_view_box').prop("scrollHeight")}, 1000);
+	            $('#message_view_box').scrollTop($('#message_view_box')[0].scrollHeight - $('#message_view_box')[0].clientHeight);
+	            $("#message_view_box").animate({ scrollTop: $('#message_view_box').height()}, 1000);
+	            $("#message_view_box").animate({ scrollTop: $("#message_view_box")[0].scrollHeight}, 1000);
+
+	            function getChats(){
+	                $.ajax({ 
+	                    url: '<?php echo base_url("writer/".$user_url."/orders_submission_chats/"); ?>'+user_id,
+	                    type: 'POST',
+	                    success: function(response){
+	                        $(".message_view_box").html(response).fadeIn();
+	                        $('#message_view_box').scrollTop($('#message_view_box')[0].scrollHeight);
+	                        $('.message_view_box').scrollTop($('.message_view_box')[0].scrollHeight);
+	                        setTimeout(function(){
+	                            getChats();
+	                        }, 5000);
+
+	                    } 
+	                }); 
+	            }
+
+	            getChats();
 
 	            function sendRequest(){
 	                $.ajax({ 
@@ -99,6 +106,17 @@
 	            }
 
 	            sendRequest();
+
+	            $(document).on("click", '.delete_attach_file_', function(event) {
+    			    var fileid = this.id;
+                    $.ajax({
+                        url: '<?php echo base_url("writer/".$user_url."/attachment_delete/"); ?>'+fileid,
+                        type: 'POST',
+                        success: function(response){
+                            console.log(response);
+                        }
+                    });  
+    			}); 
 	            
 	        });
 	    </script>

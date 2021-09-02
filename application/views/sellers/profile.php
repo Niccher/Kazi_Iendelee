@@ -42,7 +42,7 @@
                         </p>
 
                         <p class="text-muted mb-2 font-13"><strong>Mobile :</strong>
-                            <span class="ms-2"> <?php echo $this->mod_crypt->Dec_String($user_info->Phone);?></span>
+                            <span class="ms-2"> <?php echo ($user_info->Phone);?></span>
                         </p>
 
                         <p class="text-muted mb-2 font-13"><strong>Email :</strong> 
@@ -78,11 +78,6 @@
                 <div class="card-body">
                     <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
                         <li class="nav-item">
-                            <a href="#aboutme" data-bs-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
-                                About
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="#timeline" data-bs-toggle="tab" aria-expanded="true" class="nav-link rounded-0 active">
                                 Timeline
                             </a>
@@ -94,36 +89,6 @@
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane" id="aboutme">
-
-                            <h5 class="text-uppercase"><i class="mdi mdi-briefcase me-1"></i>
-                                Tasks and Orders</h5>
-
-                            <div class="timeline-alt pb-0">
-                                <div class="timeline-item">
-                                    <i class="mdi mdi-circle bg-info-lighten text-info timeline-icon"></i>
-                                    <div class="timeline-item-info">
-                                        <h5 class="mt-0 mb-1">Order 1</h5>
-                                        <p class="font-14">Order Name <span class="ms-2 font-12">Year: 2021 - 21</span></p>
-                                        <p class="text-muted mt-2 mb-0 pb-3">Order description here</p>
-                                    </div>
-                                </div>
-
-                                <div class="timeline-item">
-                                    <i class="mdi mdi-circle bg-primary-lighten text-primary timeline-icon"></i>
-                                    <div class="timeline-item-info">
-                                        <h5 class="mt-0 mb-1">Order 3</h5>
-                                        <p class="font-14">Order Name. <span class="ms-2 font-12">Year: 2021 - 21</span></p>
-                                        <p class="text-muted mt-2 mb-0 pb-3">Order Description Here</p>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- end timeline -->        
-
-                        </div> <!-- end tab-pane -->
-                        <!-- end about me section content -->
 
                         <div class="tab-pane show active" id="timeline">
 
@@ -196,16 +161,22 @@
                                 echo form_open('writer/'.$user_url.'/profile_make'); ?>
                                 <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Personal Info</h5>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="firstname" class="form-label">First Name</label>
                                             <input type="text" class="form-control" name="ed_name_first" placeholder="Enter first name">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="lastname" class="form-label">Last Name</label>
                                             <input type="text" class="form-control" name="ed_name_last" placeholder="Enter last name">
+                                        </div>
+                                    </div> <!-- end col -->
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="lastname" class="form-label">Phone Number</label>
+                                            <input type="text" class="form-control" name="ed_phone" placeholder="Enter Phone Number">
                                         </div>
                                     </div> <!-- end col -->
                                 </div> <!-- end row -->

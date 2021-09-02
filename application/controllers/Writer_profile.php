@@ -74,6 +74,7 @@ class Writer_profile extends CI_Controller {
 
         $ed_name_first = (trim($this->input->post('ed_name_first')));
         $ed_name_last = (trim($this->input->post('ed_name_last')));
+        $ed_phone = (trim($this->input->post('ed_phone')));
 	    $ed_desc_bio = (trim($this->input->post('ed_desc_bio')));
 	    $ed_eml_old = (trim($this->input->post('ed_eml_old')));
 	    $ed_eml_new = (trim($this->input->post('ed_eml_new')));
@@ -89,6 +90,9 @@ class Writer_profile extends CI_Controller {
 	    }
 	    if (isset($ed_name_last) && $ed_name_last != '') {
 	    	$this->mod_client->update_profile_lname($person_id, $this->mod_crypt->Enc_String($ed_name_last));
+	    }
+	    if (isset($ed_phone) && $ed_phone != '') {
+	    	$this->mod_client->update_profile_phone($person_id, ($ed_phone));
 	    }
 	    if (isset($ed_desc_bio) && $ed_desc_bio != '') {
 	    	$this->mod_client->update_profile_bio($person_id, $this->mod_crypt->Enc_String($ed_desc_bio));
