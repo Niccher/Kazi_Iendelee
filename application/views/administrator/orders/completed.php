@@ -7,27 +7,10 @@
         <div class="col-12">
             <div class="page-title-box">
                 <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                        <li class="breadcrumb-item active">Orders</li>
-                    </ol>
-                </div>
-                <h4 class="page-title">Orders</h4>
-            </div>
-        </div>
-    </div>     
-    <!-- end page title --> 
-
-    <div class="row">
-
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
                     <div class="row mb-2">
-                        <div class="col-xl-6"></div>
-                        <div class="col-xl-6">
+                        <div class="col-xl-12">
                             <div class="text-xl-end mt-xl-0 mt-2">
-                            	<div class="text-sm-end">
+                                <div class="text-sm-end">
                                     <a href="<?php echo base_url('admin/orders');?>">
                                         <button type="button" class="btn btn-light mb-2 me-1">All</button>
                                     </a>
@@ -44,6 +27,18 @@
                             </div>
                         </div><!-- end col-->
                     </div>
+                </div>
+                <h4 class="page-title">Orders</h4>
+            </div>
+        </div>
+    </div>     
+    <!-- end page title --> 
+
+    <div class="row">
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
 
                     <div class="table-responsive">
                         <table class="table table-centered mb-0">

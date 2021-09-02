@@ -1,3 +1,4 @@
+
                 <!-- Footer Start -->
                 <footer class="footer">
                     <div class="container-fluid">
@@ -68,32 +69,38 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
+            	$('.delete').click(function(){
+			        var el = this;
+			        var deleteid = this.id;
+			        var name = $(this).attr("name");
 
-                function sendRequest(){
-                    $.ajax({ 
-                        url: '<?php echo base_url("admin/fetch_attachment_ui"); ?>',
-                        type: 'POST',
-                        success: function(response){
-                            $(".uploaded_files").html(response).fadeIn();
-                            setTimeout(function(){
-                                sendRequest();
-                            }, 5000);
-                        } 
-                    }); 
-                }
+			        var txt = "Proceed with deleting order ("+name+"). This action can't be undone";
 
-                sendRequest();
+		           	document.getElementById('pers_name').textContent=txt;
 
-                $(document).on("click", '.delete_attach_file_', function(event) {
-    			    var fileid = this.id;
-                    $.ajax({
-                        url: '<?php echo base_url("admin/attachment_delete/"); ?>'+fileid,
-                        type: 'POST',
-                        success: function(response){
-                            console.log(response);
-                        }
-                    });  
-    			}); 
+		           	$("#delete_info").modal('show')
+
+		           	$('.pop_order').click(function(){
+		           		$("#delete_info").modal('hide')
+		           		$.ajax({
+				            url: '<?php echo base_url('order/delete/') ?>'+deleteid,
+				            type: 'post',
+				            success: function(response){
+				            	if (response == '11') {
+				            		$(el).closest('tr').css('background','tomato');
+			                    	$(el).closest('tr').fadeOut(800,function(){
+				                        $(this).remove();
+				                    });
+				            	}else{
+				            		window.alert('Unknown error occured, please try again.');
+				            	}
+				                
+				            }
+
+				        });
+		           	});  
+			        
+			    });
 
             });
         </script>

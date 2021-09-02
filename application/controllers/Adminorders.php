@@ -12,7 +12,7 @@ class Adminorders extends CI_Controller {
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/orders/'.$page, $data);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/template/tail_order');
 	}
 
 	public function pending($page = 'pending') {
@@ -24,7 +24,7 @@ class Adminorders extends CI_Controller {
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/orders/'.$page, $data);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/template/tail_order');
 	}
 
 	public function completed($page = 'completed') {
@@ -36,7 +36,7 @@ class Adminorders extends CI_Controller {
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/orders/'.$page, $data);
-		$this->load->view('administrator/template/tail');
+		$this->load->view('administrator/template/tail_order');
 	}
 
 	public function view($page = 'view') {
@@ -140,6 +140,51 @@ class Adminorders extends CI_Controller {
         }
 
 	    redirect('admin/orders');
+	}
+
+	public function orders_edit($order_id) {
+
+		$titl['pag'] = 'orders';
+		$page = 'edit';
+
+		$data['order_info'] = $this->mod_orders->get_orders_id($this->mod_crypt->Dec_String(urldecode($order_id)));
+
+		$this->load->view('administrator/template/header');
+		$this->load->view('administrator/template/sidebar', $titl);
+		$this->load->view('administrator/orders/'.$page, $data);
+		$this->load->view('administrator/template/tail_add_order');
+
+	}
+
+	public function orders_make_edit($order_id) {
+		$uuid = $this->mod_crypt->Dec_String(urldecode($order_id));
+		$order_info = $this->mod_orders->get_orders_id($uuid);
+		$order_files = $order_info['Order_Attachment'];
+
+		$order_name = $this->mod_crypt->Enc_String(trim($this->input->post('order_name')));
+	    $order_desc = $this->mod_crypt->Enc_String(trim($this->input->post('order_desc')));
+	    $order_page = $this->mod_crypt->Enc_String(trim($this->input->post('order_page')));
+	    $order_word = $this->mod_crypt->Enc_String(trim($this->input->post('order_word')));
+	    $order_level = $this->mod_crypt->Enc_String(trim($this->input->post('order_level')));
+	    $order_cite = $this->mod_crypt->Enc_String(trim($this->input->post('order_cite')));
+	    $order_date = trim($this->input->post('order_date'));
+	    $order_info = $this->mod_crypt->Enc_String(trim($this->input->post('order_comment')));
+	    $order_cost = $this->mod_crypt->Enc_String(trim($this->input->post('order_price')));
+
+	    $attachments = $this->mod_orders->order_get_attachments_admin();
+
+	    if ($order_date == "") {
+	    	$order_date = date('d-M-Y',strtotime("+1 week"));
+	    }
+
+	    $this->mod_orders->orders_make_edit($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $attachments.'|__|'.$order_files, $uuid);
+
+	    $each_file = explode('|__|', $attachments);
+        for ($i=0; $i < count($each_file); $i++) { 
+            rename('./uploads/temp_orders/'.$each_file[$i], './uploads/orders/'.$each_file[$i]);
+        }
+
+	    redirect('admin/orders');
 
 	}
 
@@ -199,6 +244,21 @@ class Adminorders extends CI_Controller {
         $file = explode("delete_attach_file_", $fileid);
         echo "file at -> ".$file[1];
         unlink('uploads/temp_orders/'.$file[1]);
+	}
+
+
+	public function orders_delete($order_id) {
+		$uuid = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(3)));
+
+        $orders_exists = $this->mod_orders->get_orders_id($uuid);
+
+        if (!empty($orders_exists)) {
+        	//$this->mod_orders->get_delete_order_by_id($uuid);
+        	$this->mod_orders->orders_make_delete($uuid);
+        	echo "11";
+        }else{
+        	echo "no such order empty";
+        }
 
 	}
 

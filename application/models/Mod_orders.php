@@ -205,6 +205,12 @@
             $this->db->where('Order_Id',$order_id);
             $this->db->delete('tbl_Orders');
 
+            $this->db->where('Assign_Order',$order_id);
+            $this->db->delete('tbl_Assignments');
+
+            $this->db->where('Order_Id',$order_id);
+            $this->db->delete('tbl_Chat_Orders');
+
             return $this->db->insert('tbl_Orders_Deleted', $data);
 
         }
@@ -291,7 +297,6 @@
 
             return $this->db->update('tbl_Assignments', $data, "Assign_Order = ".$order_id);
         }
-
               
 	}
 ?>

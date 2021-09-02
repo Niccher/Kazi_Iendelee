@@ -65,11 +65,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-        <?php 
-            //print_r($assigned); 
-            foreach ($assigned as $order) {
-                $order_info = $this->mod_orders->get_orders_id($order['Assign_Order']);
-                //print_r($order_info);
+    <?php 
+        foreach ($assigned as $order) {
+            $order_info = $this->mod_orders->get_orders_id($order['Assign_Order']);
+            if (!empty($order_info)) {
                 $url = urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']));
                 $name = urlencode($this->mod_crypt->Dec_String($order_info['Order_Name']));
                 $due = $order_info['Order_Deadline'];
@@ -101,10 +100,9 @@
                     </tr>
                     ';
                 }
-
-                
-            }
-        ?>
+            }  
+        }
+    ?>
                                     
                                 </tbody>
                             </table>

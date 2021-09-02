@@ -28,10 +28,12 @@
 
                             foreach ($assigned as $orders) {
                                 $order_info = $this->mod_orders->get_orders_id($orders['Assign_Order']);
-                                $all_cost.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
-                                if ($order_info['Order_Status'] == "Completed") {
-                                    $all_paid.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
-                                    $all_completed++;
+                                if (!empty($order_info)) {
+                                    $all_cost.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
+                                    if ($order_info['Order_Status'] == "Completed") {
+                                        $all_paid.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
+                                        $all_completed++;
+                                    }
                                 }
                             }
 
@@ -123,55 +125,55 @@
                                         <div class="table-responsive">
                                             <table class="table table-centered table-nowrap table-hover mb-0">
                                                 <tbody>
-                                                    <?php
-                                                    foreach ($assigned as $order) {
-                                                        $order_info = $this->mod_orders->get_orders_id($order['Assign_Order']);
-                                                        $url = urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']));
-                                                        $name = ($this->mod_crypt->Dec_String($order_info['Order_Name']));
-                                                        $due = $order_info['Order_Deadline'];
+                            <?php
+                                foreach ($assigned as $order) {
+                                    $order_info = $this->mod_orders->get_orders_id($order['Assign_Order']);
 
-                                                        $words = $this->mod_crypt->Dec_String($order_info['Order_Words']);
-                                                        $cite = str_replace("task_cite_", "", $this->mod_crypt->Dec_String($order_info['Order_Cite']));
-                                                        $pages = ($this->mod_crypt->Dec_String($order_info['Order_Pages']));
-                                                        $level = ucfirst(str_replace("task_level_", "", $this->mod_crypt->Dec_String($order_info['Order_Level'])));
+                                    if (!empty($order_info)) {
+                                        $url = urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']));
+                                        $name = ($this->mod_crypt->Dec_String($order_info['Order_Name']));
+                                        $due = $order_info['Order_Deadline'];
 
-                                                        if ($order['Assign_Reply'] == "11") {
-                                                            $steps = '<span class="badge bg-success rounded-pill">Accepted</span>';
-                                                        }elseif ($order['Assign_Reply'] == "22") {
-                                                            $steps = '<span class="badge bg-danger rounded-pill">Rejected</span>';
-                                                        }else{
-                                                            $steps = '<span class="badge bg-primary rounded-pill">Pending</span>';
-                                                        }
+                                        $words = $this->mod_crypt->Dec_String($order_info['Order_Words']);
+                                        $cite = str_replace("task_cite_", "", $this->mod_crypt->Dec_String($order_info['Order_Cite']));
+                                        $pages = ($this->mod_crypt->Dec_String($order_info['Order_Pages']));
+                                        $level = ucfirst(str_replace("task_level_", "", $this->mod_crypt->Dec_String($order_info['Order_Level'])));
 
-                                                        echo $this->session->userdata('log_id').$order['Assign_Reply'];
+                                        if ($order['Assign_Reply'] == "11") {
+                                            $steps = '<span class="badge bg-success rounded-pill">Accepted</span>';
+                                        }elseif ($order['Assign_Reply'] == "22") {
+                                            $steps = '<span class="badge bg-danger rounded-pill">Rejected</span>';
+                                        }else{
+                                            $steps = '<span class="badge bg-primary rounded-pill">Pending</span>';
+                                        }
 
-                                                        echo '
-                                                    <tr>
-                                                        <td>
-                                                            <h5 class="font-14 my-1">
-                                                                <a href="'.base_url("writer/".$user_url."/orders/view/".$url).'" class="text-body">'.$name.'
-                                                                </a>
-                                                            </h5>
-                                                            <span class="text-muted font-13">Due '.$due.'</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-muted font-13">'.$cite.'</span> <br/>
-                                                            <h5 class="font-14 mt-1 fw-normal">'.$level.'</h5>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-muted font-13">Pages '.$pages.'</span> <br/>
-                                                            <h5 class="font-14 mt-1 fw-normal">Words '.$words.'</h5>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-muted font-13">Accepted </span> <br/>
-                                                            <h5 class="font-14 mt-1 fw-normal">'.$steps.'</h5>
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                        ';
-
-                                                    }
-                                                    ?>
+                                        echo '
+                                    <tr>
+                                        <td>
+                                            <h5 class="font-14 my-1">
+                                                <a href="'.base_url("writer/".$user_url."/orders/view/".$url).'" class="text-body">'.$name.'
+                                                </a>
+                                            </h5>
+                                            <span class="text-muted font-13">Due '.$due.'</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted font-13">'.$cite.'</span> <br/>
+                                            <h5 class="font-14 mt-1 fw-normal">'.$level.'</h5>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted font-13">Pages '.$pages.'</span> <br/>
+                                            <h5 class="font-14 mt-1 fw-normal">Words '.$words.'</h5>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted font-13">Accepted </span> <br/>
+                                            <h5 class="font-14 mt-1 fw-normal">'.$steps.'</h5>
+                                        </td>
+                                        
+                                    </tr>
+                                        ';
+                                    }
+                                }
+                            ?>
                                                     
                                                 </tbody>
                                             </table>

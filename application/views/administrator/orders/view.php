@@ -1,28 +1,50 @@
 
 <!-- Start Content-->
 <div class="container-fluid">
+    <?php $uuid = urlencode($this->mod_crypt->Enc_String($orders_info['Order_Id'])); ?>
     
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
                 <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                        <li class="breadcrumb-item active">View Order Details</li>
-                    </ol>
+                    <div class="row mb-2">
+                        <div class="col-xl-12">
+                            <div class="text-xl-end mt-xl-0 mt-2">
+                                <div class="text-sm-end">
+                                    <a href="<?php echo base_url('admin/orders');?>">
+                                        <button type="button" class="btn btn-light mb-2 me-1">All Orders</button>
+                                    </a>
+                                    <a href="<?php echo base_url('admin/orders/create');?>">
+                                        <button type="button" class="btn btn-info mb-2 me-1">Create</button>
+                                    </a>
+                                    
+                                    <?php
+                                        if ($orders_info['Order_Owner'] == "Admin") {
+                                            ?>
+                                            <a href="<?php echo base_url('admin/order/edit/'.$uuid);?>">
+                                                <button type="button" class="btn btn-primary mb-2">Edit</button>
+                                            </a>
+                                            <?php
+                                        }
+                                    ?>
+                                </div>
+                            </div>
+            </div><!-- end col-->
+        </div>
                 </div>
                 <h4 class="page-title">Order Details</h4>
             </div>
         </div>
     </div>     
     <!-- end page title --> 
-
+    
     <div class="row">
         <div class="col-xxl-8 col-lg-6">
             <!-- project card -->
             <div class="card d-block">
                 <div class="card-body">
+                    
                     <h3 class="mt-0">
                         <?php
                             echo $this->mod_crypt->Dec_String($orders_info['Order_Name']);
@@ -104,7 +126,6 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title mb-3">Assign and Approve Order</h5>
-                    <?php $uuid = urlencode($this->mod_crypt->Enc_String($orders_info['Order_Id'])); ?>
                     <form action="<?php echo base_url('admin/assign/'.$uuid); ?>" method='POST'>
                         <div class="card mb-1 shadow-none">
                             <div class="col-12">
@@ -208,9 +229,14 @@
                     <h5 class="card-title mb-3">Attachments</h5>
 
                     <?php
-                        $each_file = explode('|__|', $orders_info['Order_Attachment']);
-                        for ($i=0; $i < count($each_file)-1; $i++) { 
+                        $all = str_replace("|__||__||__|", "|__|", $orders_info['Order_Attachment']);
+                        $each_file = explode('|__|', str_replace("|__||__|", "|__|", $all)) ;
+                         
+                        for ($i=1; $i < count($each_file); $i++) { 
                             $human_size = $this->mod_orders->get_attachment_size(filesize('uploads/orders/'.urldecode($each_file[$i])));
+                            if ($each_file[$i] == ".") {
+                                echo "Dope";
+                            }
 
                             echo '
                                 <div class="card mb-2 shadow-none border">
@@ -237,7 +263,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                    ';
+                            ';
 
                         }
                     ?>

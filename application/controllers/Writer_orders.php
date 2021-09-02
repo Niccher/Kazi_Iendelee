@@ -196,4 +196,17 @@ class Writer_orders extends CI_Controller {
 
 	}
 
+	public function orders_delete($order_id) {
+		$uuid = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(3)));
+
+        $orders_exists = $this->mod_orders->get_orders_id($uuid);
+
+        if (!empty($orders_exists)) {
+        	echo "not empty";
+        }else{
+        	echo "no such order empty";
+        }
+
+	}
+
 }

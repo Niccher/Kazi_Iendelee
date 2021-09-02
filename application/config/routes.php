@@ -25,9 +25,12 @@ $route['orders/view/(:any)'] = 'adminorders/view';
 $route['admin/orders/attachment/(:any)'] = 'adminorders/orders_get_attachment';
 $route['admin/orders_make_attachment'] = 'adminorders/orders_make_attachment';
 $route['admin/fetch_attachment_ui'] = 'adminorders/orders_make_attachment_ui';
+$route['admin/fetch_attached_ui'] = 'adminorders/fetch_attached_ui';
 $route['admin/attachment_delete/(:any)'] = 'adminorders/orders_attachment_delete/$1';
-//admin/orders_make_attachment
-
+$route['admin/attachment_deleted/(:any)'] = 'adminorders/orders_attachment_deleted/$1';
+$route['order/deleted/(:any)'] = 'adminorders/orders_deleted/$1';
+$route['admin/order/edit/(:any)'] = 'adminorders/orders_edit/$1';
+$route['admin/order/edit_make/(:any)'] = 'adminorders/orders_make_edit/$1';
 $route['admin/assign/(:any)'] = 'adminorders/assign';
 
 $route['admin/mails'] = 'adminmails';

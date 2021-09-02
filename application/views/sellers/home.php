@@ -24,11 +24,14 @@
 
             foreach ($assigned as $orders) {
                 $order_info = $this->mod_orders->get_orders_id($orders['Assign_Order']);
-                $all_cost.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
-                if ($order_info['Order_Status'] == "Completed") {
-                    $all_paid.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
-                    $all_completed++;
+                if (!empty($order_info)) {
+                    $all_cost.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
+                    if ($order_info['Order_Status'] == "Completed") {
+                        $all_paid.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
+                        $all_completed++;
+                    }
                 }
+                
             }
 
             if ($all < 5) {

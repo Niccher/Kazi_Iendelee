@@ -7,27 +7,10 @@
         <div class="col-12">
             <div class="page-title-box">
                 <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                        <li class="breadcrumb-item active">Orders</li>
-                    </ol>
-                </div>
-                <h4 class="page-title">Orders</h4>
-            </div>
-        </div>
-    </div>     
-    <!-- end page title --> 
-
-    <div class="row">
-
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
                     <div class="row mb-2">
-                        <div class="col-xl-6"></div>
-                        <div class="col-xl-6">
+                        <div class="col-xl-12">
                             <div class="text-xl-end mt-xl-0 mt-2">
-                            	<div class="text-sm-end">
+                                <div class="text-sm-end">
                                     <a href="<?php echo base_url('admin/orders');?>">
                                         <button type="button" class="btn btn-success mb-2 me-1">All</button>
                                     </a>
@@ -44,6 +27,18 @@
                             </div>
                         </div><!-- end col-->
                     </div>
+                </div>
+                <h4 class="page-title">Orders</h4>
+            </div>
+        </div>
+    </div>     
+    <!-- end page title --> 
+
+    <div class="row">
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
 
                     <div class="table-responsive">
                         <table class="table table-centered mb-0">
@@ -62,13 +57,20 @@
     <?php
         foreach ($orders_list as $order) {
             $order_id = urlencode($this->mod_crypt->Enc_String($order['Order_Id']));
-            //echo 'Paid'.$order['Order_Paid'];
-            if ($order['Order_Paid'] == '' || $order['Order_Paid'] == '00' ) {
+            if ($order['Order_Paid'] == '00' ) {
                 $active = '<span class="badge badge-danger-lighten">In-active</span>';
-                $paid = '<h5><span class="badge badge-warn-lighten">un-Paid</span></h5>';
+                $paid = '<span class="badge badge-warning-lighten">un-Paid</span>';
             }else{
                 $active = '<span class="badge badge-success-lighten">Active</span>';
-                $paid = '<h5><span class="badge badge-info-lighten">Paid</span></h5>';
+                $paid = '<span class="badge badge-info-lighten">Paid</span>';
+            }
+            if ($order['Order_Owner'] == 'Admin' ) {
+                $delete = '
+                <a href="javascript:void(0)" class="action-icon delete" name="'.$this->mod_crypt->Dec_String($order['Order_Name']).'" id="'.$order_id.'">
+                    <i class="text-danger mdi mdi-delete" ></i>
+                </a>';
+            }else{
+                $delete = '';
             }
             echo '
                 <tr>
@@ -91,7 +93,7 @@
                     </td>
                     <td>
                         <a href="'.base_url('orders/view/'.$order_id).'" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                        '.$delete.'
                     </td>
                 </tr>
             ';
@@ -108,3 +110,26 @@
     <!-- end row --> 
     
 </div> <!-- container -->
+
+
+<div class="modal fade" id="delete_info" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="standard-modalLabel">Delete Order</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="col-12">
+                        <div class="pers_name" id="pers_name"></div>
+                    </div>
+                </diV>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-danger pop_order"><i class="text-danger mdi mdi-delete" ></i>Delete Order</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
