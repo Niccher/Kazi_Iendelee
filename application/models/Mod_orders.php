@@ -95,6 +95,24 @@
 
         }
 
+        public function order_get_attachments_submitted_admin(){
+            $p_id = "admin__";
+
+            $file_list = "";
+            $this_file = "";
+
+            $path = './uploads/temp_submissions/*';
+            foreach(glob($path) as $file)  {
+                $this_file = str_replace("./uploads/temp_submissions/","",$file);
+                if (substr( $this_file, 0, strlen($p_id) ) == $p_id) {
+                   $file_list.= "|__|".$this_file;
+                }
+            }
+
+            return $file_list;
+
+        }
+
         public function order_get_attachments_admin(){
             $p_id = "admin__";
 
@@ -104,6 +122,24 @@
             $path = './uploads/temp_orders/*';
             foreach(glob($path) as $file)  {
                 $this_file = str_replace("./uploads/temp_orders/","",$file);
+                if (/*str_starts_with($this_file, $p_id)*/ substr( $this_file, 0, strlen($p_id) ) == $p_id) {
+                   $file_list.= "|__|".$this_file;
+                }
+            }
+
+            return $file_list;
+
+        }
+
+        public function order_get_submission_admin(){
+            $p_id = "admin__";
+
+            $file_list = "";
+            $this_file = "";
+
+            $path = './uploads/temp_submissions/*';
+            foreach(glob($path) as $file)  {
+                $this_file = str_replace("./uploads/temp_submissions/","",$file);
                 if (/*str_starts_with($this_file, $p_id)*/ substr( $this_file, 0, strlen($p_id) ) == $p_id) {
                    $file_list.= "|__|".$this_file;
                 }
@@ -320,6 +356,27 @@
             );
 
             return $this->db->insert('tbl_Chat_Orders', $data);
+        }
+
+        public function make_submission_reply($sub_message, $order_id, $sender, $sub_attached){
+            $data = array(
+                'Sender' => "Admin",
+                'Recipient' => $sender,
+                'Sent' => time(),
+                'Seen' => "00",
+                'Message' => $sub_message,
+                'Order_Id' => $order_id,
+                'Attachment' => $sub_attached,
+            );
+
+            return $this->db->insert('tbl_Chat_Orders', $data);
+        }
+
+        public function mark_as_completed_by_id($order_id){
+
+            $data = array('Order_Status' => "Finished");
+
+            return $this->db->update('tbl_Orders', $data, "Order_Id = ".$order_id);
         }
               
 	}

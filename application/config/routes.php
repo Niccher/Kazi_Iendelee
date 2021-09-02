@@ -33,6 +33,16 @@ $route['admin/order/edit/(:any)'] = 'adminorders/orders_edit/$1';
 $route['admin/order/edit_make/(:any)'] = 'adminorders/orders_make_edit/$1';
 $route['admin/assign/(:any)'] = 'adminorders/assign';
 
+$route['admin/orders_make_submission_attachment'] = 'adminorders/orders_make_submission_attachment';
+$route['admin/orders_submission_ui'] = 'adminorders/orders_make_submission_ui';
+$route['admin/attachment_submission/delete/(:any)'] = 'adminorders/orders_delete_submission';
+$route['admin/send_submission/(:any)'] = 'adminorders/send_submission';
+$route['admin/orders_submission_chats/(:any)'] = 'adminorders/get_submission_convo';
+$route['admin/orders/get_submission/(:any)'] = 'adminorders/order_get_submission';
+
+$route['admin/orders/complete/(:any)'] = 'adminorders/order_finalize';
+//admin/orders_submission_chats/
+
 $route['admin/mails'] = 'adminmails';
 $route['admin/mail/all'] = 'adminmails';
 $route['admin/mail/inbox'] = 'adminmails/inbox';
