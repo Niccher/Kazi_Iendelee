@@ -78,17 +78,6 @@
                     </li>
 
                     <?php 
-                        if ($pag =='invoices') {echo '<li class="side-nav-item menuitem-active">';} 
-                        else {echo '<li class="side-nav-item">';} 
-
-                    ?>
-                        <a href="<?php echo base_url('admin/invoices'); ?>" class="side-nav-link">
-                            <i class="uil-home-alt"></i>
-                            <span> Invoices </span>
-                        </a>
-                    </li>
-
-                    <?php 
                         if ($pag =='mails') {echo '<li class="side-nav-item menuitem-active">';} 
                         else {echo '<li class="side-nav-item">';} 
 

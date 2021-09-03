@@ -59,7 +59,7 @@
             $order_id = urlencode($this->mod_crypt->Enc_String($order['Order_Id']));
             if ($order['Order_Paid'] == '' || $order['Order_Paid'] == '00' ) {
                 $active = '<span class="badge badge-danger-lighten">In-active</span>';
-                $paid = '<h5><span class="badge badge-warn-lighten">un-Paid</span></h5>';
+                $paid = '<h5><span class="badge badge-warning-lighten">un-Paid</span></h5>';
             }else{
                 $active = '<span class="badge badge-success-lighten">Active</span>';
                 $paid = '<h5><span class="badge badge-info-lighten">Paid</span></h5>';

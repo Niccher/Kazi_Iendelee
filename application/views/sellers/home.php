@@ -99,44 +99,6 @@
         <!-- end row -->
 
         <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="header-title mb-3">Revenue</h4>
-
-                        <div class="chart-content-bg">
-                            <div class="row text-center">
-                                <div class="col-md-6">
-                                    <p class="text-muted mb-0 mt-3">Last 30 Days</p>
-                                    <h2 class="fw-normal mb-3">
-                                        <small class="mdi mdi-checkbox-blank-circle text-primary align-middle me-1"></small>
-                                        <span>KES <?php echo number_format($all_cost, 2);?></span>
-                                    </h2>
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="text-muted mb-0 mt-3">Previous Month</p>
-                                    <h2 class="fw-normal mb-3">
-                                        <small class="mdi mdi-checkbox-blank-circle text-success align-middle me-1"></small>
-                                        <span>KES <?php echo number_format($all_cost, 2);?></span>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="dash-item-overlay d-none d-md-block" dir="ltr">
-                            <h5>Today's Earning: $2,562.30</h5>
-                        </div>
-                        <div dir="ltr">
-                            <div id="revenue-chart" class="apex-charts mt-3" data-colors="#727cf5,#0acf97"></div>
-                        </div>
-                    </div> <!-- end card-body-->
-                </div> <!-- end card-->
-            </div> <!-- end col-->
-        </div>
-        <!-- end row -->
-
-
-        <div class="row">
 
             <div class="col-xl-12 col-lg-12 order-lg-1">
                 <div class="card">

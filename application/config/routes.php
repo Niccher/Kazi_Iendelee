@@ -45,6 +45,9 @@ $route['admin/orders_make/delivery_attachment/(:any)'] = 'adminorders/orders_mak
 $route['admin/orders_make/delivery_message/(:any)'] = 'adminorders/orders_make_submission_message';
 //admin/orders_make/delivery_attachment
 
+$route['admin/sales'] = 'admin/sales';
+$route['admin/invoices/process/(:any)'] = 'admin/invoices';
+
 $route['admin/mails'] = 'adminmails';
 $route['admin/mail/all'] = 'adminmails';
 $route['admin/mail/inbox'] = 'adminmails/inbox';

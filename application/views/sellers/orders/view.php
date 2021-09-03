@@ -27,7 +27,7 @@
                         if ($order_info['Order_Status'] == "Finished") {
                             $final = '
                             <a href="javascript:void(0)">
-                                <button type="button" class="btn btn-primary mb-2"><i class="mdi mdi-progress-check me-1"></i>Order Marker as Complete</button>
+                                <button type="button" class="btn btn-primary mb-2"><i class="mdi mdi-progress-check me-1"></i>Order Marked as Complete</button>
                             </a> 
                             ';
                         }else{

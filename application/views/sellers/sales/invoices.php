@@ -38,10 +38,8 @@
                                     <tr>
                                         <th>Order ID</th>
                                         <th>Name</th>
-                                        <th>Size</th>
-                                        <th>Level</th>
                                         <th>Order Status</th>
-                                        <th style="width: 125px;">Action</th>
+                                        <th>Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,25 +55,19 @@
                 $cite = str_replace("task_cite_", "", $this->mod_crypt->Dec_String($order_info['Order_Cite']));
                 $pages = urlencode($this->mod_crypt->Dec_String($order_info['Order_Pages']));
                 $level = ucfirst(str_replace("task_level_", "", $this->mod_crypt->Dec_String($order_info['Order_Level'])));
+                $price = urlencode($this->mod_crypt->Dec_String($order_info['Order_Cost']));
                 if ($order_info['Order_Status'] == 'Finished' ) {
                     echo '
                     <tr>
-                        <td><a href="'.base_url("writer/".$user_url."/orders/view/".$url).'" class="text-body fw-bold">#'.$order_info['Order_Id'].'</a> </td>
+                        <td><a href="javascript:void(0)" class="text-body fw-bold">#'.$order_info['Order_Id'].'</a> </td>
                         <td>
                             '.$name.' <br><small class="text-muted">Assigned '.date("D M H:i", $order['Assign_Time']).'</small>
-                        </td>
-                        <td>
-                            <h5><span class="badge badge-success-lighten"><i class="mdi mdi-coin"></i> Pages '.$pages.'</span></h5>
-                            <h5><span class="badge badge-info-lighten"><i class="mdi mdi-coin"></i> Words '.$words.'</span></h5>
-                        </td>
-                        <td>
-                            '.$level.'<br>'.$cite.'
                         </td>
                         <td>
                             <h5><span class="badge badge-warning-lighten">Processing</span></h5>
                         </td>
                         <td>
-                            <a href="'.base_url("writer/".$user_url."/orders/view/".$url).'" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                            <span class="text-muted fw-bold">'.number_format($price, 2).'</span>
                         </td>
                     </tr>
                     ';

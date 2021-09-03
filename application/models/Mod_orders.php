@@ -306,6 +306,12 @@
 
         }
 
+        public function get_all_assigned(){
+            $query = $this->db->get('tbl_Assignments');
+            return $query->result_array();
+
+        }
+
         public function get_assigned_vars($order_id){
             $array = array('Assign_Order =' => $order_id);
             $this->db->where($array);
