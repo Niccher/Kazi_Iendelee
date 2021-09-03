@@ -1,143 +1,148 @@
+    <!-- Start Content-->
+    <div class="container-fluid">
 
-<!-- Start Content-->
-<div class="container-fluid">
+    	<?php 
+            $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
+            $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
 
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box">
-                <div class="page-title-right">
-                    <form class="d-flex">
-                        <div class="input-group">
-                            <input type="text" class="form-control form-control-light" id="dash-daterange">
-                            <span class="input-group-text bg-primary border-primary text-white">
-                                <i class="mdi mdi-calendar-range font-13"></i>
-                            </span>
+            $all_paid = 0;
+
+            foreach ($assigned as $orders) {
+                $order_info = $this->mod_orders->get_orders_id($orders['Assign_Order']);
+                if (!empty($order_info)) {
+                    if ($order_info['Order_Status'] == "Finished") {
+                        $all_paid = $all_paid + $this->mod_crypt->Dec_String($order_info['Order_Cost']);
+                    }
+                }
+            }
+        ?>
+        
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <div class="text-sm-end">
+                            <a href="<?php echo base_url('writer/'.$user_url.'/invoices');?>">
+                                <button type="button" class="btn btn-success mb-2 me-1">Back</button>
+                            </a>
                         </div>
-                        <a href="javascript: void(0);" class="btn btn-primary ms-2">
-                            <i class="mdi mdi-autorenew"></i>
-                        </a>
-                        <a href="javascript: void(0);" class="btn btn-primary ms-1">
-                            <i class="mdi mdi-filter-variant"></i>
-                        </a>
-                    </form>
+                    </div>
+                    <h4 class="page-title">Process Invoice</h4>
                 </div>
-                <h4 class="page-title">Dashboard</h4>
             </div>
+        </div>     
+        <!-- end page title --> 
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title mb-3">Bussiness Info</h4>
+
+                        <h5>Kazi Mingi</h5>
+                        
+                        <address class="mb-0 font-14 address-lg">
+                            Kiambu County<br>
+                            Thika Superhigway<br>
+                            <abbr title="Phone">P:</abbr> +257 ****** <br/>
+                            <abbr title="Mobile">M:</abbr> +254 7 ******
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title mb-3">Writer Information</h4>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <p class="mb-2"><span class="fw-bold me-2">Payment Type:</span> Mobile</p>
+                                <p class="mb-2"><span class="fw-bold me-2">Writer Name:</span>
+                                	<?php echo $this->mod_crypt->Dec_String($user_info->Name); ?>
+                                </p>
+                                <p class="mb-2"><span class="fw-bold me-2">Writer Email:</span>
+                                	<?php echo $this->mod_crypt->Dec_String($user_info->Email); ?>
+                                </p>
+                                <p class="mb-0"><span class="fw-bold me-2">Writer Phone:</span>
+                                <?php echo ($user_info->Phone); ?></p>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title mb-3">Payment Info</h4>
+
+                        <div class="text-center">
+                            <i class="mdi mdi-cash-usd-outline h2 text-success"></i>
+                            <h5><b class="text-success" >Mpesa Tranfer</b></h5>
+                            <p class="mb-1"><b>Invoice ID :</b> xxxx235</p>
+                            <p class="mb-0"><b>Payment Amount :</b> <?php echo number_format($all_paid, 2); ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end col -->
         </div>
-    </div>
-    <!-- end page title -->
+        <!-- end row -->
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="dropdown float-end">
-                        <a href="index.html#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="mdi mdi-dots-vertical"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Profit</a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead class="table-light">
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>The Military Duffle Bag</td>
+                                    <td>3</td>
+                                    <td>$128</td>
+                                    <td>$384</td>
+                                </tr>
+                                <tr>
+                                    <td>Mountain Basket Ball</td>
+                                    <td>1</td>
+                                    <td>$199</td>
+                                    <td>$199</td>
+                                </tr>
+                                <tr>
+                                    <td>Wavex Canvas Messenger Bag</td>
+                                    <td>5</td>
+                                    <td>$180</td>
+                                    <td>$900</td>
+                                </tr>
+                                <tr>
+                                    <td>The Utility Shirt</td>
+                                    <td>2</td>
+                                    <td>$79</td>
+                                    <td>$158</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
-                    <h4 class="header-title mb-3">Revenue</h4>
+                        <!-- end table-responsive -->
 
-                    <div class="chart-content-bg">
-                        <div class="row text-center">
-                            <div class="col-md-6">
-                                <p class="text-muted mb-0 mt-3">Current Week</p>
-                                <h2 class="fw-normal mb-3">
-                                    <small class="mdi mdi-checkbox-blank-circle text-primary align-middle me-1"></small>
-                                    <span>$58,254</span>
-                                </h2>
-                            </div>
-                            <div class="col-md-6">
-                                <p class="text-muted mb-0 mt-3">Previous Week</p>
-                                <h2 class="fw-normal mb-3">
-                                    <small class="mdi mdi-checkbox-blank-circle text-success align-middle me-1"></small>
-                                    <span>$69,524</span>
-                                </h2>
-                            </div>
-                        </div>
                     </div>
+                </div>
+            </div> <!-- end col -->
+        </div>
+        <!-- end row -->
 
-                    <div class="dash-item-overlay d-none d-md-block" dir="ltr">
-                        <h5>Today's Earning: $2,562.30</h5>
-                    </div>
-                    <div dir="ltr">
-                        <div id="revenue-chart" class="apex-charts mt-3" data-colors="#727cf5,#0acf97"></div>
-                    </div>
-                </div> <!-- end card-body-->
-            </div> <!-- end card-->
-        </div> <!-- end col-->
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="dropdown float-end">
-                        <a href="index.html#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="mdi mdi-dots-vertical"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Profit</a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                        </div>
-                    </div>
-                    <h4 class="header-title">Revenue By Location</h4>
-                    <div class="mb-4 mt-4">
-                        <div id="world-map-markers" style="height: 224px"></div>
-                    </div>
 
-                    <h5 class="mb-1 mt-0 fw-normal">New York</h5>
-                    <div class="progress-w-percent">
-                        <span class="progress-value fw-bold">72k </span>
-                        <div class="progress progress-sm">
-                            <div class="progress-bar" role="progressbar" style="width: 72%;" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
+        
+    </div> <!-- container -->
 
-                    <h5 class="mb-1 mt-0 fw-normal">San Francisco</h5>
-                    <div class="progress-w-percent">
-                        <span class="progress-value fw-bold">39k </span>
-                        <div class="progress progress-sm">
-                            <div class="progress-bar" role="progressbar" style="width: 39%;" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-
-                    <h5 class="mb-1 mt-0 fw-normal">Sydney</h5>
-                    <div class="progress-w-percent">
-                        <span class="progress-value fw-bold">25k </span>
-                        <div class="progress progress-sm">
-                            <div class="progress-bar" role="progressbar" style="width: 39%;" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-
-                    <h5 class="mb-1 mt-0 fw-normal">Singapore</h5>
-                    <div class="progress-w-percent mb-0">
-                        <span class="progress-value fw-bold">61k </span>
-                        <div class="progress progress-sm">
-                            <div class="progress-bar" role="progressbar" style="width: 61%;" aria-valuenow="61" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div> <!-- end card-body-->
-            </div> <!-- end card-->
-        </div> <!-- end col-->
-    </div>
-    <!-- end row -->
-
-</div>
-<!-- container -->

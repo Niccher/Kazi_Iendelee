@@ -23,6 +23,16 @@
                         }else{
                             $select ="";
                         }
+
+                        if ($order_info['Order_Status'] == "Finished") {
+                            $final = '
+                            <a href="javascript:void(0)">
+                                <button type="button" class="btn btn-primary mb-2"><i class="mdi mdi-progress-check me-1"></i>Order Marker as Complete</button>
+                            </a> 
+                            ';
+                        }else{
+                            $final ="";
+                        }
                     ?>
 
                     <div class="row">
@@ -35,6 +45,7 @@
                                             <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-keyboard-backspace me-1"></i>Back</button>
                                         </a>
                                         <?php echo $select; ?>
+                                        <?php echo $final; ?>
                                     </div>
                                 </div>
                             </div><!-- end col-->
@@ -44,11 +55,6 @@
 
                     <div class="row">
                         <div class="col">
-
-                            <?php 
-                                $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
-                                $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
-                            ?>
 
                             <h4><?php echo ucfirst($this->mod_crypt->Dec_String($order_info['Order_Name'])); ?></h4>
 
@@ -283,6 +289,15 @@
                                  </ul>
                             </div>
 
+                            <?php
+                                if ($order_info['Order_Status'] == "Finished") {
+                                    echo '
+                                    <div class="alert alert-success" role="alert">
+                                        <strong>Work as been marked as complete
+                                    </div>';
+                                }else{
+                                    ?>
+
                             <div class="row mt-2">
                                 <div class="col">
                                     <div class="border rounded">
@@ -306,6 +321,11 @@
                                     </div>
                                 </div> 
                             </div>
+                                    <?php
+                                }
+                            ?>
+
+
                                 <?php
                             }
                         ?>

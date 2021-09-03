@@ -30,7 +30,7 @@
                                 $order_info = $this->mod_orders->get_orders_id($orders['Assign_Order']);
                                 if (!empty($order_info)) {
                                     $all_cost.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
-                                    if ($order_info['Order_Status'] == "Completed") {
+                                    if ($order_info['Order_Status'] == "Finished") {
                                         $all_paid.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
                                         $all_completed++;
                                     }

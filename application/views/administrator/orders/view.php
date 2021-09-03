@@ -28,6 +28,15 @@
                                             <?php
                                         }
                                     ?>
+                                    <?php
+                                        if ( $orders_info['Order_Status'] == "Finished" && $orders_info['Order_Owner'] != "Admin") {
+                                            ?>
+                                            <a href="javascript:void(0)">
+                                                <button type="button" class="btn btn-info mb-2" data-bs-toggle="modal" data-bs-target="#final_upload">Submit to Client</button>
+                                            </a>
+                                            <?php
+                                        }
+                                    ?>
                                 </div>
                             </div>
             </div><!-- end col-->
@@ -424,6 +433,80 @@
                             <div class="dz-message needsclick">
                                 <i class="h1 text-muted dripicons-cloud-upload"></i>
                                 <h3>Upload your attachments to send to the Writer.</h3>
+                            </div>
+                        </form>
+                        <!-- Preview -->
+                        <div class="dropzone-previews mt-3" id="file-previews"></div>
+
+                        <!-- file preview template -->
+                        <div class="d-none" id="uploadPreviewTemplate">
+                            <div class="card mt-1 mb-0 shadow-none border">
+                                <div class="p-2">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
+                                        </div>
+                                        <div class="col ps-0">
+                                            <a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
+                                            <p class="mb-0" data-dz-size></p>
+                                        </div>                                
+                                    </div>
+                                    <br>
+                                    <div class="container-fluid">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-primary" role="progressbar" data-dz-uploadprogress>
+                                                <span class="progress-text"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </diV>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="final_upload" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="col-12">
+                        <div class="border rounded">
+                            <form action="<?php echo base_url('admin/orders_make/delivery_message/'.$uuid); ?>" method="POST" class="comment-area-box">
+                                <textarea rows="3" class="form-control border-0 resize-none"
+                                placeholder="A type message to client" name="deliver_msg" id="deliver_msg"></textarea>
+                                <div class="p-2 bg-light">
+                                    <div class="row">
+                                        <div class="col-9 text-muted">Uploaded files</div>
+                                        <div class="col-3">
+                                            <button type="button" id="convo_deliver_msg" class="btn btn-sm btn-success">
+                                                <i class='uil uil-message me-1'></i>Send to Client
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="made_submissions" name="made_submissions"></div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <br><hr><br>
+
+                        <form action="<?php echo base_url('admin/orders_make/delivery_attachment/'.$uuid); ?>" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
+                                data-upload-preview-template="#uploadPreviewTemplate" enctype="multipart/form-data">
+                            <div class="fallback">
+                                <input name="file" type="file" />
+                            </div>
+
+                            <div class="dz-message needsclick">
+                                <i class="h1 text-muted dripicons-cloud-upload"></i>
+                                <h3>Upload your attachments to send to the client.</h3>
                             </div>
                         </form>
                         <!-- Preview -->

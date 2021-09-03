@@ -281,13 +281,20 @@
 
         }
 
-        public function get_submission_convo_($person_id, $order_id){
-            /*$array = array('Order_Id =' => $order_id);
-            $array = array('Order_Id =' => $order_id);
-            $this->db->where($array);
-            $this->db->order_by('Order_Id','ASC');
-            $query = $this->db->get('tbl_Chat_Orders');
-            return $query->result_array();*/
+        public function make_delivery_to($person_id, $order_id){
+            //Deliver_Id    Deliver_Time    Deliver_Message     Deliver_Files   Deliver_Viewed  Deliver_Order   Deliver_Maker   Deliever_Receiver   Deliver_Acceptance  
+            $data = array(
+                'Deliver_Time' => time(),
+                'Deliver_Message' => "Admin",
+                'Deliver_Files' => $assignee,
+                'Deliver_Viewed' => "00",
+                'Deliver_Order' => "00",
+                'Deliver_Maker' => "00",
+                'Deliver_Receiver' => $order_id,
+                'Deliver_Acceptance' => "00",
+            );
+
+            return $this->db->insert('tbl_Delivery', $data);
 
         }
 

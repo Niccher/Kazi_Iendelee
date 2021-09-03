@@ -26,7 +26,7 @@
                 $order_info = $this->mod_orders->get_orders_id($orders['Assign_Order']);
                 if (!empty($order_info)) {
                     $all_cost.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
-                    if ($order_info['Order_Status'] == "Completed") {
+                    if ($order_info['Order_Status'] == "Finished") {
                         $all_paid.= $this->mod_crypt->Dec_String($order_info['Order_Cost']);
                         $all_completed++;
                     }
@@ -87,7 +87,7 @@
                                 <div class="float-end">
                                     <i class="mdi mdi-pulse widget-icon"></i>
                                 </div>
-                                <h5 class="text-muted fw-normal mt-0" title="Paid Order">Paid Orders</h5>
+                                <h5 class="text-muted fw-normal mt-0" title="Paid Order">Payable Orders</h5>
                                 <h3 class="mt-3 mb-3"><i class="uil-dollar-alt"></i> &nbsp;KES <?php echo number_format($all_paid, 2);?></h3>
                             </div> <!-- end card-body-->
                         </div> <!-- end card-->
@@ -146,27 +146,30 @@
                             <div class="timeline-alt pb-0">
                                 <?php
                                     foreach ($last_five as $this_order) {
-                                        //print_r($this_order);
+
                                         $order_info = $this->mod_orders->get_orders_id($this_order['Assign_Order']);
-                                        $url = urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']));
-                                        $name = character_limiter(strip_tags($this->mod_crypt->Dec_String($order_info['Order_Name'])), 150);
-                                        $desc = character_limiter(strip_tags($this->mod_crypt->Dec_String($order_info['Order_Body'])), 200);
-                                        $assigned_at = date('M d H:i:s A', $this_order['Assign_Time']);
-                                        echo '
-                                <div class="timeline-item">
-                                    <i class="uil-calendar-alt bg-info-lighten text-info timeline-icon"></i>
-                                    <div class="timeline-item-info">
-                                        <a href="'.base_url("writer/".$user_url."/orders/view/".$url).'" class="text-info fw-bold mb-1 d-block">#'.$this_order['Assign_Order'].'</a>
-                                        <small>'.$name.'</small>
-                                        <p class="mb-0 pb-2">
-                                            <small class="text-info">'.$desc.'</small>
-                                        </p>
-                                        <p class="mb-0 pb-2">
-                                            <small class="text-muted">'.$assigned_at.'</small>
-                                        </p>
+                                        if (!empty($order_info)) {
+                                            $url = urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']));
+                                            $name = character_limiter(strip_tags($this->mod_crypt->Dec_String($order_info['Order_Name'])), 150);
+                                            $desc = character_limiter(strip_tags($this->mod_crypt->Dec_String($order_info['Order_Body'])), 200);
+                                            $assigned_at = date('M d H:i:s A', $this_order['Assign_Time']);
+                                            echo '
+                                    <div class="timeline-item">
+                                        <i class="uil-calendar-alt bg-info-lighten text-info timeline-icon"></i>
+                                        <div class="timeline-item-info">
+                                            <a href="'.base_url("writer/".$user_url."/orders/view/".$url).'" class="text-info fw-bold mb-1 d-block">#'.$this_order['Assign_Order'].'</a>
+                                            <small>'.$name.'</small>
+                                            <p class="mb-0 pb-2">
+                                                <small class="text-info">'.$desc.'</small>
+                                            </p>
+                                            <p class="mb-0 pb-2">
+                                                <small class="text-muted">'.$assigned_at.'</small>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                        ';
+                                            ';
+                                        }
+                                        
                                     }
                                 ?>
                             </div>

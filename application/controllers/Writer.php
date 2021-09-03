@@ -30,13 +30,14 @@ class Writer extends CI_Controller {
         }
 		
 		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		$data['assigned'] = $this->mod_orders->get_all_assigned_to($this->session->userdata('log_id'));
 		
-		$titl['pag'] = 'sales';
+		$titl['pag'] = 'invoices';
 		$titl['urls'] = $data['user_info']->Name;
 
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);
-		$this->load->view('sellers/sales/'.$page);
+		$this->load->view('sellers/sales/'.$page, $data);
 		$this->load->view('sellers/template/tail');
 	}
 
@@ -46,15 +47,16 @@ class Writer extends CI_Controller {
         if (! $this->session->userdata('log_id') || $typ != "cat_Reseller") {
             redirect('auth/login');
         }
-		
-		$data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+
+        $data['user_info'] = $this->mod_users->get_vars($this->session->userdata('log_id'));
+		$data['assigned'] = $this->mod_orders->get_all_assigned_to($this->session->userdata('log_id'));
 		
 		$titl['pag'] = 'invoices';
 		$titl['urls'] = $data['user_info']->Name;
 
 		$this->load->view('sellers/template/header');
 		$this->load->view('sellers/template/sidebar', $titl);
-		$this->load->view('sellers/sales/'.$page);
+		$this->load->view('sellers/sales/'.$page, $data);
 		$this->load->view('sellers/template/tail');
 	}
 

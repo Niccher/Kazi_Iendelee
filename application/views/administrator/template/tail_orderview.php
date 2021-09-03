@@ -62,6 +62,23 @@
 	                    });
 	                }  
 	                     
+	            });
+	            $("#convo_deliver_msg").click(function(){
+	                var msg_body = $('#deliver_msg').val();
+	                console.log(msg_body);
+	                if (msg_body == "") {
+	                    window.alert("Message cannot be empty");
+	                }else{
+	                    $.ajax({
+	                        url: '<?php echo base_url("admin/orders_make/delivery_message/"); ?>'+user_id,
+	                        type: 'POST',
+	                        data: { msg_content:msg_body},
+	                        success: function(response){
+	                            $('#deliver_msg').val("");
+	                        }
+	                    });
+	                } 
+	                     
 	            });;
 
 	            function getChats(){

@@ -150,6 +150,8 @@ class Adminorders extends CI_Controller {
 
 		$data['order_info'] = $this->mod_orders->get_orders_id($this->mod_crypt->Dec_String(urldecode($order_id)));
 
+		if ($data['order_info']['Order_Status'] == "Finished") { redirect('admin/orders'); }
+
 		$this->load->view('administrator/template/header');
 		$this->load->view('administrator/template/sidebar', $titl);
 		$this->load->view('administrator/orders/'.$page, $data);
@@ -240,6 +242,26 @@ class Adminorders extends CI_Controller {
         }
 	}
 
+	public function orders_make_submission_message() {
+		$person_id = "admin";
+		$order_id = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(4)));
+		$msg = $_POST['msg_content'];
+		$assignement = $this->mod_orders->get_orders_id($order_id);
+		$reciva = $assignement['Order_Owner'];
+		print_r($assignement);
+		echo "<br><hr>";
+		echo "Order Id -> ".$order_id;
+		echo "Owner -> ".$reciva;
+		echo "<br><hr>";
+		echo "Uploaded file -> ". $this->mod_orders->order_get_submission_admin();
+		echo "<br><hr>";
+		print_r($_POST);
+
+		//make_delivery_to($order_id){
+            //Deliver_Id    Deliver_Time    Deliver_Message     Deliver_Files   Deliver_Viewed  Deliver_Order   Deliver_Maker   Deliever_Receiver   Deliver_Acceptance  
+
+	}
+
 	public function orders_make_attachment_ui() {
 
 		$each_file = explode("|__|", $this->mod_orders->order_get_attachments_admin());
@@ -313,7 +335,7 @@ class Adminorders extends CI_Controller {
 		
 		$order_id = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(4)));
 		$this->mod_orders->mark_as_completed_by_id($order_id);
-		redirect('admin/orders/completed');
+		redirect('orders/completed');
 
 	}
 

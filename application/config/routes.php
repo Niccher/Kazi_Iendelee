@@ -41,7 +41,9 @@ $route['admin/orders_submission_chats/(:any)'] = 'adminorders/get_submission_con
 $route['admin/orders/get_submission/(:any)'] = 'adminorders/order_get_submission';
 
 $route['admin/orders/complete/(:any)'] = 'adminorders/order_finalize';
-//admin/orders_submission_chats/
+$route['admin/orders_make/delivery_attachment/(:any)'] = 'adminorders/orders_make_submission_attachment';
+$route['admin/orders_make/delivery_message/(:any)'] = 'adminorders/orders_make_submission_message';
+//admin/orders_make/delivery_attachment
 
 $route['admin/mails'] = 'adminmails';
 $route['admin/mail/all'] = 'adminmails';
@@ -77,6 +79,7 @@ $route['writer/(:any)/orders/reject/(:any)'] = 'writer_orders/make_accept';
 $route['writer/(:any)/orders_make_order_attachment'] = 'writer_orders/orders_make_attachment';
 $route['writer/(:any)/orders_submission_ui'] = 'writer_orders/orders_make_attachment_ui'; 
 $route['writer/(:any)/attachment_delete/(:any)'] = 'writer_orders/orders_attachment_delete';
+$route['writer/(:any)/invoices/process'] = 'writer/sales';
 
 $route['writer/(:any)/invoices'] = 'writer/invoices';
 $route['writer/(:any)/sales'] = 'writer/sales';

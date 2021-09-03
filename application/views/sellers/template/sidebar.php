@@ -61,17 +61,6 @@
                     </li>
 
                     <?php 
-                        if ($pag =='analytics') {echo '<li class="side-nav-item menuitem-active">';} 
-                        else {echo '<li class="side-nav-item">';} 
-
-                    ?>
-                        <a href="<?php echo base_url('writer/'.$user_url.'/sales'); ?>" class="side-nav-link">
-                            <i class="mdi mdi-google-analytics"></i>
-                            <span> Sales </span>
-                        </a>
-                    </li>
-
-                    <?php 
                         if ($pag =='invoices') {echo '<li class="side-nav-item menuitem-active">';} 
                         else {echo '<li class="side-nav-item">';} 
 
