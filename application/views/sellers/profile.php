@@ -56,15 +56,15 @@
 
                     <ul class="social-list list-inline mt-3 mb-0">
                         <li class="list-inline-item">
-                            <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i
+                            <a href="<?php echo $this->mod_crypt->Dec_String($user_info->Social_Fb);?>" target="_blank" class="social-list-item border-primary text-primary"><i
                                     class="mdi mdi-facebook"></i></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="javascript: void(0);" class="social-list-item border-info text-info"><i
+                            <a href="<?php echo $this->mod_crypt->Dec_String($user_info->Social_Tw);?>" target="_blank" class="social-list-item border-info text-info"><i
                                     class="mdi mdi-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i
+                            <a href="<?php echo $this->mod_crypt->Dec_String($user_info->Social_Ig);?>" target="_blank" class="social-list-item border-secondary text-secondary"><i
                                     class="mdi mdi-instagram"></i></a>
                         </li>
                     </ul>

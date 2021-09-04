@@ -56,15 +56,15 @@
 
                     <ul class="social-list list-inline mt-3 mb-0">
                         <li class="list-inline-item">
-                            <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i
+                            <a href="<?php echo $this->mod_crypt->Dec_String($user_info->Social_Fb);?>" target="_blank" class="social-list-item border-primary text-primary"><i
                                     class="mdi mdi-facebook"></i></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="javascript: void(0);" class="social-list-item border-info text-info"><i
+                            <a href="<?php echo $this->mod_crypt->Dec_String($user_info->Social_Tw);?>" target="_blank" class="social-list-item border-info text-info"><i
                                     class="mdi mdi-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i
+                            <a href="<?php echo $this->mod_crypt->Dec_String($user_info->Social_Ig);?>" target="_blank" class="social-list-item border-secondary text-secondary"><i
                                     class="mdi mdi-instagram"></i></a>
                         </li>
                     </ul>
@@ -78,11 +78,6 @@
                 <div class="card-body">
                     <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
                         <li class="nav-item">
-                            <a href="#aboutme" data-bs-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
-                                About
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="#timeline" data-bs-toggle="tab" aria-expanded="true" class="nav-link rounded-0 active">
                                 Timeline
                             </a>
@@ -94,36 +89,6 @@
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane" id="aboutme">
-
-                            <h5 class="text-uppercase"><i class="mdi mdi-briefcase me-1"></i>
-                                Tasks and Orders</h5>
-
-                            <div class="timeline-alt pb-0">
-                                <div class="timeline-item">
-                                    <i class="mdi mdi-circle bg-info-lighten text-info timeline-icon"></i>
-                                    <div class="timeline-item-info">
-                                        <h5 class="mt-0 mb-1">Order 1</h5>
-                                        <p class="font-14">Order Name <span class="ms-2 font-12">Year: 2021 - 21</span></p>
-                                        <p class="text-muted mt-2 mb-0 pb-3">Order description here</p>
-                                    </div>
-                                </div>
-
-                                <div class="timeline-item">
-                                    <i class="mdi mdi-circle bg-primary-lighten text-primary timeline-icon"></i>
-                                    <div class="timeline-item-info">
-                                        <h5 class="mt-0 mb-1">Order 3</h5>
-                                        <p class="font-14">Order Name. <span class="ms-2 font-12">Year: 2021 - 21</span></p>
-                                        <p class="text-muted mt-2 mb-0 pb-3">Order Description Here</p>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- end timeline -->        
-
-                        </div> <!-- end tab-pane -->
-                        <!-- end about me section content -->
 
                         <div class="tab-pane show active" id="timeline">
 

@@ -93,6 +93,12 @@
             $state = '<h5><span class="badge badge-success-lighten">Active</span></h5>';
         }
 
+        if ($status == 'Finished') {
+            $editable = '';
+        }else{
+            $editable = '<a href="'.base_url('buyer/'.$user_url.'/orders/edit/'.$delte_id).'" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>';
+        }
+
         $delte_id = urlencode($this->mod_crypt->Enc_String($order['Order_Id']));
 
 
@@ -119,7 +125,7 @@
                     </td>
                     <td>
                         <a href="'.base_url('buyer/'.$user_url.'/orders/view/'.$o_id).'" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                        <a href="'.base_url('buyer/'.$user_url.'/orders/edit/'.$delte_id).'" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                        '.$editable.'
                     </td>
                 </tr>
             ';

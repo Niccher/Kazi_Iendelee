@@ -18,6 +18,15 @@
 
         }
 
+        public function get_paid(){
+            /*$order_id = $this->mod_crypt->Dec_String(urldecode($p_id));
+            $array = array('Order_Owner =' => $p_id);
+            $this->db->where($array);*/
+            $query = $this->db->get('tbl_Stripe');
+            return $query->result_array();
+
+        }
+
         public function get_orders_last5(){
             $this->db->order_by('Order_Id', 'DESC');
             $this->db->limit(5);

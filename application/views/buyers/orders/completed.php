@@ -97,7 +97,7 @@
 
         $delte_id = urlencode($this->mod_crypt->Enc_String($order['Order_Id']));
 
-        if ($status == 'Completed') {
+        if ($status == 'Finished') {
             echo '
                 <tr> 
                     <td><a href="'.base_url('buyer/'.$user_url.'/orders/view/'.$o_id).'" class="text-body fw-bold">#'.$order['Order_Id'].'</a> 
@@ -121,8 +121,6 @@
                     </td>
                     <td>
                         <a href="'.base_url('buyer/'.$user_url.'/orders/view/'.$o_id).'" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                        <a href="'.base_url('buyer/'.$user_url.'/orders/edit/'.$delte_id).'" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                     </td>
                 </tr>
             ';

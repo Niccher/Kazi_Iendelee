@@ -98,7 +98,7 @@ $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->
 
         $delte_id = urlencode($this->mod_crypt->Enc_String($order['Order_Id']));
 
-        if ($status != 'Completed') {
+        if ($status != 'Finished') {
             echo '
                 <tr> 
                     <td><a href="'.base_url('buyer/'.$user_url.'/orders/view/'.$o_id).'" class="text-body fw-bold">#'.$order['Order_Id'].'</a> 

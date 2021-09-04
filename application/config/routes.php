@@ -47,6 +47,10 @@ $route['admin/orders_make/delivery_message/(:any)'] = 'adminorders/orders_make_s
 
 $route['admin/sales'] = 'admin/sales';
 $route['admin/invoices/process/(:any)'] = 'admin/invoices';
+$route['admin/blogs'] = 'admin/blogs';
+$route['admin/blogs/create'] = 'admin/blog_create';
+$route['admin/blogs/view/(:any)'] = 'admin/blog_view';
+$route['admin/blogs/make'] = 'admin/blog_make';
 
 $route['admin/mails'] = 'adminmails';
 $route['admin/mail/all'] = 'adminmails';

@@ -336,6 +336,10 @@ class Client_orders extends CI_Controller {
 			redirect('buyer/'.$user_url.'/orders');
 		}
 
+		if ($order_info['Order_Status'] == 'Finished') {
+			redirect('buyer/'.$user_url.'/orders');
+		}
+
 		if ($order_info['Order_Id'] == $order_id) {
 
 			$data['order_info'] = $order_info;
