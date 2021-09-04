@@ -1,24 +1,86 @@
     
     <div class="container-fluid">
 
+
+        <?php 
+            $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
+            $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
+            $order_id = $this->mod_crypt->Dec_String($this->uri->segment(5)); 
+            $id = urlencode($this->mod_crypt->Enc_String($order_id));
+            $order_info = $this->mod_orders->get_orders_id($order_id);
+            $order_name = $this->mod_crypt->Dec_String($order_info['Order_Name']);
+            $order_cost = $this->mod_crypt->Dec_String($order_info['Order_Cost']);
+            $order_date = ($order_info['Order_Deadline']);
+            //print_r($order_info);
+        ?>
+
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box">
                     <div class="page-title-right">
-                        <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Orders</a></li>
-                            <li class="breadcrumb-item active">Checkout</li>
-                        </ol>
+                        <div class="text-xl-end mt-xl-0 mt-2">
+                            <div class="text-sm-end">
+                                <a href="<?php echo base_url('buyer/'.$user_url.'/orders/view/'.$id);?>">
+                                    <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-keyboard-backspace me-1"></i>Back</button>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <h4 class="page-title">Checkout</h4>
                 </div>
             </div>
         </div>
 
+        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>    
+                            
+        <script type="text/javascript">
+            Stripe.setPublishableKey('pk_test_51JAW36LbL1tUcWWUqOumhoq39YMVXytWgq4iXQVCCGuZXXvTCzs32ZH3SdFFboDsBLZs0BhoqJvF80DegHAj63oM00LnDKtNxp');
+            
+            //callback to handle the response from stripe
+            function stripeResponseHandler(status, response) {
+                if (response.error) {
+                    //enable the submit button
+                    $('#payBtn').removeAttr("disabled");
+                    //display the errors on the form
+                    // $('#payment-errors').attr('hidden', 'false');
+                    $('#payment-errors').addClass('alert alert-danger');
+                    $("#payment-errors").html(response.error.message);
+                } else {
+                    var form$ = $("#paymentFrm");
+                    //get token id
+                    var token = response['id'];
+                    //insert the token into the form
+                    form$.append("<input type='hidden' name='stripeToken' value='" + token + "' />");
+                    //submit form to the server
+                    form$.get(0).submit();
+                }
+            }
+            $(document).ready(function() {
+                //on form submit
+                $("#paymentFrm").submit(function(event) {
+                    //disable the submit button to prevent repeated clicks
+                    $('#payBtn').attr("disabled", "disabled");
+                    
+                    //create single-use token to charge the user
+                    Stripe.createToken({
+                        number: $('#card_num').val(),
+                        cvc: $('#card-cvc').val(),
+                        exp_month: $('#card-expiry-month').val(),
+                        exp_year: $('#card-expiry-year').val()
+                    }, stripeResponseHandler);
+                    
+                    //submit from callback
+                    return false;
+                });
+            });
+        </script>
+        
         <?php 
-            $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
-            $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
+            $stripeDetails = array(
+                "secretKey" => "sk_test_51JAW36LbL1tUcWWUdDb7iU1Y1BmimlhcMGEfvvvW5rBkhWfTXELXLAqU8u5uU7B2STPBhyCXpZz1OAlgpLMFrbBz00yjr5sREd",
+                "publishableKey" => "pk_test_51JAW36LbL1tUcWWUqOumhoq39YMVXytWgq4iXQVCCGuZXXvTCzs32ZH3SdFFboDsBLZs0BhoqJvF80DegHAj63oM00LnDKtNxp"
+            );  
+            
         ?>
 
         <div class="row">
@@ -42,6 +104,9 @@
                                                 <label class="form-check-label font-16 fw-bold" for="BillingOptRadio2">Pay with Paypal</label>
                                             </div>
                                             <p class="mb-0 ps-3 pt-1">You will be redirected to PayPal website to complete your purchase securely.</p>
+                                            <p>
+                                                <button class="btn btn-primary btn-block" type="button">Proceed</button>
+                                            </p>
                                         </div>
                                         <div class="col-sm-4 text-sm-end mt-3 mt-sm-0">
                                             <img src="<?php echo base_url('assets/images/payments/paypal.png') ?>" height="25" alt="paypal-img">
@@ -59,6 +124,24 @@
                                                 <label class="form-check-label font-16 fw-bold" for="BillingOptRadio1">Credit / Debit Card</label>
                                             </div>
                                             <p class="mb-0 ps-3 pt-1">Safe money transfer using your bank account. We support Mastercard, Visa, Discover and Stripe.</p>
+                                            <p>
+                                            <?php
+                                                echo '
+                                                    <div class="col-4 text-center">
+                                                        <form action="'.base_url("pay/stripe/".urlencode($this->mod_crypt->Enc_String($order_id)).'" method="POST">
+                                                            <script
+                                                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                                data-key="'.$stripeDetails['publishableKey'].'"
+                                                                data-amount="'.$order_cost.'"
+                                                                data-name="'.$order_name).'"
+                                                                data-description="Pay Before '.$order_date.'"
+                                                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                                data-locale="auto">
+                                                            </script>
+                                                        </form>
+                                                    </div>';
+                                            ?>
+                                            </p>
                                         </div>
                                         <div class="col-sm-4 text-sm-end mt-3 mt-sm-0">
                                             <img src="<?php echo base_url('assets/images/payments/master.png') ?>" height="24" alt="master-card-img">
@@ -67,67 +150,8 @@
                                             <img src="<?php echo base_url('assets/images/payments/stripe.png') ?>" height="24" alt="stripe-card-img">
                                         </div>
                                     </div> <!-- end row -->
-                                    <div class="row mt-4">
-                                        <div class="col-md-12">
-                                            <div class="mb-3">
-                                                <label for="card-number" class="form-label">Card Number</label>
-                                                <input type="text" id="card-number" class="form-control" data-toggle="input-mask" data-mask-format="0000 0000 0000 0000" placeholder="4242 4242 4242 4242">
-                                            </div>
-                                        </div>
-                                    </div> <!-- end row -->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="card-name-on" class="form-label">Name on card</label>
-                                                <input type="text" id="card-name-on" class="form-control" placeholder="Master Shreyu">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="mb-3">
-                                                <label for="card-expiry-date" class="form-label">Expiry date</label>
-                                                <input type="text" id="card-expiry-date" class="form-control" data-toggle="input-mask" data-mask-format="00/00" placeholder="MM/YY">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="mb-3">
-                                                <label for="card-cvv" class="form-label">CVV code</label>
-                                                <input type="text" id="card-cvv" class="form-control" data-toggle="input-mask" data-mask-format="000" placeholder="012">
-                                            </div>
-                                        </div>
-                                    </div> <!-- end row -->
                                 </div>
                                 <!-- end Credit/Debit Card box-->
-
-                                <!-- Pay with Payoneer box-->
-                                <div class="border p-3 mb-3 rounded">
-                                    <div class="row">
-                                        <div class="col-sm-8">
-                                            <div class="form-check">
-                                                <input type="radio" id="BillingOptRadio3" name="billingOptions" class="form-check-input">
-                                                <label class="form-check-label font-16 fw-bold" for="BillingOptRadio3">Pay with Payoneer</label>
-                                            </div>
-                                            <p class="mb-0 ps-3 pt-1">You will be redirected to Payoneer website to complete your purchase securely.</p>
-                                        </div>
-                                        <div class="col-sm-4 text-sm-end mt-3 mt-sm-0">
-                                            <img src="<?php echo base_url('assets/images/payments/payoneer.png') ?>" height="30" alt="paypal-img">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end Pay with Payoneer box-->
-
-
-                                <div class="row mt-4">
-                                    <div class="col-sm-6">
-                                        <a href="<?php echo base_url("buyer/".$user_url."/orders"); ?>" class="btn text-muted d-none d-sm-inline-block btn-link fw-semibold">
-                                            <i class="mdi mdi-arrow-left"></i> Back to Home </a>
-                                    </div> <!-- end col -->
-                                    <div class="col-sm-6">
-                                        <div class="text-sm-end">
-                                            <a href="#" class="btn btn-danger">
-                                                <i class="mdi mdi-cash-multiple me-1"></i> Complete Order </a>
-                                        </div>
-                                    </div> <!-- end col -->
-                                </div> <!-- end row-->
 
                             </div> <!-- end col -->
 
@@ -140,36 +164,24 @@
 							            <table class="table mb-0">
 							                <tbody>
 							                    <tr>
-							                        <td>Grand Total :</td>
-							                        <td>$80.19</td>
+							                        <td>Order Price :</td>
+							                        <td><?php echo number_format($order_cost, 2); ?></td>
 							                    </tr>
 							                    <tr>
 							                        <td>Discount : </td>
-							                        <td>-$12.11</td>
-							                    </tr>
-							                    <tr>
-							                        <td>Estimated Tax : </td>
-							                        <td>$01.22</td>
+							                        <td>00.00</td>
 							                    </tr>
 							                    <tr>
 							                        <th>Total :</th>
-							                        <th>$68.3</th>
+							                        <th><?php echo number_format($order_cost, 2); ?></th>
 							                    </tr>
 							                </tbody>
 							            </table>
 							        </div>
 							        <!-- end table-responsive -->
 							    </div>
-							    <div class="alert alert-warning mt-3" role="alert">
-							        Use coupon code <strong>Hhaha</strong> and get 10% discount !
-							    </div>
-							    <div class="input-group mt-3">
-							        <input type="text" class="form-control form-control-light" placeholder="Coupon code" aria-label="Recipient's username">
-							        <button class="input-group-text btn-light" type="button">Apply</button>
-							    </div>
 							</div>
-                        </div> <!-- end row-->                                
-
+                        </div> <!-- end row-->   
                     </div> 
                 </div> 
             </div>

@@ -131,6 +131,10 @@ $route['buyer/(:any)/profile_image'] = 'client/profile_image';
 $route['buyer/(:any)/send_message/(:any)'] = 'client/send_message'; 
 $route['buyer/(:any)/user_fetch/(:any)'] = 'client/user_fetch'; 
 
+$route['pay/stripe/(:any)'] = 'transaction/transaction_stripe_pay/$1';
+$route['pay/success'] = 'transaction/transaction_pay_success';
+$route['pay/fail'] = 'transaction/transaction_pay_fail';
+
 $route['default_controller'] = 'pages';
 $route['404_override'] = 'pages/error_404';
 $route['translate_uri_dashes'] = FALSE;

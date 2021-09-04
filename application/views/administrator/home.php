@@ -162,7 +162,7 @@
 
         <div class="col-12">
             <div class="row">
-                <div class="col-xl-4 col-lg-12">
+                <div class="col-xl-6 col-lg-12">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="header-title mb-3">Latest new Orders</h4>
@@ -206,7 +206,7 @@
                     <!-- end card-->
                 </div>
                 <!-- end col-->
-                <div class="col-xl-4 col-lg-6">
+                <div class="col-xl-6 col-lg-6">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="header-title mb-4">Newest Users</h4>
@@ -238,34 +238,7 @@
                     <!-- end card-->
                 </div>
                 <!-- end col --> 
-                <!-- end col -->  
-                <div class="col-xl-4 col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="header-title mb-3">New Messages</h4>
-                            <div class="table-responsive">
-                                <table class="table table-centered table-nowrap table-hover mb-0">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-start">
-                                                    <img class="me-2 rounded-circle" src="assets/images/users/avatar-2.jpg" alt="Generic placeholder image" width="40">
-                                                    <div>
-                                                        <h5 class="mt-0 mb-1">Sender<small class="fw-normal ms-3">18 Jan 202021 11:28 pm</small></h5>
-                                                        <span class="font-13">Completed "Design new idea"...</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- end table-responsive-->
-                        </div>
-                        <!-- end card body-->
-                    </div>
-                </div>
-                <!-- end col -->  
+                <!-- end col -->   
             </div>
         </div>
     </div> <!-- end row -->
