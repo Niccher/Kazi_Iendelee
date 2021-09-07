@@ -75,6 +75,9 @@
         $paid = $order['Order_Paid'];
         $status = $order['Order_Status'];
         $attachment = str_replace("|||","", $order['Order_Attachment']);
+
+        $delte_id = urlencode($this->mod_crypt->Enc_String($order['Order_Id']));
+        
         if ($attachment != '') {
             $attached = '<h5><span class="badge badge-info-lighten">Present</span></h5>';
         }else{
@@ -98,8 +101,6 @@
         }else{
             $editable = '<a href="'.base_url('buyer/'.$user_url.'/orders/edit/'.$delte_id).'" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>';
         }
-
-        $delte_id = urlencode($this->mod_crypt->Enc_String($order['Order_Id']));
 
 
         echo '
