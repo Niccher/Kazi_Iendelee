@@ -287,7 +287,8 @@ class Client_orders extends CI_Controller {
 		$this->load->view('buyers/template/header');
 		$this->load->view('buyers/template/sidebar', $titl);
 		$this->load->view('buyers/sales/'.$page);
-		$this->load->view('buyers/template/tail');
+		$this->load->view('buyers/template/tail_pay.php');
+		
 	}
 
 
@@ -377,6 +378,10 @@ class Client_orders extends CI_Controller {
 	    $order_id = $this->mod_crypt->Dec_String(urldecode($this->uri->segment(5)));
 	    $this->mod_orders->orders_make_edit($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $attachments, $order_id);
 
+	    $each_file = explode('|__|', $attachments);
+        for ($i=0; $i < count($each_file); $i++) { 
+            rename('./uploads/temp_orders/'.$each_file[$i], './uploads/orders/'.$each_file[$i]);
+        }
 
 	    $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($data['user_info']->Name))); 
 

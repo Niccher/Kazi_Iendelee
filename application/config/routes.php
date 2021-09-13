@@ -124,14 +124,14 @@ $route['buyer/(:any)/orders/edit/(:any)'] = 'client_orders/order_edit';
 $route['buyer/(:any)/orders/edit_id/(:any)'] = 'client_orders/orders_make_edit_change'; 
 
 $route['buyer/(:any)/invoices'] = 'client/invoices';
-$route['buyer/(:any)/profile'] = 'client/profile';
+$route['buyer/(:any)/profile'] = 'client_profile/profile';
 $route['buyer/(:any)/sales'] = 'client/sales';
 $route['buyer/(:any)/mail'] = 'client/mails';
 $route['buyer/(:any)/mails'] = 'client/mails';
 $route['buyer/(:any)/mail/read'] = 'client/mails_read';
-$route['buyer/(:any)/profile_make'] = 'client/profile_make';
+$route['buyer/(:any)/profile_make'] = 'client_profile/profile_make';
 $route['buyer/(:any)/add_post'] = 'client/add_post';
-$route['buyer/(:any)/profile_image'] = 'client/profile_image'; 
+$route['buyer/(:any)/profile_image'] = 'client_profile/profile_image'; 
 $route['buyer/(:any)/send_message/(:any)'] = 'client/send_message'; 
 $route['buyer/(:any)/user_fetch/(:any)'] = 'client/user_fetch'; 
 

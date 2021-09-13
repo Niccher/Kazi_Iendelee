@@ -35,14 +35,6 @@
     <script src="<?php echo base_url('assets/js/vendor.min.js');?>"></script>
     <script src="<?php echo base_url('assets/js/app.min.js'); ?>"></script>
 
-    <script src="<?php echo base_url('assets/js/vendor/jquery-jvectormap-1.2.2.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/vendor/jquery-jvectormap-world-mill-en.js'); ?>"></script>
-
-    <script src="<?php echo base_url('assets/js/vendor/dragula.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/ui/component.dragula.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/ui/component.dragula.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/ui/component.todo.js'); ?>"></script>
-
     <script src="<?php echo base_url('assets/js/vendor/dropzone.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/ui/component.fileupload.js'); ?>"></script>
 
@@ -103,10 +95,6 @@
             
         });
     </script>
-
-    <script src="<?php echo base_url('assets/js/vendor/Chart.bundle.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/vendor/apexcharts.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/pages/demo.dashboard-crm.js'); ?>"></script>
 
 </body>
 

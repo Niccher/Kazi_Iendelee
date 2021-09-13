@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <title>Scaffold Bootstrap Template - Index</title>
+        <title>Kazi Mingi</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
         <!-- Favicons -->
@@ -36,6 +36,18 @@
                         <li><a class="nav-link scrollto " href="#features">How it Works</a></li>
                         <li><a class="nav-link scrollto" href="#faqs">FAQs</a></li>
                         <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                        <li class="dropdown">
+                            <a href="#"><span>Get In</span> <i class="bi bi-chevron-right"></i></a>
+                            <ul>
+                                <li>
+                                    <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="login_modal">Login</a>
+                                </li>
+                                <li>
+                                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#signup_modal">Register</button>
+                                </li>
+                            </ul>
+                        </li>
+                        
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav>
@@ -44,7 +56,7 @@
                     <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                     <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                     <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
                 </div>
             </div>
         </header>
@@ -358,6 +370,148 @@
                 </div>
             </section>
             <!-- End Contact Section -->
+
+            <div id="signup_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="col-xxl-12 col-lg-12">
+                                <div class="card">
+                                    <div class="card-body p-4">
+                                        <div class="text-center w-75 m-auto">
+                                            <h4 class="text-dark-50 text-center mt-0 fw-bold">Free Sign Up</h4>
+                                            <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a minute </p>
+                                        </div>
+
+                                        <?php 
+                                        echo validation_errors(); 
+                                        echo form_open('auth/register'); ?>
+
+                                            <div class="mb-3">
+                                                <label for="fullname" class="form-label">Username</label>
+                                                <input class="form-control" type="text" id="fullname" placeholder="Enter your username" required name="rg_as_fn">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="emailaddress" class="form-label">Email address</label>
+                                                <input class="form-control" type="email" id="emailaddress" required placeholder="Enter your email" name="rg_as_eml">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="password" class="form-label">Password</label>
+                                                <div class="input-group input-group-merge">
+                                                    <input type="password" id="password" class="form-control" placeholder="Enter your password" name="rg_as_pwd">
+                                                    <div class="input-group-text" data-password="false">
+                                                        <span class="password-eye"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label">Proceed as</label>
+                                                <div class="row"></div>
+                                                <div class="input-group input-group-merge">
+                                                    <div class="form-check form-check-inline">
+                                                        <input type="radio" name="cat_usertype" value="cat_Reseller">
+                                                        <label class="form-check-label">Writer.</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input type="radio" name="cat_usertype" value="cat_Buyer">
+                                                        <label class="form-check-label">Buyer.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox-signup" checked="" disabled="">
+                                                    <label class="form-check-label" for="checkbox-signup">I accept <a href="<?php echo base_url('auth/register'); ?>" class="text-muted">Terms and Conditions</a></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 text-center">
+                                                <button class="btn btn-primary" type="submit"> Sign Up </button>
+                                            </div>
+
+                                        </form>
+                                    </div> <!-- end card-body -->
+                                </div>
+                                <!-- end card -->
+
+                                <div class="row mt-3">
+                                    <div class="col-12 text-center">
+                                        <p class="text-muted">Already have account? <a href="<?php echo base_url('auth/login'); ?>" class="text-muted ms-1"><b>Log In</b></a></p>
+                                    </div> <!-- end col-->
+                                </div>
+                                <!-- end row -->
+
+                            </div> <!-- end col -->
+
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+            <div id="login_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="col-xxl-12 col-lg-12">
+                                <div class="card">
+                                    <div class="card-body p-4">
+                                        <?php  
+                                        echo validation_errors(); 
+                                        echo form_open('auth/login'); ?>
+
+                                            <div class="mb-3">
+                                                <label for="emailaddress" class="form-label">Email address</label>
+                                                <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email" name="lg_as_eml">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="password" class="form-label">Password</label>
+                                                <div class="input-group input-group-merge">
+                                                    <input type="password" id="password" class="form-control" placeholder="Enter your password" name="lg_as_pwd">
+                                                    <div class="input-group-text" data-password="false">
+                                                        <span class="password-eye"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 mb-3">
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox-signin" checked disabled="">
+                                                    <label class="form-check-label" for="checkbox-signin">Remember me</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 mb-0 text-center">
+                                                <button class="btn btn-primary" type="submit"> Log In </button>
+                                            </div>
+
+                                        </form>
+                                    </div> <!-- end card-body -->
+                                </div>
+                                <!-- end card -->
+
+                                <div class="row mt-3">
+                                    <div class="col-12 text-center">
+                                        <p class="text-muted">Forgot password ? <a href="<?php echo base_url('auth/forgot'); ?>" class="text-muted ms-1"><b>Forgot Password</b></a></p>
+                                    </div> <!-- end col -->
+                                    <div class="col-12 text-center">
+                                        <p class="text-muted">Don't have an account ? <a href="<?php echo base_url('auth/register'); ?>" class="text-muted ms-1"><b>Sign Up</b></a></p>
+                                    </div> <!-- end col -->
+                                </div>
+                                <!-- end row -->
+
+                            </div> <!-- end col -->
+
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+
         </main>
         <!-- End #main -->
         <!-- ======= Footer ======= -->
@@ -397,6 +551,7 @@
         <!-- End Footer -->
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
         <!-- Vendor JS Files -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="<?php echo base_url('assets/land/vendor/aos/aos.js'); ?>"></script>
         <script src="<?php echo base_url('assets/land/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/land/vendor/glightbox/js/glightbox.min.js'); ?>"></script>

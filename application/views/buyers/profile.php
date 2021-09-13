@@ -42,7 +42,7 @@
                         </p>
 
                         <p class="text-muted mb-2 font-13"><strong>Mobile :</strong>
-                            <span class="ms-2"> <?php echo $this->mod_crypt->Dec_String($user_info->Phone);?></span>
+                            <span class="ms-2"> <?php echo ($user_info->Phone);?></span>
                         </p>
 
                         <p class="text-muted mb-2 font-13"><strong>Email :</strong> 
@@ -161,16 +161,22 @@
                                 echo form_open('buyer/'.$user_url.'/profile_make'); ?>
                                 <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Personal Info</h5>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="firstname" class="form-label">First Name</label>
                                             <input type="text" class="form-control" name="ed_name_first" placeholder="Enter first name">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="mb-3">
                                             <label for="lastname" class="form-label">Last Name</label>
                                             <input type="text" class="form-control" name="ed_name_last" placeholder="Enter last name">
+                                        </div>
+                                    </div> <!-- end col -->
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="lastname" class="form-label">Phone Number</label>
+                                            <input type="text" class="form-control" name="ed_phone" placeholder="Enter Phone Number">
                                         </div>
                                     </div> <!-- end col -->
                                 </div> <!-- end row -->

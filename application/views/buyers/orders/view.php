@@ -49,7 +49,7 @@
                                     <!-- assignee -->
                                     <p class="mt-2 mb-1 text-muted">Assigned To</p>
                                     <div class="d-flex">
-                                        <img src="<?php echo '../../../../uploads/profiles/'.$user_info->Avatar;?>" class="rounded-circle me-2" height="24" />
+                                        <img src="<?php echo base_url('uploads/profiles/'.$user_info->Avatar);?>" class="rounded-circle me-2" height="24" />
                                             <h5 class="mt-1 font-14">
                                                 <?php echo ucfirst($this->mod_crypt->Dec_String($user_info->Name));?>
                                             </h5>
@@ -76,7 +76,7 @@
                                         <i class='uil uil-schedule font-18 text-success me-1'></i>
                                         <div>
                                             <h5 class="mt-1 font-14">
-                                                <?php echo ($order_info['Order_Deadline']); ?>
+                                                <?php echo $this->mod_crypt->Dec_String($order_info['Order_Deadline']); ?>
                                             </h5>
                                         </div>
                                     </div>
@@ -140,17 +140,9 @@
 
                             <!-- task description -->
                             <div class="row mt-3">
-                                <div class="col">
-                                    <div class="border rounded">
-                                        <div id="bubble-editor">
-                                            <h3>Order Description.</h3>
-                                            <ul>
-                                                <li>
-                                                    <?php echo $this->mod_crypt->Dec_String($order_info['Order_Body']); ?>
-                                                </li>
-                                            </ul>
-                                        </div> <!-- end Snow-editor-->
-                                    </div>
+                                <div class="col-12">
+                                    <h3>Order Description.</h3>
+                                    <?php echo $this->mod_crypt->Dec_String($order_info['Order_Body']); ?>
                                 </div> <!-- end col -->
                             </div>
                             <!-- end task description -->
@@ -169,12 +161,11 @@
                                                     <hr>
 
                                                     <div class="row">
-                                                        <div class="col-lg-9"></div>
-                                                        <div class="col-lg-3">
-                            <a href="'.base_url("buyer/".$user_url."/orders/pay/".urlencode($this->mod_crypt->Enc_String($order_info["Order_Id"]))).'">
-                                <button type="button" class="btn btn-primary btn-block btn-rounded">Proceed to pay
-                                </button>
-                            </a>
+                                                        <div class="col-lg-12">
+                                                            <a href="'.base_url("buyer/".$user_url."/orders/pay/".urlencode($this->mod_crypt->Enc_String($order_info["Order_Id"]))).'">
+                                                                <button type="button" class="btn btn-primary btn-block btn-rounded">Proceed to pay
+                                                                </button>
+                                                            </a>
                                                         </div>
                                                     </div>    
                                                 </div>
@@ -189,7 +180,7 @@
 
                             <?php
                                 $each_file = explode('|__|', $order_info['Order_Attachment']);
-                                for ($i=0; $i < count($each_file); $i++) { 
+                                for ($i=1; $i < count($each_file); $i++) { 
                                     $human_size = $this->mod_orders->get_attachment_size(filesize('uploads/orders/'.urldecode($each_file[$i])));
 
                                     echo '
@@ -231,68 +222,78 @@
                                 <div class="col">
                                     <h5 class="mb-2 font-16">Comments</h5>
                                     <div class="comment_section" id="comment_section">
-<?php
-        foreach ($order_chats as $order_chat) {
-            if ($order_chat['Sender'] == $user_info->Person_ID) {
-                $img = base_url('uploads/profiles/'.$user_info->Avatar);
-                echo '
-                    <div class="d-flex mt-3 p-1">
-                        <img src="'.$img.'" class="me-2 rounded-circle" height="36" />
-                        <div class="w-100">
-                            <h5 class="mt-0 mb-0">
-                                <span class="float-end text-muted font-12">'.date('H:i:s A',$order_chat['Sent']).'</span>
-                                '.$this->mod_crypt->Dec_String($user_info->Name).'
-                            </h5>
-                            <p class="mt-1 mb-0 text-muted">
-                                '.$this->mod_crypt->Dec_String($order_chat['Message']).'
-                            </p>
-                        </div>
-                    </div>
-                    <hr>
-                ';
-            }else{
-                echo '
-                    <div class="d-flex mt-3 p-1">
-                        <img src="" class="me-2 rounded-circle" height="36" />
-                        <div class="w-100">
-                            <h5 class="mt-0 mb-0">
-                                <span class="float-end text-muted font-12">'.date('H:i:s A',$order_chat['Sent']).'</span>
-                                '.$order_chat['Sender'].'
-                            </h5>
-                            <p class="mt-1 mb-0 text-muted">
-                                '.$this->mod_crypt->Dec_String($order_chat['Message']).'
-                            </p>
-                        </div>
-                    </div>
-                    <hr>
-                ';
-            }
-        }
-    ?>
+                                    <?php
+                                        foreach ($order_chats as $order_chat) {
+                                            if ($order_chat['Sender'] == $user_info->Person_ID) {
+                                                $img = base_url('uploads/profiles/'.$user_info->Avatar);
+                                                echo '
+                                                    <div class="d-flex mt-3 p-1">
+                                                        <img src="'.$img.'" class="me-2 rounded-circle" height="36" />
+                                                        <div class="w-100">
+                                                            <h5 class="mt-0 mb-0">
+                                                                <span class="float-end text-muted font-12">'.date('H:i:s A',$order_chat['Sent']).'</span>
+                                                                '.$this->mod_crypt->Dec_String($user_info->Name).'
+                                                            </h5>
+                                                            <p class="mt-1 mb-0 text-muted">
+                                                                '.$this->mod_crypt->Dec_String($order_chat['Message']).'
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                ';
+                                            }else{
+                                                echo '
+                                                    <div class="d-flex mt-3 p-1">
+                                                        <img src="" class="me-2 rounded-circle" height="36" />
+                                                        <div class="w-100">
+                                                            <h5 class="mt-0 mb-0">
+                                                                <span class="float-end text-muted font-12">'.date('H:i:s A',$order_chat['Sent']).'</span>
+                                                                '.$order_chat['Sender'].'
+                                                            </h5>
+                                                            <p class="mt-1 mb-0 text-muted">
+                                                                '.$this->mod_crypt->Dec_String($order_chat['Message']).'
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                ';
+                                            }
+                                        }
+                                    ?>
                                     </div>
 
                                 </div>
                             </div>
 
-                            <div class="row mt-2">
-                                <div class="col">
-                                    <div class="border rounded">
-                                        <form action="<?php echo base_url('buyer/'.$user_url.'/orders/convo/'.urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']))); ?>" method="POST" class="comment-area-box">
-                                            <textarea rows="3" class="form-control border-0 resize-none"
-                                            placeholder="Your comment..." id="convo_msg"></textarea>
-                                            <div class="p-2 bg-light">
-                                                <div class="float-end">
-                                                    <button type="button" id="convo_send" class="btn btn-sm btn-success"><i class='uil uil-message me-1'></i>Submit</button>
+                            
+
+                        <?php
+                            if (($order_info['Order_Paid']) == "00") {
+                                // code...
+                            }else{
+                                echo '
+                                <div class="row mt-2">
+                                    <div class="col">
+                                        <div class="border rounded">
+                                            <form action="'.base_url('buyer/'.$user_url.'/orders/convo/'.urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']))).'" method="POST" class="comment-area-box">
+                                                <textarea rows="3" class="form-control border-0 resize-none"
+                                                placeholder="Your comment..." id="convo_msg"></textarea>
+                                                <div class="p-2 bg-light">
+                                                    <div class="float-end">
+                                                        <button type="button" id="convo_send" class="btn btn-sm btn-success"><i class="uil uil-message me-1"></i>Submit</button>
+                                                    </div>
+                                                    <div>
+                                                        <a href="#" class="btn btn-sm px-1 btn-light"><i class="uil uil-cloud-upload"></i></a>
+                                                        <a href="#" class="btn btn-sm px-1 btn-light"><i class="uil uil-at"></i></a>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <a href="#" class="btn btn-sm px-1 btn-light"><i class='uil uil-cloud-upload'></i></a>
-                                                    <a href="#" class="btn btn-sm px-1 btn-light"><i class='uil uil-at'></i></a>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div> 
-                            </div>
+                                            </form>
+                                        </div>
+                                    </div> 
+                                </div>
+                                ';
+                            }
+                        ?>
 
 
                             <!-- end comments -->

@@ -6,10 +6,23 @@
         <div class="col-12">
             <div class="page-title-box">
                 <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                        <li class="breadcrumb-item active">Edit Order</li>
-                    </ol>
+                <?php 
+                    $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
+                    $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->Dec_String($user_info->Name))); 
+                    $delte_id = urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']));
+                ?>
+
+                    <div class="text-xl-end mt-xl-0 mt-2">
+                        <div class="text-sm-end">
+                            <a href="<?php echo base_url('buyer/'.$user_url.'/orders');?>">
+                                <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-keyboard-backspace me-1"></i>Back</button>
+                            </a>
+                            <a href="<?php echo base_url('buyer/'.$user_url.'/orders/delete/'.$delte_id);?>">
+                                <button type="button" class="btn btn-danger mb-2"><i class="mdi mdi-trash-can me-1"></i>Delete</button>
+                            </a> 
+                        </div>
+                    </div>
+                    <!-- end row-->
                 </div>
                 <h4 class="page-title">Edit Order</h4>
             </div>
@@ -41,7 +54,9 @@
                             <div class="col-xl-12">
                                 <div class="mb-3">
                                     <label for="projectname" class="form-label">Description <span class="badge bg-warning rounded-pill">Required</span></label>
-                                    <textarea id="summernote" name="order_desc" required="" value="<?php echo $this->mod_crypt->Dec_String($order_info['Order_Body']);?>"></textarea>
+                                    <textarea id="summernote" name="order_desc" required="" value="">
+                                        <?php echo $this->mod_crypt->Dec_String($order_info['Order_Body']);?>
+                                    </textarea>
                                 </div>
 
                             </div> <!-- end col-->
@@ -114,11 +129,13 @@
                                      <!-- Date View -->
                                     <div class="mb-3 position-relative" id="datepicker2">
                                         <label class="form-label">Due Date <span class="badge bg-warning rounded-pill">Required</span></label>
-                                        <input type="text" class="form-control" data-provide="datepicker" name="order_date" data-date-container="#datepicker2" data-date-format="d-M-yyyy" data-date-autoclose="true"placeholder="<?php echo $order_info['Order_Deadline'];?>">
+                                        <input type="text" class="form-control" data-provide="datepicker" name="order_date" data-date-container="#datepicker2" data-date-format="d-M-yyyy" data-date-autoclose="true"placeholder="<?php echo ($order_info['Order_Deadline']);?>">
                                     </div>
                             
                                     <div class="form-floating">
-                                        <textarea class="form-control" name="order_comment" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px" <?php echo $this->mod_crypt->Dec_String($order_info['Order_Comment']);?>></textarea>
+                                        <textarea class="form-control" name="order_comment" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px" >
+                                            <?php echo $this->mod_crypt->Dec_String($order_info['Order_Comment']);?>
+                                        </textarea>
                                         <label for="floatingTextarea">Comments</label>
                                     </div>
 

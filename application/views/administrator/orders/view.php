@@ -39,8 +39,8 @@
                                     ?>
                                 </div>
                             </div>
-            </div><!-- end col-->
-        </div>
+                        </div><!-- end col-->
+                    </div>
                 </div>
                 <h4 class="page-title">Order Details</h4>
             </div>
@@ -49,7 +49,7 @@
     <!-- end page title --> 
     
     <div class="row">
-        <div class="col-xxl-8 col-lg-6">
+        <div class="col-xxl-8 col-lg-12">
             <!-- project card -->
             <div class="card d-block">
                 <div class="card-body">
@@ -232,7 +232,7 @@
 
         </div> <!-- end col -->
 
-        <div class="col-lg-6 col-xxl-4">
+        <div class="col-lg-12 col-xxl-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title mb-3">Attachments</h5>
@@ -284,8 +284,10 @@
 
         <?php 
             $assignement = $this->mod_orders->get_orders_assigned_id($orders_info['Order_Id']); 
-            $user_info = $this->mod_users->get_vars($assignement['Assignee']);
-            if ($assignement['Assign_Reply'] == "11") {
+            $user_info = $this->mod_users->get_vars($this->session->userdata('log_id'));
+            if (empty($assignement)) {
+                // code...
+            }else if($assignement['Assign_Reply'] == "11") {
                 ?>
 
             <!-- comments -->

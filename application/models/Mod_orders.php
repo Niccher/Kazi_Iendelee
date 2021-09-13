@@ -207,14 +207,15 @@
         }
 
         public function orders_make_edit($order_name, $order_desc, $order_page, $order_word, $order_level, $order_cite, $order_date, $order_info, $order_cost, $order_attachments, $order_id){
-
+            $order_data = $this->mod_orders->get_orders_id($order_id);
+            $filed = $order_data['Order_Attachment'];
             $data = array(
                 'Order_Name' => $order_name,
                 'Order_Body' => $order_desc,
                 'Order_Pages' => $order_page,
                 'Order_Words' => $order_word,
                 'Order_Comment' => $order_info,
-                'Order_Attachment' => $order_attachments,
+                'Order_Attachment' => $filed.$order_attachments,
                 'Order_Deadline' => $order_date,
                 'Order_Cite' => $order_cite,
                 'Order_Level' => $order_level,
