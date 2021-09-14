@@ -50,6 +50,7 @@ class Adminorders extends CI_Controller {
 		}
 		$data['user_list'] = $this->mod_users->get_users();
 		$data['assign_list'] = $this->mod_orders->get_assigned_to($word_id);
+		//print_r($data['assign_list']);
 		$data['order_chats'] = $this->mod_orders->get_orders_convo_by_order($word_id);
 
 		$this->load->view('administrator/template/header');
@@ -386,44 +387,47 @@ class Adminorders extends CI_Controller {
 	            $attached = "";
 	        }
 
-	        if ($order_chat['Sender'] != "Admin") {
-	            $chats.= '
-	                <li class="clearfix">
-	                    <div class="chat-avatar">
-	                        <img src="'.base_url('uploads/profiles/'.$user_info->Avatar).'" alt="'.$this->mod_crypt->Dec_String($user_info->Name).'" class="rounded avatar-sm" />
-	                        <i>'.date('d H:i',$order_chat['Sent']).'</i>
-	                    </div>
-	                    <div class="conversation-text">
-	                        <div class="ctext-wrap">
-	                            <i>'.$this->mod_crypt->Dec_String($user_info->Name).':</i>
-	                            <p>
-	                                '.$this->mod_crypt->Dec_String($order_chat['Message']).'
-	                            </p>
-	                            '.$attached.'
-	                        </div>
-	                    </div>
-	                </li>
-	            ';
-	        }else{
-	            $chats.= '
-	                <li class="clearfix odd">
-	                    <div class="chat-avatar">
-	                        <img src="'.base_url('assets/images/waves.png').'" alt="Admin:" class="rounded" />
-	                        <i>'.date('H:i:s A',$order_chat['Sent']).'</i>
-	                    </div>
-	                    <div class="conversation-text">
-	                        <div class="ctext-wrap">
-	                            <i>Admin:</i>
-	                            <p>
-	                                '.$this->mod_crypt->Dec_String($order_chat['Message']).'
-	                            </p>
-	                            '.$attached.'
-	                        </div>
-	                    </div>
+	        if ($order_chat['Sender'] != "Admin" || $order_chat['Sender'] == $user_id ) {
+	        	if ($order_chat['Sender'] == $user_id['Assignee']) {
+	        		echo '
+                    <li class="clearfix">
+                        <div class="chat-avatar">
+                            <img src="'.base_url('uploads/profiles/'.$user_info->Avatar).'" alt="'.$this->mod_crypt->Dec_String($user_info->Name).'" class="rounded avatar-sm" />
+                            <i>'.date('d H:i',$order_chat['Sent']).'</i>
+                        </div>
+                        <div class="conversation-text">
+                            <div class="ctext-wrap">
+                                <i>'.$this->mod_crypt->Dec_String($user_info->Name).':</i>
+                                <p>
+                                    '.$this->mod_crypt->Dec_String($order_chat['Message']).'
+                                </p>
+                                '.$attached.'
+                            </div>
+                        </div>
+                    </li>
+                    ';
+	        	}
+                
+            }else if ($order_chat['Sender'] == "Admin") {
+                echo '
+                    <li class="clearfix odd">
+                        <div class="chat-avatar">
+                            <img src="'.base_url('assets/images/waves.png').'" alt="Admin:" class="rounded" />
+                            <i>'.date('H:i:s A',$order_chat['Sent']).'</i>
+                        </div>
+                        <div class="conversation-text">
+                            <div class="ctext-wrap">
+                                <i>Admin:</i>
+                                <p>
+                                    '.$this->mod_crypt->Dec_String($order_chat['Message']).'
+                                </p>
+                                '.$attached.'
+                            </div>
+                        </div>
 
-	                </li>
-	            ';
-	        }
+                    </li>
+                ';
+            }
     	}
 
     	echo $chats;
@@ -441,6 +445,7 @@ class Adminorders extends CI_Controller {
         $file = explode("delete_attach_file_", $fileid);
         echo "file at -> ".$file[1];
         unlink('uploads/temp_orders/'.$file[1]);
+
 	}
 
 

@@ -135,6 +135,16 @@ $route['buyer/(:any)/profile_image'] = 'client_profile/profile_image';
 $route['buyer/(:any)/send_message/(:any)'] = 'client/send_message'; 
 $route['buyer/(:any)/user_fetch/(:any)'] = 'client/user_fetch'; 
 
+$route['buyer/(:any)/orders_submission_ui'] = 'client_orders/orders_make_attachment_ui'; 
+$route['buyer/(:any)/orders_submission_chats/(:any)'] = 'client_orders/orders_get_submission_chats'; 
+$route['buyer/(:any)/send_submission/(:any)'] = 'client_orders/send_submission'; 
+$route['buyer/(:any)/orders_make_order_attachment'] = 'client_orders/orders_make_attachment';
+$route['buyer/(:any)/orders_make_submission_attachment'] = 'client_orders/orders_make_submission';
+$route['buyer/(:any)/attachment_delete/(:any)'] = 'client_orders/submission_attachment_delete';
+$route['buyer/(:any)/orders/submision/(:any)'] = 'client_orders/orders_get_submission'; 
+///buyer/'.$user_url.'/orders/submision/'.$all_files[$i]
+
+
 $route['pay/stripe/(:any)'] = 'transaction/transaction_stripe_pay/$1';
 $route['pay/success'] = 'transaction/transaction_pay_success';
 $route['pay/fail'] = 'transaction/transaction_pay_fail';

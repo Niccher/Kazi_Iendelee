@@ -334,7 +334,8 @@
                     }
 
                     if ($order_chat['Sender'] != "Admin") {
-                        echo '
+                        if ($this->mod_crypt->Dec_String($user_info->Privilege) != "Client") {
+                            echo '
                             <li class="clearfix">
                                 <div class="chat-avatar">
                                     <img src="'.base_url('uploads/profiles/'.$user_info->Avatar).'" alt="'.$this->mod_crypt->Dec_String($user_info->Name).'" class="rounded avatar-sm" />
@@ -350,8 +351,10 @@
                                     </div>
                                 </div>
                             </li>
-                        ';
-                    }else{
+                            ';
+                        }
+                        
+                    }else if ($order_chat['Sender'] == "Admin") {
                         echo '
                             <li class="clearfix odd">
                                 <div class="chat-avatar">

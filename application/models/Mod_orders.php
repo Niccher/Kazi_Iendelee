@@ -291,6 +291,17 @@
 
         }
 
+        public function get_orders_client_convo_by_order($order_id, $order_owner){
+            $this->db->where('Order_Id =', $order_id);
+            $this->db->group_start();
+            $this->db->or_where('Sender', $order_owner);
+            $this->db->or_where('Recipient', $order_owner);
+            $this->db->group_end();
+            $query = $this->db->get('tbl_Chat_Orders');
+            return $query->result_array();
+
+        }
+
         public function make_delivery_to($person_id, $order_id){
             //Deliver_Id    Deliver_Time    Deliver_Message     Deliver_Files   Deliver_Viewed  Deliver_Order   Deliver_Maker   Deliever_Receiver   Deliver_Acceptance  
             $data = array(

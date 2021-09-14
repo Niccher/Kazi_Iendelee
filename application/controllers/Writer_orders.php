@@ -237,7 +237,7 @@ class Writer_orders extends CI_Controller {
                         </div>
                     </li>
                 ';
-            }else{
+            }else if ($order_chat['Sender'] == "Admin") {
                 $convos .= '
                     <li class="clearfix">
                         <div class="chat-avatar">
