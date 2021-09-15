@@ -90,7 +90,7 @@
                                         <i class='uil uil-schedule font-18 text-success me-1'></i>
                                         <div>
                                             <h5 class="mt-1 font-14">
-                                                <?php echo ($order_info['Order_Deadline']); ?>
+                                                <?php echo $this->mod_crypt->Dec_String($order_info['Order_Deadline']); ?>
                                             </h5>
                                         </div>
                                     </div>

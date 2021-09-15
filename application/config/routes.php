@@ -30,6 +30,7 @@ $route['admin/attachment_delete/(:any)'] = 'adminorders/orders_attachment_delete
 $route['admin/attachment_deleted/(:any)'] = 'adminorders/orders_attachment_deleted/$1';
 $route['order/deleted/(:any)'] = 'adminorders/orders_deleted/$1';
 $route['admin/order/edit/(:any)'] = 'adminorders/orders_edit/$1';
+$route['admin/order/submit/(:any)'] = 'adminorders/orders_submit/$1';
 $route['admin/order/edit_make/(:any)'] = 'adminorders/orders_make_edit/$1';
 $route['admin/assign/(:any)'] = 'adminorders/assign';
 
@@ -40,10 +41,14 @@ $route['admin/send_submission/(:any)'] = 'adminorders/send_submission';
 $route['admin/orders_submission_chats/(:any)'] = 'adminorders/get_submission_convo';
 $route['admin/orders/get_submission/(:any)'] = 'adminorders/order_get_submission';
 
+$route['admin/orders_submission_chats_with_client/(:any)'] = 'adminorders/get_submission_convo_client';
+//admin/orders_submission_chats_with_client/
+
 $route['admin/orders/complete/(:any)'] = 'adminorders/order_finalize';
 $route['admin/orders_make/delivery_attachment/(:any)'] = 'adminorders/orders_make_submission_attachment';
 $route['admin/orders_make/delivery_message/(:any)'] = 'adminorders/orders_make_submission_message';
 //admin/orders_make/delivery_attachment
+//admin/orders_make/delivery_message/
 
 $route['admin/sales'] = 'admin/sales';
 $route['admin/invoices/process/(:any)'] = 'admin/invoices';

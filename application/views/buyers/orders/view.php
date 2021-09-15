@@ -18,7 +18,14 @@
                             </a> 
                             ';
                         }else{
-                            $final ="";
+                            $final ='
+                            <a href="'.base_url('buyer/'.$user_url.'/orders/edit/'.$delte_id).'">
+                                <button type="button" class="btn btn-primary mb-2"><i class="mdi mdi-book-edit me-1"></i>Edit</button>
+                            </a> 
+                            <a href="'.base_url('buyer/'.$user_url.'/orders/delete/'.$delte_id).'">
+                                <button type="button" class="btn btn-danger mb-2"><i class="mdi mdi-trash-can me-1"></i>Delete</button>
+                            </a> 
+                            ';
                         }
                     ?>
 
@@ -32,12 +39,7 @@
                                         <a href="<?php echo base_url('buyer/'.$user_url.'/orders');?>">
                                             <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-keyboard-backspace me-1"></i>Back</button>
                                         </a>
-                                        <a href="<?php echo base_url('buyer/'.$user_url.'/orders/edit/'.$delte_id);?>">
-                                            <button type="button" class="btn btn-primary mb-2"><i class="mdi mdi-book-edit me-1"></i>Edit</button>
-                                        </a> 
-                                        <a href="<?php echo base_url('buyer/'.$user_url.'/orders/delete/'.$delte_id);?>">
-                                            <button type="button" class="btn btn-danger mb-2"><i class="mdi mdi-trash-can me-1"></i>Delete</button>
-                                        </a> 
+                                        <?php echo $final;?> 
                                     </div>
                                 </div>
                             </div><!-- end col-->
@@ -148,6 +150,28 @@
                                 <?php echo $this->mod_crypt->Dec_String($order_info['Order_Body']); ?>
                             </div>
                             <!-- end task description -->
+
+                            <?php
+                                if ($order_info['Order_Paid'] == "00") {
+                                    echo '
+                                        <div class="alert alert-danger" role="alert">
+                                            <strong>Not Paid - </strong> your order has not been paid for, this means that it cannot be worked upon. To overcome this please pay. 
+                                            <br>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-lg-9"></div>
+                                                <div class="col-lg-3">
+                                                    <a href="'.base_url("buyer/".$user_url."/orders/pay/".urlencode($this->mod_crypt->Enc_String($order_info["Order_Id"]))).'">
+                                                        <button type="button" class="btn btn-primary btn-block btn-rounded">Proceed to pay
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                        ';
+                                            
+                                }
+                            ?>
 
                             <h5 class="mt-4 mb-2 font-16">Attachments</h5>
                             <div class="row mt-3" data-simplebar style="max-height: 560px"> 
@@ -287,7 +311,7 @@
                                     <div class="alert alert-success" role="alert">
                                         <strong>Work as been marked as complete
                                     </div>';
-                                }else{
+                                }else if ($order_info['Order_Paid'] == "11") {
                                     ?>
 
                             <div class="row mt-2">
