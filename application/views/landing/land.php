@@ -514,6 +514,30 @@
 
         </main>
         <!-- End #main -->
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<div class="modal" tabindex="-1" id="exampleModal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
         <!-- ======= Footer ======= -->
         <footer id="footer">
             <div class="footer-top">
@@ -552,6 +576,7 @@
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
         <!-- Vendor JS Files -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="<?php echo base_url('assets/land/vendor/aos/aos.js'); ?>"></script>
         <script src="<?php echo base_url('assets/land/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/land/vendor/glightbox/js/glightbox.min.js'); ?>"></script>
@@ -560,6 +585,13 @@
         <script src="<?php echo base_url('assets/land/vendor/swiper/swiper-bundle.min.js'); ?>"></script>
         <!-- Template Main JS File -->
         <script src="<?php echo base_url('assets/land/js/main.js'); ?>"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#exampleModal").modal();
+                console.log("Dope");
+            });
+        </script>
     </body>
 </html>
 
