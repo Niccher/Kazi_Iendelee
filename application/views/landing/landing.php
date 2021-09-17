@@ -18,7 +18,7 @@
     <body class="loading" data-layout-config='{"darkMode":false}'>
 
         <!-- NAVBAR START -->
-        <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark fixed-top bg-secondary" id="nav_area">
+        <nav class="navbar navbar-expand-md py-md-3 navbar-dark fixed-top bg-secondary" id="nav_area">
             <div class="container">
                 <!-- logo -->
                 <a href="" class="navbar-brand me-lg-5">
@@ -69,61 +69,86 @@
         </nav>
         <!-- NAVBAR END -->
 
+        <section class="bg-secondary-lighten" style="height: 10px;"></section>
         <!-- START HERO -->
-        <section class="bg-secondary-lighten">
+        <section class="bg-secondary-lighten" style="height: 450px; margin-top: 20px;">
             <div class="">
                 <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="container">
-                            <div class="mt-md-4">
-                                <h2 class="text-primary fw-normal mb-4 mt-3 hero-title">
-                                    Kazi Iendelee
-                                </h2>
+                    <div class="col-md-10 offset-md-1">
+                        <div class="">
+                            <div class="row">
+                                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="https://source.unsplash.com/random/100x80?sig=1" class="d-block w-100" alt="..." style="height: 450px;">
+                                            <div class="carousel-caption">
+                                                <div class="container">
+                                                    <div class="mt-md-4">
+                                                        <h1 class="text-primary fw-bold fw-normal mb-4 mt-3 hero-title">
+                                                            Kazi Iendelee
+                                                        </h1>
 
-                                <p class="mb-4 font-16 text-danger-50">
-                                    Welcome to Kazi Iendelee, here we help people get their work done, we are a team of highly motivated writers who will give you back high quality work.
-                                </p>
+                                                        <p class="mb-4 font-16 text-danger-50">
+                                                            Welcome to Kazi Iendelee, here we help people get their work done, we are a team of highly motivated writers who will give you back high quality work.
+                                                        </p>
 
-                                <a href="<?php echo base_url('auth/login');?>" target="_blank" class="btn btn-success">Create an Order <i
-                                        class="mdi mdi-arrow-right ms-1"></i></a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="https://source.unsplash.com/random/100x80?sig=1" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption">
-                                            <h3>First Slide Image</h3>
-                                            <p>Sample picture about quality of work</p>
+                                                        <a href="<?php echo base_url('auth/login');?>" data-bs-toggle="modal" data-bs-target="#create_modal" class="btn btn-success">Create an Order <i
+                                                                class="mdi mdi-arrow-right ms-1"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://source.unsplash.com/random/100x80?sig=2" class="d-block w-100" alt="..." style="height: 450px;">
+                                            <div class="carousel-caption">
+                                                <div class="container">
+                                                    <div class="mt-md-4">
+                                                        <h1 class="text-primary fw-bold fw-normal mb-4 mt-3 hero-title">
+                                                            Kazi Iendelee
+                                                        </h1>
+
+                                                        <p class="mb-4 font-16 text-danger-50">
+                                                            Welcome to Kazi Iendelee, here we help people get their work done, we are a team of highly motivated writers who will give you back high quality work.
+                                                        </p>
+
+                                                        <a href="<?php echo base_url('auth/login');?>" data-bs-toggle="modal" data-bs-target="#create_modal" class="btn btn-success">Create an Order <i
+                                                                class="mdi mdi-arrow-right ms-1"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://source.unsplash.com/random/100x80?sig=3" class="d-block w-100" alt="..." style="height: 450px;">
+                                            <div class="carousel-caption">
+                                                <div class="container">
+                                                    <div class="mt-md-4">
+                                                        <h1 class="text-primary fw-bold fw-normal mb-4 mt-3 hero-title">
+                                                            Kazi Iendelee
+                                                        </h1>
+
+                                                        <p class="mb-4 font-16 text-danger-50">
+                                                            Welcome to Kazi Iendelee, here we help people get their work done, we are a team of highly motivated writers who will give you back high quality work.
+                                                        </p>
+
+                                                        <a href="<?php echo base_url('auth/login');?>" data-bs-toggle="modal" data-bs-target="#create_modal" class="btn btn-success">Create an Order <i
+                                                                class="mdi mdi-arrow-right ms-1"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="https://source.unsplash.com/random/100x80?sig=2" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption">
-                                            <h3>First Slide Image</h3>
-                                            <p>Sample picture about quality of work</p>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://source.unsplash.com/random/100x80?sig=3" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption">
-                                            <h3>First Slide Image</h3>
-                                            <p>Sample picture about quality of work</p>
-                                        </div>
-                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                    </button>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -637,6 +662,151 @@
 
                         </div> <!-- end col -->
 
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div id="create_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="col-xxl-12 col-lg-12">
+
+                            <div class="card">
+                                <form action="<?php echo base_url('buyer/new/orders/create'); ?>" method='POST' enctype="multipart/form-data">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <div class="mb-3">
+                                                    <label for="projectname" class="form-label">Name <span class="badge bg-warning rounded-pill">Required</span></label>
+                                                    <input type="text" name="order_name" class="form-control" placeholder="Enter Order name" required="">
+                                                </div>
+
+                                            </div> <!-- end col-->
+
+                                            <div class="col-xl-12">
+                                                <div class="mb-3">
+                                                    <label for="projectname" class="form-label">Description <span class="badge bg-warning rounded-pill">Required</span></label>
+                                                    <textarea id="summernote" name="order_desc" required=""></textarea>
+                                                </div>
+
+                                            </div> <!-- end col-->
+
+                                            <div class="col-xl-12">
+                                                <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="col-md">
+                                                                <div class="form-floating">
+                                                                    <input type="text" class="form-control" name="order_page" placeholder="Page Count" value="1">
+                                                                    <label>Page Count</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <div class="col-md">
+                                                                <div class="form-floating">
+                                                                    <input type="text" class="form-control" name="order_word" placeholder="Word Count expected" value="350">
+                                                                    <label>Word Count expected</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col-->
+
+                                            <div class="col-xl-12">
+                                                <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="col-md">
+                                                                <div class="form-floating">
+                                                                    <input type="number" class="form-control" name="order_price" placeholder="Estimated Price" value="1" required="">
+                                                                    <label>Estimated Price <span class="badge bg-warning rounded-pill">Required</span> </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <div class="col-md">
+                                                                <div class="form-floating">
+                                                                    <select class="form-select" name="order_cite">
+                                                                        <option value="task_cite_APA">APA</option>
+                                                                        <option value="task_cite_Chicago">Chicago</option>
+                                                                        <option value="task_cite_Harvard">Harvard</option>
+                                                                        <option value="task_cite_MLA">MLA</option>
+                                                                        <option value="task_cite_Turabian">Turabian</option>
+                                                                    </select>
+                                                                    <label for="floatingSelectGrid">Citation Style</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col-->
+
+
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="col-md">
+                                                        <div class="form-floating">
+                                                            <select class="form-select" name="order_level">
+                                                                <option value="task_level_high_school">High School</option>
+                                                                <option value="task_level_college">College</option>
+                                                                <option value="task_level_undergraduate">Undergraduate</option>
+                                                                <option value="task_level_postgraduate">Post Graduate</option>
+                                                                <option value="task_level_masters">Masters</option>
+                                                                <option value="task_level_php">PHD</option>
+                                                            </select>
+                                                            <label for="floatingSelectGrid">Complexity associated with work</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                     <!-- Date View -->
+                                                    <div class="mb-3 position-relative" id="datepicker2">
+                                                        <label class="form-label">Due Date <span class="badge bg-warning rounded-pill">Required</span></label>
+                                                        <input type="text" class="form-control" data-provide="datepicker" name="order_date" data-date-container="#datepicker2" data-date-format="d-M-yyyy" data-date-autoclose="true">
+                                                    </div>
+                                            
+                                                    
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <!-- end row -->
+                                        <div class="col-xl-12">
+                                            <div class="mb-3">
+                                                <div class="row">
+                                                    <div class="col-md-12 offset-md-0">
+                                                        <div class="form-floating">
+                                                            <textarea class="form-control" name="order_comment" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px"></textarea>
+                                                            <label for="floatingTextarea">Comments</label>
+                                                        </div>
+
+                                                        <br>
+
+                                                        <button type="button" class="btn btn-info btn-block" data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg">
+                                                            Upload Attachments
+                                                        </button>
+                                                        
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div> <!-- end col-->
+                                    </div> <!-- end card-body -->
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <button type="submit" class="btn btn-success btn-block">Create Assignment</button>
+                                        </div>
+                                    </div>
+                                </form>                      
+                            </div> <!-- end card-->
+
+                        </div> <!-- end col -->
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
