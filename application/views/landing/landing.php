@@ -523,6 +523,18 @@
         </section>
         <!-- END CONTACT -->
 
+        <style type="text/css">
+            .dropzone {
+                background: white;
+                border-radius: 5px;
+                border: 2px dashed rgb(0, 135, 247);
+                border-image: none;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+
         <!-- Signup modal-->
 
         <div id="signup_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -668,142 +680,36 @@
         </div><!-- /.modal -->
 
         <div id="create_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="col-xxl-12 col-lg-12">
-
                             <div class="card">
-                                <form action="<?php echo base_url('buyer/new/orders/create'); ?>" method='POST' enctype="multipart/form-data">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-xl-12">
-                                                <div class="mb-3">
-                                                    <label for="projectname" class="form-label">Name <span class="badge bg-warning rounded-pill">Required</span></label>
-                                                    <input type="text" name="order_name" class="form-control" placeholder="Enter Order name" required="">
-                                                </div>
-
-                                            </div> <!-- end col-->
-
-                                            <div class="col-xl-12">
-                                                <div class="mb-3">
-                                                    <label for="projectname" class="form-label">Description <span class="badge bg-warning rounded-pill">Required</span></label>
-                                                    <textarea id="summernote" name="order_desc" required=""></textarea>
-                                                </div>
-
-                                            </div> <!-- end col-->
-
-                                            <div class="col-xl-12">
-                                                <div class="mb-3">
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <div class="col-md">
-                                                                <div class="form-floating">
-                                                                    <input type="text" class="form-control" name="order_page" placeholder="Page Count" value="1">
-                                                                    <label>Page Count</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-6">
-                                                            <div class="col-md">
-                                                                <div class="form-floating">
-                                                                    <input type="text" class="form-control" name="order_word" placeholder="Word Count expected" value="350">
-                                                                    <label>Word Count expected</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- end col-->
-
-                                            <div class="col-xl-12">
-                                                <div class="mb-3">
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <div class="col-md">
-                                                                <div class="form-floating">
-                                                                    <input type="number" class="form-control" name="order_price" placeholder="Estimated Price" value="1" required="">
-                                                                    <label>Estimated Price <span class="badge bg-warning rounded-pill">Required</span> </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-6">
-                                                            <div class="col-md">
-                                                                <div class="form-floating">
-                                                                    <select class="form-select" name="order_cite">
-                                                                        <option value="task_cite_APA">APA</option>
-                                                                        <option value="task_cite_Chicago">Chicago</option>
-                                                                        <option value="task_cite_Harvard">Harvard</option>
-                                                                        <option value="task_cite_MLA">MLA</option>
-                                                                        <option value="task_cite_Turabian">Turabian</option>
-                                                                    </select>
-                                                                    <label for="floatingSelectGrid">Citation Style</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- end col-->
-
-
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="col-md">
-                                                        <div class="form-floating">
-                                                            <select class="form-select" name="order_level">
-                                                                <option value="task_level_high_school">High School</option>
-                                                                <option value="task_level_college">College</option>
-                                                                <option value="task_level_undergraduate">Undergraduate</option>
-                                                                <option value="task_level_postgraduate">Post Graduate</option>
-                                                                <option value="task_level_masters">Masters</option>
-                                                                <option value="task_level_php">PHD</option>
-                                                            </select>
-                                                            <label for="floatingSelectGrid">Complexity associated with work</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                     <!-- Date View -->
-                                                    <div class="mb-3 position-relative" id="datepicker2">
-                                                        <label class="form-label">Due Date <span class="badge bg-warning rounded-pill">Required</span></label>
-                                                        <input type="text" class="form-control" data-provide="datepicker" name="order_date" data-date-container="#datepicker2" data-date-format="d-M-yyyy" data-date-autoclose="true">
-                                                    </div>
-                                            
-                                                    
-                                                </div>
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body p-4">
+                                            <div class="text-center w-75 m-auto">
+                                                <img src="assets/images/users/avatar-1.jpg" height="64" alt="company logo" class="rounded-circle shadow">
+                                                <h4 class="text-dark-50 text-center mt-3 fw-bold">Hello Guest, Welcome to Kazi Mingi. </h4>
+                                                <p class="text-muted mb-4">To get started, please go ahead and enter your email to proced to the next level.</p>
                                             </div>
-                                            
-                                        </div>
-                                        <!-- end row -->
-                                        <div class="col-xl-12">
-                                            <div class="mb-3">
-                                                <div class="row">
-                                                    <div class="col-md-12 offset-md-0">
-                                                        <div class="form-floating">
-                                                            <textarea class="form-control" name="order_comment" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px"></textarea>
-                                                            <label for="floatingTextarea">Comments</label>
-                                                        </div>
 
-                                                        <br>
-
-                                                        <button type="button" class="btn btn-info btn-block" data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg">
-                                                            Upload Attachments
-                                                        </button>
-                                                        
-                                                    </div>
-
+                                            <form action="<?php echo base_url('buyer/new/create/user'); ?>" method='POST' enctype="multipart/form-data">
+                                                <div class="mb-3">
+                                                    <label for="password" class="form-label">Email</label>
+                                                    <input class="form-control" type="email" required="" id="password" name="reg_name" placeholder="Enter your emailaddress to proceed">
                                                 </div>
-                                            </div>
-                                        </div> <!-- end col-->
-                                    </div> <!-- end card-body -->
-                                    <div class="card-footer">
-                                        <div class="row">
-                                            <button type="submit" class="btn btn-success btn-block">Create Assignment</button>
-                                        </div>
+
+                                                <div class="mb-0 text-center">
+                                                    <button class="btn btn-primary" type="submit">Proceed</button>
+                                                </div>
+                                            </form>
+                                            
+                                        </div> <!-- end card-body-->
                                     </div>
-                                </form>                      
+                                    <!-- end card-->
+                                    <!-- end row -->
+                                </div> <!-- end col -->                  
                             </div> <!-- end card-->
 
                         </div> <!-- end col -->
@@ -811,6 +717,7 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+
 
         <!-- START FOOTER -->
         <footer class="bg-dark py-5">
@@ -873,17 +780,8 @@
         </footer>
 
         <!-- bundle -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="<?php echo base_url('assets/js/vendor.min.js');?>"></script>
-        <script src="<?php echo base_url('assets/js/app.min.js');?>"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="<?php echo base_url('assets/js/app.min.js'); ?>"></script>
 
-            <script type="text/javascript">
-                document.addEventListener("DOMContentLoaded", function(){
-                    window.addEventListener('scroll', function() {
-                        
-                    });
-                }); 
-            </script>
     </body>
 </html>

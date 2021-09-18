@@ -147,7 +147,10 @@ $route['buyer/(:any)/orders_make_order_attachment'] = 'client_orders/orders_make
 $route['buyer/(:any)/orders_make_submission_attachment'] = 'client_orders/orders_make_submission';
 $route['buyer/(:any)/attachment_delete/(:any)'] = 'client_orders/submission_attachment_delete';
 $route['buyer/(:any)/orders/submision/(:any)'] = 'client_orders/orders_get_submission'; 
-///buyer/'.$user_url.'/orders/submision/'.$all_files[$i]
+
+$route['buyer/new/orders_make_attachment'] = 'guest/orders_make_attachment';
+$route['buyer/new/orders/create'] = 'guest/orders_make';
+$route['buyer/new/create/user'] = 'guest/register';
 
 
 $route['pay/stripe/(:any)'] = 'transaction/transaction_stripe_pay/$1';
