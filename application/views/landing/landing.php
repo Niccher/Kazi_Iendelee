@@ -92,9 +92,9 @@
                                                             Welcome to Kazi Iendelee, here we help people get their work done, we are a team of highly motivated writers who will give you back high quality work.
                                                         </p>
 
-                                                        <a href="<?php echo base_url('auth/login');?>" data-bs-toggle="modal" data-bs-target="#create_modal" class="btn btn-success">Create an Order <i
-                                                                class="mdi mdi-arrow-right ms-1"></i>
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#create_modal" class="btn btn-success">Create an Order <i class="mdi mdi-arrow-right ms-1"></i>
                                                         </a>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -112,9 +112,9 @@
                                                             Welcome to Kazi Iendelee, here we help people get their work done, we are a team of highly motivated writers who will give you back high quality work.
                                                         </p>
 
-                                                        <a href="<?php echo base_url('auth/login');?>" data-bs-toggle="modal" data-bs-target="#create_modal" class="btn btn-success">Create an Order <i
-                                                                class="mdi mdi-arrow-right ms-1"></i>
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#create_modal" class="btn btn-success">Create an Order <i class="mdi mdi-arrow-right ms-1"></i>
                                                         </a>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -132,9 +132,9 @@
                                                             Welcome to Kazi Iendelee, here we help people get their work done, we are a team of highly motivated writers who will give you back high quality work.
                                                         </p>
 
-                                                        <a href="<?php echo base_url('auth/login');?>" data-bs-toggle="modal" data-bs-target="#create_modal" class="btn btn-success">Create an Order <i
-                                                                class="mdi mdi-arrow-right ms-1"></i>
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#create_modal" class="btn btn-success">Create an Order <i class="mdi mdi-arrow-right ms-1"></i>
                                                         </a>
+
                                                     </div>
                                                 </div>
                                             </div>
