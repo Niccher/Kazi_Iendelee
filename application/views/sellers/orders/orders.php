@@ -109,7 +109,7 @@
                     if (!empty($order_info)) {
                         $url = urlencode($this->mod_crypt->Enc_String($order_info['Order_Id']));
                         $name = ($this->mod_crypt->Dec_String($order_info['Order_Name']));
-                        $due = $order_info['Order_Deadline'];
+                        $due = (($order_info['Order_Deadline']));
 
                         $words = $this->mod_crypt->Dec_String($order_info['Order_Words']);
                         $cite = str_replace("task_cite_", "", $this->mod_crypt->Dec_String($order_info['Order_Cite']));

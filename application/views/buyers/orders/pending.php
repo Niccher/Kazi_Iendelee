@@ -71,7 +71,7 @@ $user_url = strtolower(preg_replace('/[0-9\@\.\;\" "]+/', '', $this->mod_crypt->
     foreach($user_orders as $order){
         $o_id = urlencode($this->mod_crypt->Enc_String($order['Order_Id']));
         $started = date('d-M-Y', $order['Order_Created']);
-        $stopped =  ($order['Order_Deadline']);
+        $stopped =  $this->mod_crypt->Dec_String($order['Order_Deadline']);
         $cite =  $this->mod_crypt->Dec_String($order['Order_Cite']);
         $page = $this->mod_crypt->Dec_String($order['Order_Pages']);
         $word = $this->mod_crypt->Dec_String($order['Order_Words']);

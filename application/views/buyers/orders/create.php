@@ -89,7 +89,7 @@
                                             <div class="col-md">
                                                 <div class="form-floating">
                                                     <input type="number" class="form-control" name="order_price" placeholder="Estimated Price" value="1" required="">
-                                                    <label>Estimated Price <span class="badge bg-warning rounded-pill">Required</span> </label>
+                                                    <label>Est. Price (Dollars) </i> <span class="badge bg-warning rounded-pill">Required</span> </label>
                                                 </div>
                                             </div>
                                         </div>
